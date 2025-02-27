@@ -1,8 +1,13 @@
-// src/components/Dashboard.js
+// src/components/Dashboard.js - Oppdatert med bedriftsinformasjon
 import React from "react";
 import "../styles/Dashboard.css";
 
-function Dashboard({ securityScore, priorityMeasures, onViewAllMeasures }) {
+function Dashboard({
+  securityScore,
+  priorityMeasures,
+  onViewAllMeasures,
+  companyInfo,
+}) {
   // Score beregning og klassifisering
   const getScoreColor = (score) => {
     if (score >= 70) return "green";
@@ -65,6 +70,60 @@ function Dashboard({ securityScore, priorityMeasures, onViewAllMeasures }) {
   // Dashbord gauge beregning
   const dashOffset = 440 - 440 * (roundedScore / 100);
 
+  // Bedriftsstørrelse til tekst
+  const employeeSizeToText = (size) => {
+    switch (size) {
+      case "0-5":
+        return "mikro";
+      case "5-10":
+        return "liten";
+      case "10+":
+        return "medium til stor";
+      default:
+        return "";
+    }
+  };
+
+  // Anbefalinger basert på bransje
+  const getIndustryRecommendation = (industry) => {
+    switch (industry) {
+      case "IT og Teknologi":
+        return "Som teknologibedrift bør dere fokusere ekstra på utviklersikkerhet, kildekodebeskyttelse og API-sikkerhet.";
+      case "Helse og Omsorg":
+        return "Helsesektoren håndterer sensitive personopplysninger og må fokusere spesielt på personvern, GDPR-etterlevelse og sikker datalagring.";
+      case "Finans og Forsikring":
+        return "Finanssektoren er et attraktivt mål for cyberkriminelle. Fokuser spesielt på streng tilgangskontroll, nettverkssegmentering og kontinuerlig overvåkning.";
+      case "Detaljhandel":
+        return "Retailbransjen bør fokusere på betalingssikkerhet (PCI DSS), sikkerhet på salgssted, og beskyttelse av kundedata.";
+      case "Produksjon":
+        return "Produksjonsbedrifter bør prioritere sikkerhet for industrielle kontrollsystemer, OT-sikkerhet og integrasjon med IT-systemer.";
+      case "Utdanning":
+        return "Utdanningsinstitusjoner bør fokusere på balansen mellom åpen tilgang og beskyttelse av institusjonens data og sensitiv forskning.";
+      case "Offentlig sektor":
+        return "Offentlige virksomheter skal beskytte viktige samfunnstjenester og bør fokusere spesielt på etterlevelse av sikkerhetsrammeverk som ISO 27001 og NSMs grunnprinsipper.";
+      case "Transport og Logistikk":
+        return "Logistikkbransjen bør fokusere på sikkerhet i forsyningskjeden, integritet i sporing og høy tilgjengelighet for kritiske systemer.";
+      case "Bygg og Anlegg":
+        return "Byggebransjen bør fokusere på sikkerhet for prosjektdata, tegninger og sikkerhetskopier av verdifull dokumentasjon.";
+      default:
+        return "Uavhengig av bransje er det viktig å beskytte sensitiv informasjon, sikre IT-systemer og trene ansatte i sikker bruk av teknologi.";
+    }
+  };
+
+  // Anbefalinger basert på størrelse
+  const getSizeRecommendation = (size) => {
+    switch (size) {
+      case "0-5":
+        return "For små bedrifter er det viktig å velge skyløsninger med innebygd sikkerhet og implementere grunnleggende sikkerhetstiltak med begrensede ressurser.";
+      case "5-10":
+        return "Med denne størrelsen bør dere begynne å formalisere sikkerhetspolicyer og vurdere å dedikere ressurser til cybersikkerhet, eventuelt gjennom outsourcing.";
+      case "10+":
+        return "Større organisasjoner bør ha tydelige ansvarsområder for cybersikkerhet, formaliserte prosesser og jevnlige sikkerhetsøvelser.";
+      default:
+        return "";
+    }
+  };
+
   return (
     <div className="dashboard-container">
       <div className="dashboard-header">
@@ -73,6 +132,29 @@ function Dashboard({ securityScore, priorityMeasures, onViewAllMeasures }) {
           Basert på dine svar har vi analysert din organisasjons sikkerhetsnivå:
         </p>
       </div>
+
+      {companyInfo && (
+        <div className="company-summary-card">
+          <h3>Bedriftsinformasjon</h3>
+          <p>
+            <strong>Bedrift:</strong> {companyInfo.companyName}
+          </p>
+          <p>
+            <strong>Bransje:</strong> {companyInfo.industry}
+          </p>
+          <p>
+            <strong>Antall ansatte:</strong> {companyInfo.employeeCount}{" "}
+            (klassifisert som {employeeSizeToText(companyInfo.employeeCount)}{" "}
+            virksomhet)
+          </p>
+
+          <div className="industry-recommendations">
+            <h4>Bransjetilpassede anbefalinger:</h4>
+            <p>{getIndustryRecommendation(companyInfo.industry)}</p>
+            <p>{getSizeRecommendation(companyInfo.employeeCount)}</p>
+          </div>
+        </div>
+      )}
 
       <div className="security-score-container">
         <div className="security-score">

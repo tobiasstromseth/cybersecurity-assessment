@@ -75,3 +75,56 @@ footer {
   font-size: 14px;
   color: #7f8c8d;
 }
+
+/* Tillegg til src/styles/App.css */
+
+.company-info-display {
+  background-color: #f1f8ff;
+  border-radius: 20px;
+  padding: 8px 15px;
+  margin: 10px auto 15px;
+  max-width: fit-content;
+  font-size: 14px;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e1e8ed;
+}
+
+.company-info-display p {
+  margin: 0;
+  font-weight: 500;
+}
+
+.edit-info-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0 5px;
+  margin-left: 10px;
+  transition: transform 0.2s;
+}
+
+.edit-info-button:hover {
+  transform: scale(1.2);
+}
+
+.restart-button {
+  margin-left: 15px;
+  background-color: #e74c3c !important;
+  color: white !important;
+  border: none !important;
+  padding: 8px 15px !important;
+  border-radius: 4px !important;
+  font-size: 14px !important;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.restart-button:hover {
+  background-color: #c0392b !important;
+}

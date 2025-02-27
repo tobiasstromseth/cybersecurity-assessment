@@ -1,16 +1,18 @@
-// src/App.js
+// src/App.js - Oppdatert med bedriftsinformasjon
 import React, { useState } from "react";
 import "./styles/App.css";
 import Questionnaire from "./components/Questionnaire";
 import Dashboard from "./components/Dashboard";
 import MeasuresOverview from "./components/MeasuresOverview";
+import StartPage from "./components/StartPage";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("questionnaire");
+  const [currentPage, setCurrentPage] = useState("start");
   const [answers, setAnswers] = useState({});
   const [securityScore, setSecurityScore] = useState(0);
   const [priorityMeasures, setPriorityMeasures] = useState([]);
   const [allMeasures, setAllMeasures] = useState([]);
+  const [companyInfo, setCompanyInfo] = useState(null);
 
   // Funksjon for å beregne sikkerhetsscore og tiltak basert på svar
   const calculateResults = (answers) => {
@@ -154,6 +156,11 @@ function App() {
     setPriorityMeasures(measuresWithReasons.slice(0, 3)); // Top 3 prioriterte tiltak
   };
 
+  const handleCompanyInfoSubmit = (info) => {
+    setCompanyInfo(info);
+    setCurrentPage("questionnaire");
+  };
+
   const handleAnswersSubmit = (answers) => {
     setAnswers(answers);
     calculateResults(answers);
@@ -164,39 +171,81 @@ function App() {
     setCurrentPage(page);
   };
 
+  const handleRestartAssessment = () => {
+    // Beholder bedriftsinformasjonen, men nullstiller resten
+    setAnswers({});
+    setSecurityScore(0);
+    setPriorityMeasures([]);
+    setAllMeasures([]);
+    setCurrentPage("questionnaire");
+  };
+
+  const handleEditCompanyInfo = () => {
+    setCurrentPage("start");
+  };
+
   return (
     <div className="app-container">
       <header className="app-header">
         <h1>Cybersikkerhets Vurderingsverktøy</h1>
-        <nav>
-          <button
-            className={currentPage === "questionnaire" ? "active" : ""}
-            onClick={() => handleNavigate("questionnaire")}
-            disabled={
-              Object.keys(answers).length === 0 &&
-              currentPage !== "questionnaire"
-            }
-          >
-            Spørsmål
-          </button>
-          <button
-            className={currentPage === "dashboard" ? "active" : ""}
-            onClick={() => handleNavigate("dashboard")}
-            disabled={Object.keys(answers).length === 0}
-          >
-            Dashboard
-          </button>
-          <button
-            className={currentPage === "measures" ? "active" : ""}
-            onClick={() => handleNavigate("measures")}
-            disabled={Object.keys(answers).length === 0}
-          >
-            Alle tiltak
-          </button>
-        </nav>
+        {companyInfo && currentPage !== "start" && (
+          <div className="company-info-display">
+            <p>
+              {companyInfo.companyName} | {companyInfo.industry} |{" "}
+              {companyInfo.employeeCount} ansatte
+            </p>
+            <button
+              className="edit-info-button"
+              onClick={handleEditCompanyInfo}
+              title="Rediger bedriftsinformasjon"
+            >
+              ✏️
+            </button>
+          </div>
+        )}
+        {currentPage !== "start" && (
+          <nav>
+            <button
+              className={currentPage === "questionnaire" ? "active" : ""}
+              onClick={() => handleNavigate("questionnaire")}
+              disabled={currentPage === "start"}
+            >
+              Spørsmål
+            </button>
+            <button
+              className={currentPage === "dashboard" ? "active" : ""}
+              onClick={() => handleNavigate("dashboard")}
+              disabled={Object.keys(answers).length === 0}
+            >
+              Dashboard
+            </button>
+            <button
+              className={currentPage === "measures" ? "active" : ""}
+              onClick={() => handleNavigate("measures")}
+              disabled={Object.keys(answers).length === 0}
+            >
+              Alle tiltak
+            </button>
+            {Object.keys(answers).length > 0 && (
+              <button
+                className="restart-button"
+                onClick={handleRestartAssessment}
+              >
+                Start ny vurdering
+              </button>
+            )}
+          </nav>
+        )}
       </header>
 
       <main>
+        {currentPage === "start" && (
+          <StartPage
+            onComplete={handleCompanyInfoSubmit}
+            savedCompanyInfo={companyInfo}
+          />
+        )}
+
         {currentPage === "questionnaire" && (
           <Questionnaire onSubmit={handleAnswersSubmit} />
         )}
@@ -206,11 +255,12 @@ function App() {
             securityScore={securityScore}
             priorityMeasures={priorityMeasures}
             onViewAllMeasures={() => handleNavigate("measures")}
+            companyInfo={companyInfo}
           />
         )}
 
         {currentPage === "measures" && (
-          <MeasuresOverview measures={allMeasures} />
+          <MeasuresOverview measures={allMeasures} companyInfo={companyInfo} />
         )}
       </main>
 
