@@ -1,0 +1,15 @@
+/* src/styles/index.css */
+/* Import order matters! */
+@import 'variables.css';
+@import 'reset.css';
+@import 'layout.css';
+
+/* Component styles */
+@import 'components/Dashboard.css';
+@import 'components/MeasuresOverview.css';
+@import 'components/Questionnaire.css';
+@import 'components/StartPage.css';
+@import 'components/ThemeToggle.css';
+
+/* Theme overrides - this should be last */
+@import 'themes/dark-theme.css';

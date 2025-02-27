@@ -1,6 +1,6 @@
 // src/components/MeasuresOverview.js - Oppdatert med bedriftsinformasjon
 import React, { useState } from "react";
-import "../styles/MeasuresOverview.css";
+import "../styles/components/MeasuresOverview.css";
 
 function MeasuresOverview({ measures, companyInfo }) {
   const [filter, setFilter] = useState("all");

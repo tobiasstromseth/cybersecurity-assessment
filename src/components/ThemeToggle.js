@@ -1,6 +1,6 @@
 // src/components/ThemeToggle.js
 import React from "react";
-import "../styles/ThemeToggle.css";
+import "../styles/components/ThemeToggle.css";
 
 function ThemeToggle({ isDarkMode, toggleTheme }) {
   return (

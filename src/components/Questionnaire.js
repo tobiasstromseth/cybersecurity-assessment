@@ -1,6 +1,6 @@
 // src/components/Questionnaire.js
 import React, { useState } from "react";
-import "../styles/Questionnaire.css";
+import "../styles/components/Questionnaire.css";
 
 const questions = [
   {

@@ -1,0 +1,63 @@
+/* src/styles/themes/dark-theme.css */
+
+body.dark-theme {
+    /* Override default theme variables with dark theme values */
+    --bg: var(--dark-bg);
+    --container: var(--dark-container);
+    --card: var(--dark-container);
+    --border: var(--dark-border);
+    --input: var(--dark-input);
+    --elevated: var(--dark-elevated);
+    --text-primary: var(--dark-text-primary);
+    --text-secondary: var(--dark-text-secondary);
+    --text-tertiary: var(--dark-text-tertiary);
+  }
+  
+  /* Any styles that can't be handled with just variable overrides */
+  
+  /* Dashboard specific dark theme overrides */
+  body.dark-theme .industry-recommendations {
+    background-color: rgba(211, 84, 0, 0.1);
+  }
+  
+  body.dark-theme .industry-recommendations h4 {
+    color: var(--claude-orange-light);
+  }
+  
+  body.dark-theme .measure-category {
+    background-color: rgba(63, 81, 181, 0.15);
+    color: #a5aff0;
+  }
+  
+  /* MeasuresOverview specific dark theme overrides */
+  body.dark-theme .measure-context {
+    background-color: rgba(22, 160, 133, 0.1);
+    color: var(--text-secondary);
+  }
+  
+  body.dark-theme .industry-recommendations {
+    background-color: rgba(142, 68, 173, 0.1);
+  }
+  
+  body.dark-theme .industry-recommendations h4 {
+    color: #bb8ece;
+  }
+  
+  /* Questionnaire specific dark theme overrides */
+  body.dark-theme .question-category {
+    background-color: rgba(25, 118, 210, 0.1);
+    color: #64b5f6;
+  }
+  
+  body.dark-theme .answer-options button.selected {
+    background-color: rgba(211, 84, 0, 0.2);
+    color: var(--text-primary);
+  }
+  
+  body.dark-theme .navigation-buttons .submit-button {
+    background-color: var(--status-success);
+  }
+  
+  body.dark-theme .navigation-buttons .submit-button:hover:not(:disabled) {
+    background-color: #27ae60;
+  }

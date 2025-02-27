@@ -1,6 +1,6 @@
 // src/components/StartPage.js
 import React, { useState, useEffect } from "react";
-import "../styles/StartPage.css";
+import "../styles/components/StartPage.css";
 
 function StartPage({ onComplete, savedCompanyInfo }) {
   const [companyInfo, setCompanyInfo] = useState(

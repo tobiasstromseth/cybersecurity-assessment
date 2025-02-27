@@ -1,6 +1,6 @@
 // src/components/Dashboard.js - Oppdatert med bedriftsinformasjon
 import React from "react";
-import "../styles/Dashboard.css";
+import "../styles/components/Dashboard.css";
 
 function Dashboard({
   securityScore,

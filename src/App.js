@@ -1,8 +1,6 @@
 // src/App.js - Oppdatert med mørkt tema-støtte
 import React, { useState, useEffect } from "react";
-import "./styles/BaseColors.css"; // Importer Claude-farger
-import "./styles/App.css";
-import "./styles/DarkTheme.css"; // Importer mørkt tema CSS
+import "./styles/index.css"; // Importer Claude-farger
 import Questionnaire from "./components/Questionnaire";
 import Dashboard from "./components/Dashboard";
 import MeasuresOverview from "./components/MeasuresOverview";

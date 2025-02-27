@@ -1,0 +1,74 @@
+/* src/styles/variables.css */
+
+:root {
+    /* Brand colors */
+    --claude-orange: #CB805C;
+    --claude-orange-light: #d99275;
+    --claude-orange-dark: #b46b4a;
+  
+    /* Light theme */
+    --light-bg: #f7f5f0;
+    --light-container: #f0ede5;
+    --light-card: #ffffff;
+    --light-border: #e5e0d5;
+    --light-input: #f9f8f5;
+    --light-elevated: #ffffff;
+  
+    /* Text colors - light mode */
+    --light-text-primary: #333333;
+    --light-text-secondary: #666666;
+    --light-text-tertiary: #888888;
+    
+    /* Dark theme */
+    --dark-bg: #2c2c2c;
+    --dark-container: #3a3a3a;
+    --dark-elevated: #444444;
+    --dark-border: #555555;
+    --dark-input: #3f3f3f;
+  
+    /* Text colors - dark mode */
+    --dark-text-primary: #f0f0f0;
+    --dark-text-secondary: #b0b0b0;
+    --dark-text-tertiary: #808080;
+  
+    /* Status colors (shared between themes) */
+    --status-success: #27ae60;
+    --status-success-light: #e8f5e9;
+    --status-warning: #f39c12;
+    --status-warning-light: #fff8e1;
+    --status-danger: #e74c3c;
+    --status-danger-light: #ffebee;
+    --status-info: #3498db;
+    --status-info-light: #f1f8ff;
+  
+    /* Spacing variables */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 15px;
+    --spacing-lg: 20px;
+    --spacing-xl: 30px;
+  
+    /* Border radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 10px;
+    --radius-round: 50%;
+  
+    /* Shadow */
+    --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 6px 12px rgba(0, 0, 0, 0.15);
+  
+    /* Default theme (light) */
+    --bg: var(--light-bg);
+    --container: var(--light-container);
+    --card: var(--light-card);
+    --border: var(--light-border);
+    --input: var(--light-input);
+    --elevated: var(--light-elevated);
+    --text-primary: var(--light-text-primary);
+    --text-secondary: var(--light-text-secondary);
+    --text-tertiary: var(--light-text-tertiary);
+    --accent-primary: var(--claude-orange);
+    --accent-hover: var(--claude-orange-light);
+  }
