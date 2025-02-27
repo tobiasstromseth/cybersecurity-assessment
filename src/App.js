@@ -1,10 +1,13 @@
-// src/App.js - Oppdatert med bedriftsinformasjon
-import React, { useState } from "react";
+// src/App.js - Oppdatert med mørkt tema-støtte
+import React, { useState, useEffect } from "react";
+import "./styles/BaseColors.css"; // Importer Claude-farger
 import "./styles/App.css";
+import "./styles/DarkTheme.css"; // Importer mørkt tema CSS
 import Questionnaire from "./components/Questionnaire";
 import Dashboard from "./components/Dashboard";
 import MeasuresOverview from "./components/MeasuresOverview";
 import StartPage from "./components/StartPage";
+import ThemeToggle from "./components/ThemeToggle";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("start");
@@ -13,6 +16,28 @@ function App() {
   const [priorityMeasures, setPriorityMeasures] = useState([]);
   const [allMeasures, setAllMeasures] = useState([]);
   const [companyInfo, setCompanyInfo] = useState(null);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // Sjekk om brukeren har lagret et tema-valg og bruk det ved oppstart
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("preferredTheme");
+    if (savedTheme === "dark") {
+      setIsDarkMode(true);
+      document.body.classList.add("dark-theme");
+    }
+  }, []);
+
+  // Bytte mellom lyst og mørkt tema
+  const toggleTheme = () => {
+    if (isDarkMode) {
+      document.body.classList.remove("dark-theme");
+      localStorage.setItem("preferredTheme", "light");
+    } else {
+      document.body.classList.add("dark-theme");
+      localStorage.setItem("preferredTheme", "dark");
+    }
+    setIsDarkMode(!isDarkMode);
+  };
 
   // Funksjon for å beregne sikkerhetsscore og tiltak basert på svar
   const calculateResults = (answers) => {
@@ -186,6 +211,8 @@ function App() {
 
   return (
     <div className="app-container">
+      <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+
       <header className="app-header">
         <h1>Cybersikkerhets Vurderingsverktøy</h1>
         {companyInfo && currentPage !== "start" && (
