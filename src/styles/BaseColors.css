@@ -1,10 +1,10 @@
 /* src/styles/BaseColors.css */
 :root {
   /* Claude-inspirerte farger for begge temaer - mørkere oransje */
-  --claude-orange: #d35400; /* Mørkere, mer nedtonet oransje */
-  --claude-orange-dark: #b74800; /* Enda mørkere variant */
-  --claude-orange-light: #e85d00; /* Litt lysere for hover */
-  --claude-orange-hover: #ef6c00; /* Hover tilstand */
+  --claude-orange: #CB805C; /* Mørkere, mer nedtonet oransje */
+  --claude-orange-dark: #CB805C; /* Enda mørkere variant */
+  --claude-orange-light: #CB805C; /* Litt lysere for hover */
+  --claude-orange-hover: #CB805C; /* Hover tilstand */
 
   /* Lyst tema - Off-white farger */
   --light-bg: #f7f5f0; /* Subtil kremfarget bakgrunn */

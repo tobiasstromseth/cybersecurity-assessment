@@ -1,9 +1,9 @@
 /* src/styles/DarkTheme.css */
 :root {
   /* Aksentfarger */
-  --dark-accent-primary: #d35400; /* Mørkere Claude's oransje */
-  --dark-accent-secondary: #b74800;
-  --dark-accent-hover: #e85d00;
+  --dark-accent-primary: #CB805C; /* Mørkere Claude's oransje */
+  --dark-accent-secondary: #CB805C;
+  --dark-accent-hover: #CB805C;
 }
 
 body.dark-theme {
