@@ -1,3 +1,4 @@
+// src/components/MeasuresOverview.js
 import React, { useState } from "react";
 import "../styles/MeasuresOverview.css";
 
@@ -55,6 +56,7 @@ function MeasuresOverview({ measures }) {
               </div>
               <h3>{measure.title}</h3>
               <p>{measure.description}</p>
+              <div className="measure-reason">{measure.reason}</div>
               <div className="measure-category">{measure.category}</div>
             </div>
           ))

@@ -1,3 +1,4 @@
+// src/App.js
 import React, { useState } from "react";
 import "./styles/App.css";
 import Questionnaire from "./components/Questionnaire";
@@ -13,19 +14,41 @@ function App() {
 
   // Funksjon for å beregne sikkerhetsscore og tiltak basert på svar
   const calculateResults = (answers) => {
-    // Enkel beregning av sikkerhetsscore (kan utvides)
+    // Mer detaljert beregning av sikkerhetsscore
     let score = 0;
     let possiblePoints = 0;
+    let scoreBreakdown = {};
+
+    // Vekting av spørsmål (noen spørsmål er viktigere enn andre)
+    const questionWeights = {
+      q1: 1.2, // Totrinnsverifisering er svært viktig
+      q2: 1.0, // Sikkerhetsopplæring
+      q3: 1.5, // Sikkerhetskopiering er kritisk
+      q4: 1.3, // Programvareoppdateringer
+      q5: 1.1, // Brannmur
+    };
 
     Object.keys(answers).forEach((key) => {
       const value = answers[key];
-      possiblePoints += 10;
+      const weight = questionWeights[key] || 1.0;
+      const maxPointsForQuestion = 10 * weight;
+      possiblePoints += maxPointsForQuestion;
 
+      let pointsEarned = 0;
       if (value === "ja") {
-        score += 10;
+        pointsEarned = maxPointsForQuestion;
       } else if (value === "delvis") {
-        score += 5;
+        pointsEarned = maxPointsForQuestion * 0.5;
       }
+
+      score += pointsEarned;
+
+      // Lagre poengfordeling for hvert spørsmål (kan brukes for detaljert visualisering)
+      scoreBreakdown[key] = {
+        score: pointsEarned,
+        maxScore: maxPointsForQuestion,
+        percent: (pointsEarned / maxPointsForQuestion) * 100,
+      };
     });
 
     const calculatedScore = (score / possiblePoints) * 100;
@@ -96,8 +119,39 @@ function App() {
       return 0;
     });
 
-    setAllMeasures(sortedMeasures);
-    setPriorityMeasures(sortedMeasures.slice(0, 3)); // Top 3 prioriterte tiltak
+    // Legger til ytterligere forklaringer for hvert tiltak
+    const measuresWithReasons = sortedMeasures.map((measure) => {
+      let reason = "";
+      switch (measure.id) {
+        case 1:
+          reason =
+            "Totrinnsverifisering kan forhindre 99% av automatiserte angrep og gjør det betydelig vanskeligere for hackere å få tilgang til kontoer.";
+          break;
+        case 2:
+          reason =
+            "Menneskelige feil står bak 95% av alle sikkerhetsbrudd. Regelmessig opplæring reduserer denne risikoen betydelig.";
+          break;
+        case 3:
+          reason =
+            "I tilfelle et ransomware-angrep eller datakorrupsjon er sikkerhetskopier avgjørende for å kunne gjenopprette virksomheten raskt.";
+          break;
+        case 4:
+          reason =
+            "Utdatert programvare inneholder ofte kjente sårbarheter som angripere kan utnytte. Oppdaterte systemer beskytter mot disse.";
+          break;
+        case 5:
+          reason =
+            "En brannmur er den første forsvarslinjen mot uautorisert tilgang til nettverket ditt og kan blokkere mange automatiserte angrep.";
+          break;
+        default:
+          reason =
+            "Dette tiltaket vil betydelig forbedre din sikkerhetsstilling.";
+      }
+      return { ...measure, reason };
+    });
+
+    setAllMeasures(measuresWithReasons);
+    setPriorityMeasures(measuresWithReasons.slice(0, 3)); // Top 3 prioriterte tiltak
   };
 
   const handleAnswersSubmit = (answers) => {
