@@ -1,3 +1,64 @@
+# React Docker-prosjekt
+
+Et React-prosjekt konfigurert for Docker-utvikling og -produksjon.
+
+## Forutsetninger
+
+- Docker installert
+- Docker Compose installert
+
+## Oppsett
+
+Klone prosjektet:
+
+```bash
+git clone https://github.com/tobiasstromseth/cybersecurity-assessment.git
+cd cybersecurity-assessment
+```
+
+## Kjøre prosjektet
+
+### Utviklingsmiljø
+
+```bash
+docker-compose up react-dev
+```
+
+Tilgjengelig på http://localhost:3000 med hot-reload.
+
+### Produksjonsmiljø
+
+```bash
+docker-compose up react-prod
+```
+
+Tilgjengelig på http://localhost:80.
+
+## Stoppe containere
+
+```bash
+docker-compose down
+```
+
+## Prosjektstruktur
+
+- `Dockerfile` - Produksjonskonfigurasjon
+- `Dockerfile.dev` - Utviklingskonfigurasjon
+- `docker-compose.yml` - Docker Compose-konfigurasjon
+- `/src` - React-kildekode
+
+## Feilsøking
+
+Hvis du opplever problemer med portene:
+
+```bash
+# Sjekk hvilke containere som kjører og på hvilke porter
+docker ps
+
+# Fjern alle kjørende containere
+docker-compose down
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
