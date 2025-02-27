@@ -157,9 +157,8 @@
   
   /* Company context information */
   .company-context-panel {
-    background-color: var(--status-info-light);
+    background-color: blue;
     border-radius: var(--radius-md);
-    border-left: 4px solid var(--status-info);
     padding: 15px 20px;
     margin-bottom: 20px;
     font-size: 15px;

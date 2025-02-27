@@ -7,7 +7,7 @@ body.dark-theme {
     --card: var(--dark-container);
     --border: var(--dark-border);
     --input: var(--dark-input);
-    --elevated: var(--dark-elevated);
+    --elevated: var(--dark-darkest);
     --text-primary: var(--dark-text-primary);
     --text-secondary: var(--dark-text-secondary);
     --text-tertiary: var(--dark-text-tertiary);
