@@ -129,7 +129,8 @@ function Dashboard({
       <div className="dashboard-header">
         <h2>Din Sikkerhetsvurdering</h2>
         <p>
-          Basert på dine svar har vi analysert din organisasjons sikkerhetsnivå:
+          Basert på dine svar har vi analysert din organisasjons sikkerhetsnivå.
+          Din poengsum er på en skala fra 0-100:
         </p>
       </div>
 
@@ -190,7 +191,7 @@ function Dashboard({
                 fontSize="32"
                 fontWeight="bold"
               >
-                {roundedScore}%
+                {roundedScore}
               </text>
               <text
                 x="100"
@@ -222,15 +223,15 @@ function Dashboard({
             <h4>Sikkerhetsnivåer:</h4>
             <ul>
               <li>
-                <span className="score-indicator green"></span> 70-100%: God
+                <span className="score-indicator green"></span> 70-100: God
                 sikkerhet
               </li>
               <li>
-                <span className="score-indicator orange"></span> 40-69%: Middels
+                <span className="score-indicator orange"></span> 40-69: Middels
                 sikkerhet
               </li>
               <li>
-                <span className="score-indicator red"></span> 0-39%: Svak
+                <span className="score-indicator red"></span> 0-39: Svak
                 sikkerhet
               </li>
             </ul>
