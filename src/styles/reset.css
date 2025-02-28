@@ -121,3 +121,30 @@
     display: table;
     clear: both;
   }
+
+  /* Scrollbar styling - kun vertikal, global style */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--dark-input) transparent;
+}
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 6px;              /* Bredde på vertikal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;  /* Transparent bakgrunn for "sporet" */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--border);   /* Farge på selve scrollbar */
+  border-radius: 20px;               /* Avrundede kanter */
+}
+
+/* For å alltid vise vertikal scrollbar */
+html {
+  overflow-y: scroll;       /* Alltid vis vertikal scrollbar */
+  overflow-x: hidden;       /* Skjul horisontal scrollbar */
+  scrollbar-gutter: stable; /* Holder plass til scrollbar, også når den ikke trengs */
+}
