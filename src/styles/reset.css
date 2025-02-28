@@ -28,6 +28,24 @@
   
   p {
     margin-bottom: 1em;
+    font-size: var(--font-size-p)
+  }
+  
+
+  h1 {
+    font-size: var(--font-size-h1);
+  }
+
+  h2 {
+    font-size: var(--font-size-h2);
+  }
+
+  h3 {
+    font-size: var(--font-size-h3);
+  }
+
+  li {
+    font-size: var(--font-size-p);
   }
   
   a {

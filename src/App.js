@@ -217,7 +217,8 @@ function App() {
       <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
 
       <header className="app-header">
-        <h1>Cybersikkerhets Vurderingsverktøy</h1>
+        <h1>Lightweight Cybersecurity</h1> 
+        <p>Maturity Assessment and Implementation Model</p>
         {companyInfo && currentPage !== "startInfo" && currentPage !== "start" && (
           <div className="company-info-display">
             <p>

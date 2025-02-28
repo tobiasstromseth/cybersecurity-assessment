@@ -96,14 +96,6 @@ function StartPage({ onComplete, savedCompanyInfo }) {
   };
 
   return (
-    <div className="start-page-container">
-      <div className="start-page-header">
-        <h1>Velkommen til Cybersikkerhets Vurderingsverktøy</h1>
-        <p>
-          Fyll inn grunnleggende informasjon om din bedrift for å komme i gang
-          med sikkerhetsvurderingen.
-        </p>
-      </div>
 
       <div className="company-info-form-card">
         <h2>Bedriftsinformasjon</h2>
@@ -200,7 +192,6 @@ function StartPage({ onComplete, savedCompanyInfo }) {
           </div>
         </form>
       </div>
-    </div>
   );
 }
 

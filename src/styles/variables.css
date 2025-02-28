@@ -59,6 +59,13 @@
     --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 6px 12px rgba(0, 0, 0, 0.15);
+
+    /* Font sizes */
+    --font-size-p: 14px;
+    --font-size-h1: 24px;
+    --font-size-h2: 22px;
+    --font-size-h3: 18px;
+    --font-size-h4: 16px;
   
     /* Default theme (light) */
     --bg: var(--light-bg);
@@ -73,3 +80,4 @@
     --accent-primary: var(--claude-orange);
     --accent-hover: var(--claude-orange-light);
   }
+

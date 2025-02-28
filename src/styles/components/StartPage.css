@@ -1,34 +1,6 @@
 /* src/styles/components/StartPage.css */
 
-.start-page-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 30px 20px;
-  }
   
-  /* Header section */
-  .start-page-header {
-    text-align: center;
-    margin-bottom: 40px;
-    background-color: var(--container);
-    padding: 30px;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-  }
-  
-  .start-page-header h1 {
-    margin-bottom: 15px;
-    color: var(--text-primary);
-    font-size: 28px;
-  }
-  
-  .start-page-header p {
-    color: var(--text-secondary);
-    font-size: 16px;
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
   
   /* Form card */
   .company-info-form-card {
@@ -38,15 +10,7 @@
     padding: 30px;
     margin-bottom: 30px;
   }
-  
-  .company-info-form-card h2 {
-    color: var(--text-primary);
-    margin-bottom: 25px;
-    font-size: 22px;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 15px;
-  }
-  
+    
   .company-info-form {
     display: flex;
     flex-direction: column;
@@ -76,6 +40,7 @@
     font-weight: normal;
     cursor: pointer;
     color: var(--text-primary);
+    font-size: var(--font-size-p);
   }
   
   /* Form actions */

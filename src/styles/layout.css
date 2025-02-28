@@ -15,11 +15,6 @@
     padding: var(--spacing-lg) 0;
   }
   
-  .app-header h1 {
-    margin-bottom: 20px;
-    color: var(--text-primary);
-    font-size: 28px;
-  }
   
   /* Navigation */
   nav {
@@ -35,7 +30,7 @@
     background: none;
     border: none;
     border-bottom: 2px solid transparent;
-    font-size: 16px;
+    font-size: var(--font-size-p);
     transition: all 0.3s ease;
     color: var(--text-secondary);
   }
@@ -63,7 +58,7 @@
     padding: 8px 15px;
     margin: 10px auto 15px;
     max-width: fit-content;
-    font-size: 14px;
+    font-size: var(--font-size-p);
     color: var(--text-primary);
     display: flex;
     align-items: center;
@@ -81,7 +76,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 16px;
+    font-size: var(--font-size-p);
     padding: 0 5px;
     margin-left: 10px;
     transition: transform 0.2s;
@@ -99,7 +94,7 @@
     border: none !important;
     padding: 8px 15px !important;
     border-radius: var(--radius-sm) !important;
-    font-size: 14px !important;
+    font-size: var(--font-size-p) !important;
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.2s;
@@ -122,7 +117,7 @@
   footer {
     text-align: center;
     padding: 20px 0;
-    font-size: 14px;
+    font-size: var(--font-size-p);
     color: var(--text-tertiary);
     background-color: var(--container);
     border-top: 1px solid var(--border);
@@ -140,7 +135,7 @@
   .form-group label {
     font-weight: 600;
     color: var(--text-primary);
-    font-size: 16px;
+    font-size: var(--font-size-p)
   }
   
   .form-group input[type="text"],
@@ -148,7 +143,7 @@
     padding: 12px 15px;
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
-    font-size: 16px;
+    font-size: var(--font-size-p);
     transition: border-color 0.2s;
     background-color: var(--input);
     color: var(--text-primary);
@@ -167,7 +162,7 @@
   
   .error-message {
     color: var(--status-danger);
-    font-size: 14px;
+    font-size: var(--font-size-p);
     margin-top: 5px;
   }
   
