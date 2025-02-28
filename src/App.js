@@ -1,14 +1,15 @@
-// src/App.js - Oppdatert med mørkt tema-støtte
+// src/App.js - Oppdatert med mørkt tema-støtte og ny siderekkefølge
 import React, { useState, useEffect } from "react";
 import "./styles/index.css"; // Importer Claude-farger
 import Questionnaire from "./components/QuestionCard";
 import Dashboard from "./components/Dashboard";
 import MeasuresOverview from "./components/MeasuresOverview";
 import StartPage from "./components/StartPage";
+import StartInfo from "./components/startInfo.js";
 import ThemeToggle from "./components/ThemeToggle";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("start");
+  const [currentPage, setCurrentPage] = useState("startInfo");
   const [answers, setAnswers] = useState({});
   const [securityScore, setSecurityScore] = useState(0);
   const [priorityMeasures, setPriorityMeasures] = useState([]);
@@ -179,6 +180,10 @@ function App() {
     setPriorityMeasures(measuresWithReasons.slice(0, 3)); // Top 3 prioriterte tiltak
   };
 
+  const handleStartInfoComplete = () => {
+    setCurrentPage("start");
+  };
+
   const handleCompanyInfoSubmit = (info) => {
     setCompanyInfo(info);
     setCurrentPage("questionnaire");
@@ -213,7 +218,7 @@ function App() {
 
       <header className="app-header">
         <h1>Cybersikkerhets Vurderingsverktøy</h1>
-        {companyInfo && currentPage !== "start" && (
+        {companyInfo && currentPage !== "startInfo" && currentPage !== "start" && (
           <div className="company-info-display">
             <p>
               {companyInfo.companyName} | {companyInfo.industry} |{" "}
@@ -228,12 +233,12 @@ function App() {
             </button>
           </div>
         )}
-        {currentPage !== "start" && (
+        {currentPage !== "startInfo" && currentPage !== "start" && (
           <nav>
             <button
               className={currentPage === "questionnaire" ? "active" : ""}
               onClick={() => handleNavigate("questionnaire")}
-              disabled={currentPage === "start"}
+              disabled={currentPage === "startInfo"}
             >
               Spørsmål
             </button>
@@ -264,6 +269,10 @@ function App() {
       </header>
 
       <main>
+        {currentPage === "startInfo" && (
+          <StartInfo onComplete={handleStartInfoComplete} />
+        )}
+
         {currentPage === "start" && (
           <StartPage
             onComplete={handleCompanyInfoSubmit}
