@@ -27,13 +27,19 @@
     border-radius: var(--radius-lg);
   }
 
-  .progress-text {
-    position: absolute;
-    right: 5px;
-    bottom: -4px;
+  .question-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 5px;
+  }
+
+  .question-text {
+    font-size: 18px;
+    line-height: 1.6;
     color: var(--text-primary);
-    font-weight: bold;
-    font-size: 14px;
+    flex: 1; /* La teksten ta opp tilgjengelig plass */
+    padding-right: 15px; /* Gi litt plass mellom tekst og knapp */
   }
 
   /* Question card */
@@ -59,7 +65,87 @@
     line-height: 1.6;
     color: var(--text-primary);
   }
+
+  /* Step by step guide */
+  .guide-toggle-button {
+    background-color: var(--elevated);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+    color: var(--text-primary);
+    white-space: nowrap; /* Hindre at teksten bryter linjer i knappen */
+    flex-shrink: 0; /* Hindre at knappen krymper */
+  }
   
+  .guide-toggle-button:hover {
+    border-color: var(--accent-primary);
+    background-color: rgba(211, 84, 0, 0.1);
+  }
+  
+  .guide-toggle-button.active {
+    border-color: var(--accent-primary);
+    background-color: rgba(211, 84, 0, 0.1);
+    color: var(--accent-primary);
+  }
+  
+  .guide-container {
+    background-color: var(--elevated);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    margin-bottom: 25px;
+    animation: slideDown 0.3s ease-out;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .guide-container h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+    font-size: 16px;
+  }
+  
+  .guide-steps {
+    margin: 0;
+    padding-left: 25px;
+  }
+  
+  .guide-step {
+    margin-bottom: 12px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    font-size: 15px;
+  }
+  
+  /* Responsive adjustments for guide */
+  @media (max-width: 768px) {
+    .question-row {
+      flex-direction: column;
+    }
+    
+    .question-text {
+      margin-bottom: 15px;
+      padding-right: 0;
+    }
+    
+    .guide-toggle-button {
+      align-self: flex-start;
+    }
+  }
+
   /* Answer options */
   .answer-options {
     display: flex;
