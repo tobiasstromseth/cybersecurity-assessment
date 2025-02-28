@@ -1,4 +1,4 @@
-// src/components/Dashboard.js - Oppdatert med bedriftsinformasjon
+// src/components/Dashboard.js - Oppdatert med bedriftsinformasjon og CSS-variabler
 import React from "react";
 import "../styles/components/Dashboard.css";
 
@@ -10,12 +10,19 @@ function Dashboard({
 }) {
   // Score beregning og klassifisering
   const getScoreColor = (score) => {
-    if (score >= 70) return "green";
-    if (score >= 40) return "orange";
-    return "red";
+    if (score >= 70) return "var(--status-success)";
+    if (score >= 40) return "var(--status-warning)";
+    return "var(--status-danger)";
+  };
+
+  const getScoreLightColor = (score) => {
+    if (score >= 70) return "var(--status-success-light)";
+    if (score >= 40) return "var(--status-warning-light)";
+    return "var(--status-danger-light)";
   };
 
   const scoreColor = getScoreColor(securityScore);
+  const scoreLightColor = getScoreLightColor(securityScore);
 
   const getScoreLabel = (score) => {
     if (score >= 70) return "God";
@@ -168,7 +175,7 @@ function Dashboard({
                 cy="100"
                 r="70"
                 strokeWidth="20"
-                stroke="#e6e6e6"
+                stroke="var(--border)"
                 fill="none"
               />
               <circle
@@ -187,7 +194,7 @@ function Dashboard({
                 x="100"
                 y="95"
                 textAnchor="middle"
-                fill={scoreColor}
+                fill="var(--text-primary)"
                 fontSize="32"
                 fontWeight="bold"
               >
@@ -197,7 +204,7 @@ function Dashboard({
                 x="100"
                 y="125"
                 textAnchor="middle"
-                fill={scoreColor}
+                fill="var(--text-secondary)"
                 fontSize="18"
               >
                 {getScoreLabel(securityScore)}
@@ -223,16 +230,16 @@ function Dashboard({
             <h4>Sikkerhetsnivåer:</h4>
             <ul>
               <li>
-                <span className="score-indicator green"></span> 70-100: God
-                sikkerhet
+                <span className="score-indicator" style={{ backgroundColor: "var(--status-success)" }}></span> 
+                70-100: God sikkerhet
               </li>
               <li>
-                <span className="score-indicator orange"></span> 40-69: Middels
-                sikkerhet
+                <span className="score-indicator" style={{ backgroundColor: "var(--status-warning)" }}></span> 
+                40-69: Middels sikkerhet
               </li>
               <li>
-                <span className="score-indicator red"></span> 0-39: Svak
-                sikkerhet
+                <span className="score-indicator" style={{ backgroundColor: "var(--status-danger)" }}></span> 
+                0-39: Svak sikkerhet
               </li>
             </ul>
           </div>
@@ -251,7 +258,17 @@ function Dashboard({
         {priorityMeasures.length > 0 ? (
           <div className="measures-list">
             {priorityMeasures.map((measure) => (
-              <div key={measure.id} className="measure-card">
+              <div 
+                key={measure.id} 
+                className="measure-card"
+                style={{ 
+                  borderLeft: `4px solid ${measure.priority.toLowerCase() === "høy" 
+                    ? "var(--status-danger)" 
+                    : measure.priority.toLowerCase() === "medium" 
+                      ? "var(--status-warning)" 
+                      : "var(--status-success)"}`
+                }}
+              >
                 <div
                   className="measure-priority"
                   data-priority={measure.priority.toLowerCase()}

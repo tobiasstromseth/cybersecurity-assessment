@@ -157,7 +157,7 @@
   
   /* Company context information */
   .company-context-panel {
-    background-color: blue;
+    background-color: var(--accent-primary);
     border-radius: var(--radius-md);
     padding: 15px 20px;
     margin-bottom: 20px;
@@ -184,7 +184,7 @@
   
   .industry-recommendations {
     margin-top: 15px;
-    background-color: rgba(142, 68, 173, 0.1);
+    background-color: var(--light-infobox);
     border-radius: var(--radius-sm);
     padding: 12px 15px;
   }

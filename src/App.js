@@ -1,7 +1,7 @@
 // src/App.js - Oppdatert med mørkt tema-støtte
 import React, { useState, useEffect } from "react";
 import "./styles/index.css"; // Importer Claude-farger
-import Questionnaire from "./components/Questionnaire";
+import Questionnaire from "./components/QuestionCard";
 import Dashboard from "./components/Dashboard";
 import MeasuresOverview from "./components/MeasuresOverview";
 import StartPage from "./components/StartPage";
