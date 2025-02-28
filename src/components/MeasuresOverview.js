@@ -1,11 +1,17 @@
-// src/components/MeasuresOverview.js - Oppdatert med bedriftsinformasjon
+// src/components/MeasuresOverview.js - Med nedoverrettet implementeringsguide
 import React, { useState } from "react";
 import "../styles/components/MeasuresOverview.css";
 
-function MeasuresOverview({ measures, companyInfo }) {
+function MeasuresOverview({ measures, companyInfo, updateMeasureProgress }) {
   const [filter, setFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
-
+  const [expandedMeasureId, setExpandedMeasureId] = useState(null);
+  
+  // Håndterer utvidelse/sammentrekning av implementeringsguide
+  const toggleExpand = (measureId) => {
+    console.log("Forsøker å utvide/skjule:", measureId);
+    setExpandedMeasureId(expandedMeasureId === measureId ? null : measureId);
+  };
   const categories = ["all", ...new Set(measures.map((m) => m.category))];
 
   const filteredMeasures = measures.filter((measure) => {
@@ -68,6 +74,14 @@ function MeasuresOverview({ measures, companyInfo }) {
     }
   };
 
+  // Håndter markering av implementeringssteg som fullført
+  const handleStepComplete = (measureId, stepIndex, isComplete) => {
+    // Kalle på callback-funksjonen som blir sendt inn til komponenten
+    if (updateMeasureProgress) {
+      updateMeasureProgress(measureId, stepIndex, isComplete);
+    }
+  };
+
   return (
     <div className="measures-overview-container">
       <h2>Alle anbefalte tiltak</h2>
@@ -107,27 +121,90 @@ function MeasuresOverview({ measures, companyInfo }) {
         </div>
       </div>
 
-      <div className="measures-grid">
+      <div className="measures-list">
         {filteredMeasures.length > 0 ? (
           filteredMeasures.map((measure) => (
-            <div key={measure.id} className="measure-card">
-              <div
-                className="measure-priority"
-                data-priority={measure.priority.toLowerCase()}
+            <div key={measure.id} className="measure-item">
+              <div 
+                className={`measure-card ${expandedMeasureId === measure.id ? 'expanded' : ''}`}
+                onClick={() => toggleExpand(measure.id)}
               >
-                {measure.priority} prioritet
-              </div>
-              <h3>{measure.title}</h3>
-              <p>{measure.description}</p>
-              <div className="measure-reason">{measure.reason}</div>
+                <div
+                  className="measure-priority"
+                  data-priority={measure.priority.toLowerCase()}
+                >
+                  {measure.priority} prioritet
+                </div>
+                <h3>{measure.title}</h3>
+                <p className="measure-description">{measure.description}</p>
+                <div className="measure-reason">{measure.reason}</div>
 
-              {companyInfo && (
-                <div className="measure-context">
-                  {getEmployeeSizeContext(measure, companyInfo.employeeCount)}
+                {companyInfo && (
+                  <div className="measure-context">
+                    {getEmployeeSizeContext(measure, companyInfo.employeeCount)}
+                  </div>
+                )}
+
+                <div className="measure-footer">
+                  <div className="measure-category">{measure.category}</div>
+                  {measure.implementationSteps && measure.implementationSteps.length > 0 && (
+                    <div className="measure-expand-indicator">
+                      {expandedMeasureId === measure.id ? "▲ Skjul implementeringsguide" : "▼ Vis implementeringsguide"}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Implementeringsguide direkte under measure-card */}
+              {expandedMeasureId === measure.id && measure.implementationSteps && (
+                <div className="implementation-guide">
+                  <div className="guide-header">
+                    <h4>Implementeringsguide</h4>
+                    {measure.eloPoints && (
+                      <div className="elo-points">
+                        +{measure.eloPoints} ELO
+                      </div>
+                    )}
+                  </div>
+                  
+                  <p className="guide-description">
+                    Følg denne steg-for-steg-guiden for å implementere {measure.title.toLowerCase()} i din virksomhet.
+                    Gjennomføring av alle stegene gir din bedrift +{measure.eloPoints || 0} ELO-poeng i sikkerhetsscore.
+                  </p>
+                  
+                  <div className="implementation-steps">
+                    {measure.implementationSteps.map((step, index) => (
+                      <div key={index} className="implementation-step">
+                        <div className="step-header">
+                          <div className="step-number">{index + 1}</div>
+                          <div className="step-title">{step.title}</div>
+                          <button 
+                            className={`step-complete-button ${step.completed ? 'completed' : ''}`}
+                            onClick={(e) => {
+                              e.stopPropagation(); // Unngå at klikk på knappen også trigger toggleExpand
+                              handleStepComplete(measure.id, index, !step.completed);
+                            }}
+                          >
+                            {step.completed ? "Fullført" : "Merk som fullført"}
+                          </button>
+                        </div>
+                        <p className="step-description">{step.description}</p>
+                        
+                        {step.details && (
+                          <div className="step-details">
+                            {step.details.map((detail, detailIndex) => (
+                              <div key={detailIndex} className="step-detail-item">
+                                <div className="detail-icon">ⓘ</div>
+                                <p>{detail}</p>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
-
-              <div className="measure-category">{measure.category}</div>
             </div>
           ))
         ) : (
