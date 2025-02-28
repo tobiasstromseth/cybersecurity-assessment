@@ -47,13 +47,32 @@ body.dark-theme {
     background-color: var(--dark-input);
   }
 
-  body.dark-theme .measure-reason {
+  body.dark-theme .measure-category {
     background-color: var(--dark-input);
   }
+  body.dark-theme .measures-context{
+  background-color: var(--dark-bg);
+  }  
+  body.dark-theme .measure-reason{
+  background-color: var(--dark-bg);
+  } 
+  body.dark-theme .implementation-guide{
+  background-color: var(--dark-bg);
+  }
+  body.dark-theme .implementation-steps{
+    background-color: var(--dark-bg);
+    }
+  body.dark-theme .implementation-step{
+  background-color: var(--dark-bg);
+  }
+  body.dark-theme .step-details{
+    background-color: var(--dark-bg);
+    }
+  body.dark-theme .close-guide-button{
+  background-color: var(--dark-bg);
+  }
 
-  
-  
-  /* Questionnaire specific dark theme overrides */
+/* Questionnaire specific dark theme overrides */
   body.dark-theme .question-category {
     background-color: rgba(25, 118, 210, 0.1);
     color: #64b5f6;
