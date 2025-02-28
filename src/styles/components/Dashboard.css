@@ -211,8 +211,12 @@
   transition: transform 0.2s;
 }
 
-.measure-card:hover {
-  transform: translateY(-4px);
+.priority-measures .measure-card {
+  cursor: default;
+}
+
+.priority-measures .measure-card:hover {
+  transform: none;
 }
 
 .measure-priority {
