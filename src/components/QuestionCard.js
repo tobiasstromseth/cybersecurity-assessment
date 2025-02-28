@@ -64,26 +64,27 @@ function Questionnaire({ onSubmit }) {
     (q) => answers[q.id] !== undefined
   );
 
+  // Calculate progress percentage based on answered questions
+  const answeredCount = Object.keys(answers).length;
+  const progressPercentage = Math.round((answeredCount / questions.length) * 100);
+
   return (
     <div className="questionnaire-container">
       <div className="progress-bar">
         <div
           className="progress"
           style={{
-            width: `${
-              ((currentQuestionIndex + (hasAnsweredCurrentQuestion ? 1 : 0)) /
-                questions.length) *
-              100
-            }%`,
+            width: `${progressPercentage}%`,
           }}
-        ></div>
+        >
+          {progressPercentage > 0 && (
+            <span className="progress-text">{progressPercentage}%</span>
+          )}
+        </div>
       </div>
 
       <div className="question-card">
         <div className="question-category">{currentQuestion.category}</div>
-        <h2>
-          Spørsmål {currentQuestionIndex + 1} av {questions.length}
-        </h2>
         <p className="question-text">{currentQuestion.text}</p>
 
         <div className="answer-options">

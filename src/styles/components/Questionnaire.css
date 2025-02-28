@@ -7,19 +7,35 @@
   
   /* Progress bar */
   .progress-bar {
-    height: 8px;
+    height: 14px;
     background-color: var(--container);
     border-radius: var(--radius-sm);
     margin-bottom: 30px;
     overflow: hidden;
+    border-radius: var(--radius-xl);
   }
   
+  .progress-bar {
+    border-radius: var(--radius-lg);
+  }
+
   .progress {
     height: 100%;
     background-color: var(--accent-primary);
     transition: width 0.3s ease;
+    position: relative;
+    border-radius: var(--radius-lg);
   }
-  
+
+  .progress-text {
+    position: absolute;
+    right: 5px;
+    bottom: -4px;
+    color: var(--text-primary);
+    font-weight: bold;
+    font-size: 14px;
+  }
+
   /* Question card */
   .question-card {
     padding: 20px;

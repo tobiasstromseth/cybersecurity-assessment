@@ -3,34 +3,34 @@
 :root {
     /* Brand colors */
     --claude-orange: #CB805C;
-    --claude-orange-light: #d99275;
-    --claude-orange-dark: #b46b4a;
+    --claude-orange-light: #F3996E;
+    --claude-orange-dark: #AB6D4E;
   
     /* Light theme */
     --light-bg: #f7f5f0;
-    --light-container: #f0ede5;
+    --light-container: #E8E7DE;
     --light-card: #ffffff;
-    --light-border: #e5e0d5;
-    --light-input: #f9f8f5;
+    --light-border: #7A796B;
+    --light-input: #F2F1EA;
     --light-elevated: #ffffff;
     --light-infobox: #FFFFFF;
   
     /* Text colors - light mode */
-    --light-text-primary: #333333;
-    --light-text-secondary: #666666;
-    --light-text-tertiary: #888888;
+    --light-text-primary: #535249;
+    --light-text-secondary: #7A796B;
+    --light-text-tertiary: #979582;
     
     /* Dark theme */
-    --dark-bg: #282826;
-    --dark-container: #242422;
-    --dark-darkest: #201F1E;
-    --dark-border: #555555;
-    --dark-input: #3f3f3f;
+    --dark-bg: #242422;
+    --dark-container: #201F1E;
+    --dark-darkest: #282826;
+    --dark-border: #555555; /* placeholder color */
+    --dark-input: #3D3D3A;
    
     /* Text colors - dark mode */
-    --dark-text-primary: #f0f0f0;
-    --dark-text-secondary: #b0b0b0;
-    --dark-text-tertiary: #808080;
+    --dark-text-primary: #D0CFCB;
+    --dark-text-secondary: #A5A39A;
+    --dark-text-tertiary: #8B8981; /* placeholder color */
   
     /* Status colors (shared between themes) */
     --status-success: #27ae60;
