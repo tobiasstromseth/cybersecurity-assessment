@@ -465,7 +465,7 @@ useEffect(() => {
 
       <header className="app-header">
         <h1>Lightweight Cybersecurity</h1> 
-        <p>Maturity Assessment and Implementation Model</p>
+        <p>Maturity Assessment and Implementation Model</p> 
         {companyInfo && currentPage !== "startInfo" && currentPage !== "start" && (
           <div className="company-info-display">
             <p>
