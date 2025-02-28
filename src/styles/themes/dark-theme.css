@@ -43,7 +43,11 @@ body.dark-theme {
     color: #bb8ece;
   }
 
-  .score-recommendation {
+  body.dark-theme .score-recommendation {
+    background-color: var(--dark-input);
+  }
+
+  body.dark-theme .measure-reason {
     background-color: var(--dark-input);
   }
   
