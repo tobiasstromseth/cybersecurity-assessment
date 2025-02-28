@@ -201,7 +201,7 @@ function StartPage({ onComplete, savedCompanyInfo }) {
       />
       <label htmlFor="securityNone" className="small-text">
         <strong>Ingen erfaring</strong>
-        <p className="option-description small-text">Jeg har lite eller ingen kunnskap om cybersikkerhet.</p>
+        <p className="option-description small-text">Jeg har lite eller ingen kunnskap om IT eller cybersikkerhet.</p>
       </label>
     </div>
 

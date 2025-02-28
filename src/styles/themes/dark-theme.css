@@ -42,6 +42,10 @@ body.dark-theme {
   body.dark-theme .industry-recommendations h4 {
     color: #bb8ece;
   }
+
+  .score-recommendation {
+    background-color: var(--dark-input);
+  }
   
   /* Questionnaire specific dark theme overrides */
   body.dark-theme .question-category {
