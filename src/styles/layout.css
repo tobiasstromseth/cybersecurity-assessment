@@ -63,7 +63,6 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    box-shadow: var(--shadow-sm);
     border: 1px solid rgba(211, 84, 0, 0.2);
   }
   
@@ -108,7 +107,6 @@
   main {
     background-color: var(--bg);
     border-radius: var(--radius-md);
-    box-shadow: var(--shadow-md);
     padding: 30px;
     margin-bottom: 30px;
   }
@@ -153,7 +151,6 @@
   .form-group select:focus {
     border-color: var(--accent-primary);
     outline: none;
-    box-shadow: 0 0 0 2px rgba(211, 84, 0, 0.2);
   }
   
   .input-error {
@@ -170,7 +167,6 @@
   .card {
     background-color: var(--card);
     border-radius: var(--radius-md);
-    box-shadow: var(--shadow-md);
     padding: var(--spacing-xl);
     margin-bottom: var(--spacing-xl);
   }

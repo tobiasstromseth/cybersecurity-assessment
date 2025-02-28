@@ -40,8 +40,7 @@
   .question-card {
     padding: 20px;
     border-radius: var(--radius-md);
-    background-color: var(--card);
-    box-shadow: var(--shadow-sm);
+    background-color: var(--light-card);
   }
   
   .question-category {
@@ -73,7 +72,7 @@
     padding: 15px;
     border: 2px solid var(--border);
     border-radius: var(--radius-md);
-    background-color: var(--elevated);
+    background-color: var(--light-elevated);
     cursor: pointer;
     font-size: 16px;
     text-align: left;
@@ -111,7 +110,6 @@
   
   .navigation-buttons button:hover:not(:disabled) {
     background-color: var(--accent-hover);
-    box-shadow: var(--shadow-sm);
   }
   
   .navigation-buttons button:disabled {

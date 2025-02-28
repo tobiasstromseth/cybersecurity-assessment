@@ -6,7 +6,6 @@
   .company-info-form-card {
     background-color: var(--card);
     border-radius: var(--radius-md);
-    box-shadow: var(--shadow-md);
     padding: 30px;
     margin-bottom: 30px;
   }
@@ -67,14 +66,12 @@
   .start-button:hover {
     background-color: var(--accent-hover);
     transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
   }
   
   .start-button:disabled {
     background-color: var(--text-tertiary);
     cursor: not-allowed;
     transform: none;
-    box-shadow: none;
   }
   
   /* Responsive adjustments */

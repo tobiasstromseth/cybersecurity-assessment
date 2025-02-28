@@ -37,7 +37,6 @@
   .search-input:focus {
     border-color: var(--accent-primary);
     outline: none;
-    box-shadow: 0 0 0 2px rgba(211, 84, 0, 0.2);
   }
   
   .category-filters {
@@ -79,14 +78,12 @@
     border-radius: var(--radius-md);
     padding: 20px;
     background-color: var(--card);
-    box-shadow: var(--shadow-sm);
     position: relative;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease
   }
   
   .measure-card:hover {
     transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
   }
   
   .measure-priority {

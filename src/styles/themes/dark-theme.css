@@ -50,6 +50,8 @@ body.dark-theme {
   body.dark-theme .measure-reason {
     background-color: var(--dark-input);
   }
+
+  
   
   /* Questionnaire specific dark theme overrides */
   body.dark-theme .question-category {
@@ -68,4 +70,12 @@ body.dark-theme {
   
   body.dark-theme .navigation-buttons .submit-button:hover:not(:disabled) {
     background-color: #27ae60;
+  }
+
+  body.dark-theme .question-card {
+    background-color: var(--dark-input);
+  }
+
+  body.dark-theme .answer-options button {
+    background-color: var(--dark-bg);  
   }
