@@ -47,6 +47,11 @@
   li {
     font-size: var(--font-size-p);
   }
+
+  .small-text {
+    font-size: var(--font-size-small);
+    color: var(--light-text-secondary);
+  }
   
   a {
     color: var(--accent-primary);

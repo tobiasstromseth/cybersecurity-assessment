@@ -60,12 +60,22 @@
     --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 6px 12px rgba(0, 0, 0, 0.15);
 
-    /* Font sizes */
+    /* Font sizes 
     --font-size-p: 14px;
     --font-size-h1: 24px;
     --font-size-h2: 22px;
     --font-size-h3: 18px;
     --font-size-h4: 16px;
+    --font-size-small: 12px;
+    */
+
+    /* Font sizes */
+    --font-size-p: 0.875rem;     /* 14px */
+    --font-size-h1: 1.5rem;      /* 24px */
+    --font-size-h2: 1.375rem;    /* 22px */
+    --font-size-h3: 1.125rem;    /* 18px */
+    --font-size-h4: 1rem;        /* 16px */
+    --font-size-small: 0.75rem;  /* 12px */
   
     /* Default theme (light) */
     --bg: var(--light-bg);

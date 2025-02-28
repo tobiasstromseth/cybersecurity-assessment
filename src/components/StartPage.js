@@ -8,6 +8,7 @@ function StartPage({ onComplete, savedCompanyInfo }) {
       companyName: "",
       industry: "",
       employeeCount: "",
+      itCompetence: "", // Added IT competence field
     }
   );
 
@@ -39,7 +40,8 @@ function StartPage({ onComplete, savedCompanyInfo }) {
     if (
       companyInfo.companyName &&
       companyInfo.industry &&
-      companyInfo.employeeCount
+      companyInfo.employeeCount &&
+      companyInfo.itCompetence // Added validation check for IT competence
     ) {
       setErrors({});
     }
@@ -79,6 +81,10 @@ function StartPage({ onComplete, savedCompanyInfo }) {
       newErrors.employeeCount = "Vennligst velg antall ansatte";
     }
 
+    if (!companyInfo.itCompetence) {
+      newErrors.itCompetence = "Vennligst velg IT-kompetansenivå";
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -96,102 +102,172 @@ function StartPage({ onComplete, savedCompanyInfo }) {
   };
 
   return (
+    <div className="company-info-form-card">
+      <h2>Bedriftsinformasjon</h2>
 
-      <div className="company-info-form-card">
-        <h2>Bedriftsinformasjon</h2>
+      <form onSubmit={handleSubmit} className="company-info-form">
+        <div className="form-group">
+          <label htmlFor="companyName">Bedriftsnavn</label>
+          <input
+            type="text"
+            id="companyName"
+            name="companyName"
+            value={companyInfo.companyName}
+            onChange={handleChange}
+            className={errors.companyName ? "input-error" : ""}
+            placeholder="Skriv inn bedriftsnavn"
+          />
+          {errors.companyName && (
+            <div className="error-message">{errors.companyName}</div>
+          )}
+        </div>
 
-        <form onSubmit={handleSubmit} className="company-info-form">
-          <div className="form-group">
-            <label htmlFor="companyName">Bedriftsnavn</label>
-            <input
-              type="text"
-              id="companyName"
-              name="companyName"
-              value={companyInfo.companyName}
-              onChange={handleChange}
-              className={errors.companyName ? "input-error" : ""}
-              placeholder="Skriv inn bedriftsnavn"
-            />
-            {errors.companyName && (
-              <div className="error-message">{errors.companyName}</div>
-            )}
-          </div>
+        <div className="form-group">
+          <label htmlFor="industry">Bransje</label>
+          <select
+            id="industry"
+            name="industry"
+            value={companyInfo.industry}
+            onChange={handleChange}
+            className={errors.industry ? "input-error" : ""}
+          >
+            {industries.map((industry) => (
+              <option key={industry} value={industry}>
+                {industry}
+              </option>
+            ))}
+          </select>
+          {errors.industry && (
+            <div className="error-message">{errors.industry}</div>
+          )}
+        </div>
 
-          <div className="form-group">
-            <label htmlFor="industry">Bransje</label>
-            <select
-              id="industry"
-              name="industry"
-              value={companyInfo.industry}
-              onChange={handleChange}
-              className={errors.industry ? "input-error" : ""}
-            >
-              {industries.map((industry) => (
-                <option key={industry} value={industry}>
-                  {industry}
-                </option>
-              ))}
-            </select>
-            {errors.industry && (
-              <div className="error-message">{errors.industry}</div>
-            )}
-          </div>
-
-          <div className="form-group">
-            <label>Antall ansatte</label>
-            <div className="radio-group">
-              <div className="radio-option">
-                <input
-                  type="radio"
-                  id="small"
-                  name="employeeCount"
-                  value="0-5"
-                  checked={companyInfo.employeeCount === "0-5"}
-                  onChange={handleChange}
-                />
-                <label htmlFor="small">0-5</label>
-              </div>
-
-              <div className="radio-option">
-                <input
-                  type="radio"
-                  id="medium"
-                  name="employeeCount"
-                  value="5-10"
-                  checked={companyInfo.employeeCount === "5-10"}
-                  onChange={handleChange}
-                />
-                <label htmlFor="medium">5-10</label>
-              </div>
-
-              <div className="radio-option">
-                <input
-                  type="radio"
-                  id="large"
-                  name="employeeCount"
-                  value="10+"
-                  checked={companyInfo.employeeCount === "10+"}
-                  onChange={handleChange}
-                />
-                <label htmlFor="large">Mer enn 10</label>
-              </div>
+        <div className="form-group">
+          <label>Antall ansatte</label>
+          <div className="radio-group">
+            <div className="radio-option">
+              <input
+                type="radio"
+                id="small"
+                name="employeeCount"
+                value="0-5"
+                checked={companyInfo.employeeCount === "0-5"}
+                onChange={handleChange}
+              />
+              <label htmlFor="small">0-5</label>
             </div>
-            {errors.employeeCount && (
-              <div className="error-message">{errors.employeeCount}</div>
-            )}
-          </div>
 
-          <div className="form-actions">
-            <button
-              type="submit"
-              className="start-button"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "Behandler..." : "Start sikkerhetsvurdering"}
-            </button>
+            <div className="radio-option">
+              <input
+                type="radio"
+                id="medium"
+                name="employeeCount"
+                value="5-10"
+                checked={companyInfo.employeeCount === "5-10"}
+                onChange={handleChange}
+              />
+              <label htmlFor="medium">5-10</label>
+            </div>
+
+            <div className="radio-option">
+              <input
+                type="radio"
+                id="large"
+                name="employeeCount"
+                value="10+"
+                checked={companyInfo.employeeCount === "10+"}
+                onChange={handleChange}
+              />
+              <label htmlFor="large">Mer enn 10</label>
+            </div>
           </div>
-        </form>
-      </div>
+          {errors.employeeCount && (
+            <div className="error-message">{errors.employeeCount}</div>
+          )}
+        </div>
+
+        <div className="form-group">
+  <label>Din personlige kompetanse innen cybersikkerhet</label>
+  <p className="form-description small-text">Velg alternativet som best beskriver din kunnskap om cybersikkerhet.</p>
+  <div className="radio-group">
+    <div className="radio-option">
+      <input
+        type="radio"
+        id="securityNone"
+        name="itCompetence"
+        value="ingen"
+        checked={companyInfo.itCompetence === "ingen"}
+        onChange={handleChange}
+      />
+      <label htmlFor="securityNone" className="small-text">
+        <strong>Ingen erfaring</strong>
+        <p className="option-description small-text">Jeg har lite eller ingen kunnskap om cybersikkerhet.</p>
+      </label>
+    </div>
+
+    <div className="radio-option">
+      <input
+        type="radio"
+        id="securityBasic"
+        name="itCompetence"
+        value="grunnleggende"
+        checked={companyInfo.itCompetence === "grunnleggende"}
+        onChange={handleChange}
+      />
+      <label htmlFor="securityBasic" className="small-text">
+        <strong>Grunnleggende</strong>
+        <p className="option-description small-text">Jeg kjenner til enkel passordbruk og vanlige trusler.</p>
+      </label>
+    </div>
+
+    <div className="radio-option">
+      <input
+        type="radio"
+        id="securityIntermediate"
+        name="itCompetence"
+        value="medium"
+        checked={companyInfo.itCompetence === "medium"}
+        onChange={handleChange}
+      />
+      <label htmlFor="securityIntermediate" className="small-text">
+        <strong>Middels</strong>
+        <p className="option-description small-text">Jeg har IT-kunnskap eller jobber med IT, med noe sikkerhetsforståelse.</p>
+      </label>
+    </div>
+
+    <div className="radio-option">
+      <input
+        type="radio"
+        id="securityAdvanced"
+        name="itCompetence"
+        value="avansert"
+        checked={companyInfo.itCompetence === "avansert"}
+        onChange={handleChange}
+      />
+      <label htmlFor="securityAdvanced" className="small-text">
+        <strong>Avansert</strong>
+        <p className="option-description small-text">Jeg jobber med eller har spesialisert kunnskap om cybersikkerhet.</p>
+      </label>
+    </div>
+  </div>
+  {errors.itCompetence && (
+    <div className="error-message small-text">{errors.itCompetence}</div>
+  )}
+</div>
+
+
+
+        <div className="form-actions">
+          <button
+            type="submit"
+            className="start-button"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Behandler..." : "Start sikkerhetsvurdering"}
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
 
