@@ -2,46 +2,47 @@
 /* Shared layout styles across the application */
 
 .app-container {
-  max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
 }
 
 .app-header {
-  margin-bottom: 30px;
-  text-align: center;
-  border-bottom: 2px solid var(--accent-primary);
-  background-color: var(--container);
-  padding: var(--spacing-lg) 0;
+  margin-bottom: 15px;
+  text-align: left;
+  background-color: var(--main-color);
+  width: 100%;
+}
+
+.app-header h1{
+  font-size: 12px;
+  font-weight: lighter;
+  font-style: italic;
+  color: var(--medium-white);
 }
 
 /* Navigation */
 nav {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
   flex-wrap: wrap;
 }
 
 nav button {
-  padding: 10px 20px;
+  padding: 0px 20px;
   margin: 0 5px;
   background: none;
   border: none;
   border-bottom: 2px solid transparent;
   font-size: var(--font-size-p);
   transition: all 0.3s ease;
-  color: var(--text-secondary);
+  color: var(--text-grey);
 }
 
 nav button:hover:not(:disabled) {
-  border-bottom: 2px solid var(--accent-primary);
-  color: var(--accent-primary);
+  color: var(--main-color);
 }
 
 nav button.active {
-  border-bottom: 2px solid var(--accent-primary);
-  color: var(--accent-primary);
+  color: var(--main-color-hover);
   font-weight: bold;
 }
 
@@ -50,25 +51,9 @@ nav button:disabled {
   cursor: not-allowed;
 }
 
-/* Company info display */
-.company-info-display {
-  background-color: rgba(211, 84, 0, 0.08);
-  border-radius: 20px;
-  padding: 8px 15px;
-  margin: 10px auto 15px;
-  max-width: fit-content;
-  font-size: var(--font-size-p);
-  color: var(--text-primary);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  border: 1px solid rgba(211, 84, 0, 0.2);
-}
 
-.company-info-display p {
-  margin: 0;
-  font-weight: 500;
-}
+
+
 
 .edit-info-button {
   background: none;
@@ -106,8 +91,9 @@ nav button:disabled {
 main {
   background-color: var(--bg);
   border-radius: var(--radius-md);
-  padding: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 /* Footer */
@@ -131,24 +117,23 @@ footer {
 
 .form-group label {
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--text-dark);
   font-size: var(--font-size-p);
 }
 
 .form-group input[type="text"],
 .form-group select {
   padding: 12px 15px;
-  border: 1px solid var(--border);
+  border: 0px solid ;
   border-radius: var(--radius-md);
   font-size: var(--font-size-p);
   transition: border-color 0.2s;
-  background-color: var(--input);
-  color: var(--text-primary);
+  background-color: var(--lightest-white);
+  color: var(--text-grey);
 }
 
 .form-group input[type="text"]:focus,
 .form-group select:focus {
-  border-color: var(--accent-primary);
   outline: none;
 }
 

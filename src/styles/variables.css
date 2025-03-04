@@ -1,24 +1,27 @@
 /* src/styles/variables.css */
 
 :root {
-  /* Brand colors */
-  --claude-orange: #cb805c;
-  --claude-orange-light: #f3996e;
-  --claude-orange-dark: #ab6d4e;
+  /*Light theme */
+  --main-color:#3D3C36;
+  --main-color-hover:#7A796B;;
+  
+  --text-grey:#7A796B;
+  --text-dark:#535249;
 
-  /* Light theme */
-  --light-bg: #f2f1ea;
-  --light-container: #e8e7de;
-  --light-card: #e8e7de;
-  --light-border: #7a796b;
-  --light-input: #f2f1ea;
-  --light-elevated: #ffffff;
-  --light-infobox: #ffffff;
+  --lightest-white:#FCFBF4;
+  --medium-white:#F2F1EA;
+  --darkest-white:#E8E7DE;
 
-  /* Text colors - light mode */
-  --light-text-primary: #535249;
-  --light-text-secondary: #7a796b;
-  --light-text-tertiary: #979582;
+  --green:#34c759;
+  --yellow:#FFCC00;
+  --red:#FF3B30;
+
+  --alert-green:#34c75980;
+  --alert-yellow:#FFCC0080;
+  --alert-red:#FF3B3080;
+  
+  --progressbar:0;
+  
 
   /* Dark theme */
   --dark-bg: #242422;

@@ -464,23 +464,8 @@ useEffect(() => {
       <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
 
       <header className="app-header">
-        <h1>Lightweight Cybersecurity</h1> 
-        <p>Maturity Assessment and Implementation Model</p> 
-        {companyInfo && currentPage !== "startInfo" && currentPage !== "start" && (
-          <div className="company-info-display">
-            <p>
-              {companyInfo.companyName} | {companyInfo.industry} |{" "}
-              {companyInfo.employeeCount} ansatte
-            </p>
-            <button
-              className="edit-info-button"
-              onClick={handleEditCompanyInfo}
-              title="Rediger bedriftsinformasjon"
-            >
-              ✏️
-            </button>
-          </div>
-        )}
+        <h1>LIGHTWEIGHT CYBERSECURITY</h1> 
+        {companyInfo && currentPage !== "startInfo" && currentPage !== "start"}
         {currentPage !== "startInfo" && currentPage !== "start" && (
           <nav>
             <button

@@ -54,8 +54,7 @@
   /* Question card */
   .question-card {
     padding: 20px;
-    border-radius: var(--radius-md);
-    background-color: var(--light-card);
+    background-color: var(--darkest-white);
   }
   
   .question-category {
@@ -167,22 +166,22 @@
     padding: 15px;
     border: 2px solid var(--border);
     border-radius: var(--radius-md);
-    background-color: var(--light-elevated);
+    background-color: var(--lightest-white);
     cursor: pointer;
     font-size: 16px;
     text-align: left;
     transition: all 0.2s;
-    color: var(--text-primary);
+    color: var(--text-dark);
   }
   
   .answer-options button:hover {
-    border-color: var(--accent-primary);
+    border-color: var(--medium-white);
   }
   
   .answer-options button.selected {
     border-color: var(--accent-primary);
-    background-color: rgba(211, 84, 0, 0.1);
-    color: var(--accent-primary);
+    background-color: var(--main-color-hover);
+    color: var(--medium-white);
     font-weight: bold;
   }
   
@@ -196,8 +195,8 @@
     padding: 10px 20px;
     border: none;
     border-radius: var(--radius-sm);
-    background-color: var(--accent-primary);
-    color: white;
+    background-color: var(--main-color);
+    color: var(--medium-white);
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.2s;
@@ -208,7 +207,7 @@
   }
   
   .navigation-buttons button:disabled {
-    background-color: var(--text-tertiary);
+    background-color: var(--main-color-hover);
     cursor: not-allowed;
   }
   

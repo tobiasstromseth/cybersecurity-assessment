@@ -4,35 +4,27 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: var(--spacing-xl);
     min-height: 80vh;
   }
   
   .info-card {
-    background-color: var(--card);
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-xl);
     max-width: 800px;
     width: 100%;
-    color: var(--text-primary);
+    color: var(--text-dark);
+    background-color: var(--darkest-white);
+    padding: 15px;
+    padding-top: 1px;
   }
   
   .info-card h2 {
-    color: var(--accent-primary);
+    color: var(--main-color);
     text-align: center;
-    margin-bottom: var(--spacing-xl);
   }
   
   .info-section {
     margin-bottom: var(--spacing-xl);
   }
   
-  .info-section h3 {
-    color: var(--accent-primary);
-    margin-bottom: var(--spacing-md);
-    border-bottom: 1px solid var(--border);
-    padding-bottom: var(--spacing-xs);
-  }
   
   .info-section p {
     line-height: 1.6;
@@ -51,7 +43,7 @@
   }
   
   .primary-button {
-    background-color: var(--accent-primary);
+    background-color: var(--main-color);
     color: white;
     border: none;
     border-radius: var(--radius-md);
@@ -64,7 +56,7 @@
   }
   
   .primary-button:hover {
-    background-color: var(--accent-hover);
+    background-color: var(--main-color-hover);
   }
   
   /* Dark theme styles */

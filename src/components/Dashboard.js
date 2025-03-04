@@ -1,4 +1,4 @@
-// src/components/Dashboard.js - Oppdatert med bedriftsinformasjon og CSS-variabler
+// src/components/Dashboard.js - Omorganisert layout
 import React from "react";
 import "../styles/components/Dashboard.css";
 
@@ -30,8 +30,11 @@ function Dashboard({
     return "Svak";
   };
 
+  const scoreExplanation = getDetailedExplanation(securityScore);
+  const roundedScore = Math.round(securityScore);
+
   // Få detaljert forklaring basert på scoren
-  const getDetailedExplanation = (score) => {
+  function getDetailedExplanation(score) {
     if (score >= 70) {
       return {
         heading: "Din organisasjon har god cybersikkerhet",
@@ -69,231 +72,135 @@ function Dashboard({
           "Start umiddelbart med å implementere de høyt prioriterte tiltakene for å beskytte organisasjonens data og systemer.",
       };
     }
-  };
-
-  const scoreExplanation = getDetailedExplanation(securityScore);
-  const roundedScore = Math.round(securityScore);
-
-  // Dashbord gauge beregning
-  const dashOffset = 440 - 440 * (roundedScore / 100);
-
-  // Bedriftsstørrelse til tekst
-  const employeeSizeToText = (size) => {
-    switch (size) {
-      case "0-5":
-        return "mikro";
-      case "5-10":
-        return "liten";
-      case "10+":
-        return "medium til stor";
-      default:
-        return "";
-    }
-  };
-
-  // Anbefalinger basert på bransje
-  const getIndustryRecommendation = (industry) => {
-    switch (industry) {
-      case "IT og Teknologi":
-        return "Som teknologibedrift bør dere fokusere ekstra på utviklersikkerhet, kildekodebeskyttelse og API-sikkerhet.";
-      case "Helse og Omsorg":
-        return "Helsesektoren håndterer sensitive personopplysninger og må fokusere spesielt på personvern, GDPR-etterlevelse og sikker datalagring.";
-      case "Finans og Forsikring":
-        return "Finanssektoren er et attraktivt mål for cyberkriminelle. Fokuser spesielt på streng tilgangskontroll, nettverkssegmentering og kontinuerlig overvåkning.";
-      case "Detaljhandel":
-        return "Retailbransjen bør fokusere på betalingssikkerhet (PCI DSS), sikkerhet på salgssted, og beskyttelse av kundedata.";
-      case "Produksjon":
-        return "Produksjonsbedrifter bør prioritere sikkerhet for industrielle kontrollsystemer, OT-sikkerhet og integrasjon med IT-systemer.";
-      case "Utdanning":
-        return "Utdanningsinstitusjoner bør fokusere på balansen mellom åpen tilgang og beskyttelse av institusjonens data og sensitiv forskning.";
-      case "Offentlig sektor":
-        return "Offentlige virksomheter skal beskytte viktige samfunnstjenester og bør fokusere spesielt på etterlevelse av sikkerhetsrammeverk som ISO 27001 og NSMs grunnprinsipper.";
-      case "Transport og Logistikk":
-        return "Logistikkbransjen bør fokusere på sikkerhet i forsyningskjeden, integritet i sporing og høy tilgjengelighet for kritiske systemer.";
-      case "Bygg og Anlegg":
-        return "Byggebransjen bør fokusere på sikkerhet for prosjektdata, tegninger og sikkerhetskopier av verdifull dokumentasjon.";
-      default:
-        return "Uavhengig av bransje er det viktig å beskytte sensitiv informasjon, sikre IT-systemer og trene ansatte i sikker bruk av teknologi.";
-    }
-  };
-
-  // Anbefalinger basert på størrelse
-  const getSizeRecommendation = (size) => {
-    switch (size) {
-      case "0-5":
-        return "For små bedrifter er det viktig å velge skyløsninger med innebygd sikkerhet og implementere grunnleggende sikkerhetstiltak med begrensede ressurser.";
-      case "5-10":
-        return "Med denne størrelsen bør dere begynne å formalisere sikkerhetspolicyer og vurdere å dedikere ressurser til cybersikkerhet, eventuelt gjennom outsourcing.";
-      case "10+":
-        return "Større organisasjoner bør ha tydelige ansvarsområder for cybersikkerhet, formaliserte prosesser og jevnlige sikkerhetsøvelser.";
-      default:
-        return "";
-    }
-  };
+  }
 
   return (
     <div className="dashboard-container">
-      <div className="dashboard-header">
-        <h2>Din Sikkerhetsvurdering</h2>
-        <p>
-          Basert på dine svar har vi analysert din organisasjons sikkerhetsnivå.
-          Din poengsum er på en skala fra 0-100:
-        </p>
-      </div>
-
-      {companyInfo && (
-        <div className="company-summary-card">
-          <h3>Bedriftsinformasjon</h3>
-          <p>
-            <strong>Bedrift:</strong> {companyInfo.companyName}
-          </p>
-          <p>
-            <strong>Bransje:</strong> {companyInfo.industry}
-          </p>
-          <p>
-            <strong>Antall ansatte:</strong> {companyInfo.employeeCount}{" "}
-            (klassifisert som {employeeSizeToText(companyInfo.employeeCount)}{" "}
-            virksomhet)
-          </p>
-
-          <div className="industry-recommendations">
-            <h4>Bransjetilpassede anbefalinger:</h4>
-            <p>{getIndustryRecommendation(companyInfo.industry)}</p>
-            <p>{getSizeRecommendation(companyInfo.employeeCount)}</p>
-          </div>
+      {/* Left Section */}
+      <div className="left-section">
+        <div className="dashboard-header">
+          <h2>Sikkerhetsstatus</h2>
         </div>
-      )}
-
-      <div className="security-score-container">
-        <div className="security-score">
-          {/* Modern gauge/meter for score */}
-          <div className="gauge-container">
-            <svg width="200" height="200" viewBox="0 0 200 200">
-              <circle
-                className="gauge-background"
-                cx="100"
-                cy="100"
-                r="70"
-                strokeWidth="20"
-                stroke="var(--border)"
-                fill="none"
-              />
-              <circle
-                className="gauge-progress"
-                cx="100"
-                cy="100"
-                r="70"
-                strokeWidth="20"
-                stroke={scoreColor}
-                fill="none"
-                strokeDasharray="440"
-                strokeDashoffset={dashOffset}
-                strokeLinecap="round"
-              />
-              <text
-                x="100"
-                y="95"
-                textAnchor="middle"
-                fill="var(--text-primary)"
-                fontSize="32"
-                fontWeight="bold"
-              >
-                {roundedScore}
-              </text>
-              <text
-                x="100"
-                y="125"
-                textAnchor="middle"
-                fill="var(--text-secondary)"
-                fontSize="18"
-              >
-                {getScoreLabel(securityScore)}
-              </text>
-            </svg>
+        
+        {/* Score display */}
+        <div className="score-display">
+          <div className="score-number">
+            <span className="large-score">{roundedScore}</span>
+            <span className="max-score">/ 100</span>
           </div>
-          <div className="score-badge" style={{ backgroundColor: scoreColor }}>
-            <span className="score-icon">{scoreExplanation.icon}</span>
-          </div>
-        </div>
-
-        <div className="score-explanation">
-          <h3>{scoreExplanation.heading}</h3>
-          <ul className="detailed-explanation">
-            {scoreExplanation.details.map((detail, index) => (
-              <li key={index}>{detail}</li>
-            ))}
-          </ul>
-          <div className="score-recommendation">
-            <p>{scoreExplanation.recommendation}</p>
-          </div>
-          <div className="score-legend">
-            <h4>Sikkerhetsnivåer:</h4>
-            <ul>
-              <li>
-                <span className="score-indicator" style={{ backgroundColor: "var(--status-success)" }}></span> 
-                70-100: God sikkerhet
-              </li>
-              <li>
-                <span className="score-indicator" style={{ backgroundColor: "var(--status-warning)" }}></span> 
-                40-69: Middels sikkerhet
-              </li>
-              <li>
-                <span className="score-indicator" style={{ backgroundColor: "var(--status-danger)" }}></span> 
-                0-39: Svak sikkerhet
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div className="priority-measures">
-        <div className="priority-header">
-          <h3>Dine Prioriterte Tiltak</h3>
-          <div className="priority-badge">{priorityMeasures.length}</div>
-        </div>
-        <p>
-          Basert på din vurdering anbefaler vi følgende høyt prioriterte tiltak:
-        </p>
-
-        {priorityMeasures.length > 0 ? (
-          <div className="measures-list">
-            {priorityMeasures.map((measure) => (
-              <div 
-                key={measure.id} 
-                className="measure-card"
-                style={{ 
-                  borderLeft: `4px solid ${measure.priority.toLowerCase() === "høy" 
-                    ? "var(--status-danger)" 
-                    : measure.priority.toLowerCase() === "medium" 
-                      ? "var(--status-warning)" 
-                      : "var(--status-success)"}`
-                }}
-              >
-                <div
-                  className="measure-priority"
-                  data-priority={measure.priority.toLowerCase()}
-                >
-                  {measure.priority} prioritet
-                </div>
-                <h4>{measure.title}</h4>
-                <p>{measure.description}</p>
-                <div className="measure-reason">{measure.reason}</div>
-                <div className="measure-category">{measure.category}</div>
+          
+          <div>
+            <div>Sikkerhetsnivå: Advanced</div>
+            
+            {/* Progress bar */}
+            <div className="progress-container">
+              <div className="progress-bar-background">
+                <div 
+                  className="progress-bar"
+                  style={{ 
+                    width: `${securityScore}%`, 
+                    backgroundColor: scoreColor 
+                  }}
+                />
               </div>
-            ))}
+              <div className="progress-labels">
+                <span>0</span>
+                <span>50</span>
+                <span>100</span>
+              </div>
+            </div>
           </div>
-        ) : (
-          <div className="no-measures">
-            <p>
-              Ingen prioriterte tiltak funnet. Din organisasjon har god
-              sikkerhet!
-            </p>
+        </div>
+        
+        {/* Security ranking section */}
+        <div className="security-ranking-section">
+          <h3>Din sikkerhetsrangering</h3>
+          
+          <div className="ranking-buttons">
+            <button>B</button>
+            <button>N</button>
+            <button>I</button>
+            <button className="active">A</button>
+            <button>E</button>
+            <button>M</button>
+            <button>GM</button>
           </div>
-        )}
-
-        <button className="view-all-button" onClick={onViewAllMeasures}>
-          Se alle anbefalte tiltak
-        </button>
+          
+          <div className="ranking-info">
+            <div className="current-next">
+              <div>
+                <span>Nåværende:</span>
+                <span>Advanced</span>
+              </div>
+              <div>
+                <span>Neste:</span>
+                <span>Expert (4 poeng)</span>
+              </div>
+            </div>
+            
+            <div className="stats-cards">
+              <div className="stat-card">
+                <div className="stat-icon">↗</div>
+                <div className="stat-label">Neste mål</div>
+                <div className="stat-value">4</div>
+              </div>
+              
+              <div className="stat-card">
+                <div className="stat-icon">📈</div>
+                <div className="stat-label">Over snitt</div>
+                <div className="stat-value">+7</div>
+              </div>
+              
+              <div className="stat-card">
+                <div className="stat-icon">🛡️</div>
+                <div className="stat-label">Rangering</div>
+                <div className="stat-value">#4 av 10</div>
+              </div>
+            </div>
+            
+            <div className="points-needed">
+              Du trenger bare <strong>4 poeng</strong> for å nå <strong>Expert</strong> nivå!
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Right Section */}
+      <div className="right-section">
+        <div className="measures-header">
+          <h2>Tiltaksliste</h2>
+          <p>Ved å fullføre gjenstående tiltak kan du forbedre scoren med opptil 28 poeng og sikre bedriften din bedre!</p>
+        </div>
+        
+        <div className="measures-list">
+          {priorityMeasures.map((measure, index) => (
+            <div 
+              key={index}
+              className="measure-item"
+              style={{ 
+                borderLeft: `4px solid ${
+                  index === 0 ? "var(--status-danger)" : 
+                  index === 4 ? "var(--status-success)" : 
+                  "var(--status-warning)"
+                }`
+              }}
+            >
+              <div className="measure-content">
+                <h3>{measure.title}</h3>
+                <p>{measure.description}</p>
+              </div>
+              
+              <div className="measure-meta">
+                <div className="measure-details">
+                  <span>Effekt: Medium</span>
+                  <span>Kritikalitet: Lav</span>
+                  <span>Innsats: Høy</span>
+                </div>
+                <div className="measure-points">+4 poeng</div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
