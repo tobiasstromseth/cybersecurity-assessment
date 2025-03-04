@@ -15,9 +15,10 @@
 }
 
 .left-section h2 {
-  font-size: 24px;
+  font-size: var(--font-size-h2);
   margin-bottom: 20px;
   font-weight: 600;
+  color: var(--text-dark);
 }
 
 /* Score Display */
@@ -36,18 +37,18 @@
 .large-score {
   font-size: 72px;
   font-weight: 700;
-  color: var(--status-success);
+  /* Color set dynamically in component */
 }
 
 .max-score {
   font-size: 18px;
-  color: var(--text-secondary);
+  color: var(--text-grey);
   margin-left: 5px;
 }
 
 .security-level {
   font-size: 14px;
-  color: var(--text-primary);
+  color: var(--text-dark);
 }
 
 /* Progress Bar */
@@ -57,7 +58,7 @@
 
 .progress-bar-background {
   height: 8px;
-  background-color: #e9ecef;
+  background-color: var(--darkest-white);
   border-radius: 4px;
   margin-top: 8px;
   position: relative;
@@ -65,7 +66,7 @@
 
 .progress-bar {
   height: 8px;
-  background-color: var(--status-success);
+  /* Background color set dynamically in component */
   border-radius: 4px;
 }
 
@@ -74,20 +75,21 @@
   justify-content: space-between;
   margin-top: 4px;
   font-size: 12px;
-  color: var(--text-secondary);
+  color: var(--text-grey);
 }
 
 /* Ranking Section */
 .security-ranking-section {
   margin-top: 30px;
-  background-color: var(--container);
+  background-color: var(--medium-white);
   border-radius: var(--radius-md);
   padding: 20px;
 }
 
 .security-ranking-section h3 {
-  font-size: 18px;
+  font-size: var(--font-size-h3);
   margin-bottom: 16px;
+  color: var(--text-dark);
 }
 
 .ranking-buttons {
@@ -99,16 +101,17 @@
 .ranking-buttons button {
   width: 40px;
   height: 40px;
-  border: 1px solid var(--border);
-  background-color: var(--elevated);
+  border: 1px solid var(--darkest-white);
+  background-color: var(--lightest-white);
   border-radius: var(--radius-sm);
   font-weight: 600;
   cursor: pointer;
+  color: var(--text-dark);
 }
 
 .ranking-buttons button.active {
-  background-color: #333;
-  color: white;
+  background-color: var(--main-color);
+  color: var(--lightest-white);
 }
 
 .current-next {
@@ -119,12 +122,13 @@
 }
 
 .current-next .label {
-  color: var(--text-secondary);
+  color: var(--text-grey);
   margin-right: 5px;
 }
 
 .current-next .value {
   font-weight: 600;
+  color: var(--text-dark);
 }
 
 /* Stat Cards */
@@ -136,11 +140,11 @@
 
 .stat-card {
   flex: 1;
-  border: 1px solid var(--border);
+  border: 1px solid var(--darkest-white);
   border-radius: var(--radius-sm);
   padding: 16px;
   text-align: center;
-  background-color: var(--elevated);
+  background-color: var(--lightest-white);
 }
 
 .stat-icon {
@@ -150,19 +154,21 @@
 
 .stat-label {
   font-size: 12px;
-  color: var(--text-secondary);
+  color: var(--text-grey);
   margin-bottom: 4px;
 }
 
 .stat-value {
   font-size: 16px;
   font-weight: 600;
+  color: var(--text-dark);
 }
 
 .points-needed {
   font-size: 14px;
   text-align: center;
   margin-top: 16px;
+  color: var(--text-dark);
 }
 
 /* Right Section Styling */
@@ -177,14 +183,15 @@
 }
 
 .measures-header h2 {
-  font-size: 24px;
+  font-size: var(--font-size-h2);
   margin-bottom: 8px;
   font-weight: 600;
+  color: var(--text-dark);
 }
 
 .measures-header p {
   font-size: 14px;
-  color: var(--text-secondary);
+  color: var(--text-grey);
 }
 
 /* Measures List */
@@ -197,21 +204,23 @@
 .measure-item {
   display: flex;
   flex-direction: column;
-  background-color: white;
-  border: 1px solid var(--border);
+  background-color: var(--lightest-white);
+  border: 1px solid var(--darkest-white);
   border-radius: var(--radius-sm);
   padding: 16px;
+  /* Border color set dynamically in component */
 }
 
 .measure-content h3 {
-  font-size: 16px;
+  font-size: var(--font-size-h4);
   font-weight: 600;
   margin-bottom: 8px;
+  color: var(--text-dark);
 }
 
 .measure-content p {
   font-size: 14px;
-  color: var(--text-secondary);
+  color: var(--text-grey);
   margin-bottom: 12px;
 }
 
@@ -220,20 +229,20 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 8px;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--darkest-white);
 }
 
 .measure-details {
   display: flex;
   gap: 16px;
   font-size: 13px;
-  color: var(--text-tertiary);
+  color: var(--text-grey);
 }
 
 .measure-points {
   font-size: 14px;
   font-weight: 600;
-  color: var(--status-success);
+  /* Color set dynamically in component */
 }
 
 /* Responsive adjustments */

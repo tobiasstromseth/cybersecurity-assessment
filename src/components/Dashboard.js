@@ -10,9 +10,9 @@ function Dashboard({
 }) {
   // Score beregning og klassifisering
   const getScoreColor = (score) => {
-    if (score >= 70) return "var(--status-success)";
-    if (score >= 40) return "var(--status-warning)";
-    return "var(--status-danger)";
+    if (score >= 70) return "var(--green)";
+    if (score >= 40) return "var(--yellow)";
+    return "var(--red)";
   };
 
   const getScoreLightColor = (score) => {
@@ -90,7 +90,7 @@ function Dashboard({
           </div>
           
           <div>
-            <div>Sikkerhetsnivå: Advanced</div>
+            <div>Sikkerhetsnivå: Advanced (2080 CELO)</div>
             
             {/* Progress bar */}
             <div className="progress-container">
