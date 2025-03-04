@@ -11,7 +11,7 @@
   margin-bottom: 30px;
   text-align: center;
   border-bottom: 2px solid var(--accent-primary);
-  background-color: var(--light-container);
+  background-color: var(--container);
   padding: var(--spacing-lg) 0;
 }
 
@@ -87,7 +87,7 @@ nav button:disabled {
 /* Restart button */
 .restart-button {
   margin-left: 15px;
-  background-color: var(--status-danger) !important;
+  background-color: var(--accent-primary) !important;
   color: white !important;
   border: none !important;
   padding: 8px 15px !important;
@@ -99,7 +99,7 @@ nav button:disabled {
 }
 
 .restart-button:hover {
-  background-color: #c0392b !important;
+  background-color: var(--accent-hover) !important;
 }
 
 /* Main content area */

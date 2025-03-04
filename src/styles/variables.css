@@ -1,66 +1,66 @@
 /* src/styles/variables.css */
 
 :root {
-    /* Brand colors */
-    --claude-orange: #CB805C;
-    --claude-orange-light: #F3996E;
-    --claude-orange-dark: #AB6D4E;
-  
-    /* Light theme */
-    --light-bg: #F2F1EA;
-    --light-container: #E8E7DE;
-    --light-card: #E8E7DE;
-    --light-border: #7A796B;
-    --light-input: #F2F1EA;
-    --light-elevated: #ffffff;
-    --light-infobox: #FFFFFF;
-  
-    /* Text colors - light mode */
-    --light-text-primary: #535249;
-    --light-text-secondary: #7A796B;
-    --light-text-tertiary: #979582;
-    
-    /* Dark theme */
-    --dark-bg: #242422;
-    --dark-container: #201F1E;
-    --dark-darkest: #282826;
-    --dark-border: #555555; /* placeholder color */
-    --dark-input: #3D3D3A;
-   
-    /* Text colors - dark mode */
-    --dark-text-primary: #D0CFCB;
-    --dark-text-secondary: #A5A39A;
-    --dark-text-tertiary: #8B8981; /* placeholder color */
-  
-    /* Status colors (shared between themes) */
-    --status-success: #27ae60;
-    --status-success-light: #e8f5e9;
-    --status-warning: #f39c12;
-    --status-warning-light: #fff8e1;
-    --status-danger: #e74c3c;
-    --status-danger-light: #ffebee;
-    --status-info: #ff0000;
-    --status-info-light: #f1f8ff;
-  
-    /* Spacing variables */
-    --spacing-xs: 5px;
-    --spacing-sm: 10px;
-    --spacing-md: 15px;
-    --spacing-lg: 20px;
-    --spacing-xl: 30px;
-  
-    /* Border radius */
-    --radius-sm: 2px;
-    --radius-md: 4px;
-    --radius-lg: 6px;
-    --radius-round: 50%;
-  
-    /* Shadow */
-    --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 6px 12px rgba(0, 0, 0, 0.15);
+  /* Brand colors */
+  --claude-orange: #cb805c;
+  --claude-orange-light: #f3996e;
+  --claude-orange-dark: #ab6d4e;
 
-    /* Font sizes 
+  /* Light theme */
+  --light-bg: #f2f1ea;
+  --light-container: #e8e7de;
+  --light-card: #e8e7de;
+  --light-border: #7a796b;
+  --light-input: #f2f1ea;
+  --light-elevated: #ffffff;
+  --light-infobox: #ffffff;
+
+  /* Text colors - light mode */
+  --light-text-primary: #535249;
+  --light-text-secondary: #7a796b;
+  --light-text-tertiary: #979582;
+
+  /* Dark theme */
+  --dark-bg: #242422;
+  --dark-container: #201f1e;
+  --dark-darkest: #282826;
+  --dark-border: #555555; /* placeholder color */
+  --dark-input: #3d3d3a;
+
+  /* Text colors - dark mode */
+  --dark-text-primary: #d0cfcb;
+  --dark-text-secondary: #a5a39a;
+  --dark-text-tertiary: #8b8981; /* placeholder color */
+
+  /* Status colors (shared between themes) */
+  --status-success: #27ae60;
+  --status-success-light: #e8f5e9;
+  --status-warning: #f39c12;
+  --status-warning-light: #fff8e1;
+  --status-danger: #e74c3c;
+  --status-danger-light: #ffebee;
+  --status-info: #ff0000;
+  --status-info-light: #f1f8ff;
+
+  /* Spacing variables */
+  --spacing-xs: 5px;
+  --spacing-sm: 10px;
+  --spacing-md: 15px;
+  --spacing-lg: 20px;
+  --spacing-xl: 30px;
+
+  /* Border radius */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-round: 50%;
+
+  /* Shadow */
+  --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 6px 12px rgba(0, 0, 0, 0.15);
+
+  /* Font sizes 
     --font-size-p: 14px;
     --font-size-h1: 24px;
     --font-size-h2: 22px;
@@ -69,25 +69,24 @@
     --font-size-small: 12px;
     */
 
-    /* Font sizes */
-    --font-size-p: 0.875rem;     /* 14px */
-    --font-size-h1: 1.5rem;      /* 24px */
-    --font-size-h2: 1.375rem;    /* 22px */
-    --font-size-h3: 1.125rem;    /* 18px */
-    --font-size-h4: 1rem;        /* 16px */
-    --font-size-small: 0.75rem;  /* 12px */
-  
-    /* Default theme (light) */
-    --bg: var(--light-bg);
-    --container: var(--light-container);
-    --card: var(--light-card);
-    --border: var(--light-border);
-    --input: var(--light-input);
-    --elevated: var(--light-elevated);
-    --text-primary: var(--light-text-primary);
-    --text-secondary: var(--light-text-secondary);
-    --text-tertiary: var(--light-text-tertiary);
-    --accent-primary: var(--claude-orange);
-    --accent-hover: var(--claude-orange-light);
-  }
+  /* Font sizes */
+  --font-size-p: 0.875rem; /* 14px */
+  --font-size-h1: 1.5rem; /* 24px */
+  --font-size-h2: 1.375rem; /* 22px */
+  --font-size-h3: 1.125rem; /* 18px */
+  --font-size-h4: 1rem; /* 16px */
+  --font-size-small: 0.75rem; /* 12px */
 
+  /* Default theme (light) */
+  --bg: var(--light-bg);
+  --container: var(--light-container);
+  --card: var(--light-card);
+  --border: var(--light-border);
+  --input: var(--light-input);
+  --elevated: var(--light-elevated);
+  --text-primary: var(--light-text-primary);
+  --text-secondary: var(--light-text-secondary);
+  --text-tertiary: var(--light-text-tertiary);
+  --accent-primary: var(--claude-orange);
+  --accent-hover: var(--claude-orange-light);
+}
