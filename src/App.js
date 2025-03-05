@@ -17,6 +17,7 @@ function App() {
   const [companyInfo, setCompanyInfo] = useState(null);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [measuresProgress, setMeasuresProgress] = useState({});
+  const [navOpen, setNavOpen] = useState(false);
 
   // Sjekk om brukeren har lagret et tema-valg og bruk det ved oppstart
   useEffect(() => {
@@ -26,6 +27,30 @@ function App() {
       document.body.classList.add("dark-theme");
     }
   }, []);
+
+  // Lukk navigasjonsmenyen når siden endres
+useEffect(() => {
+  setNavOpen(false);
+}, [currentPage]);
+
+// Lukk menyen når det klikkes utenfor
+useEffect(() => {
+  const handleClickOutside = (event) => {
+    const nav = document.querySelector('nav');
+    const hamburger = document.querySelector('.hamburger-menu');
+    
+    if (navOpen && nav && hamburger && 
+        !nav.contains(event.target) && 
+        !hamburger.contains(event.target)) {
+      setNavOpen(false);
+    }
+  };
+
+  document.addEventListener('mousedown', handleClickOutside);
+  return () => {
+    document.removeEventListener('mousedown', handleClickOutside);
+  };
+}, [navOpen]);
 
   // Legg til i App.js, rett etter din eksisterende useEffect for å beregne sikkerhetsscore
 useEffect(() => {
@@ -57,6 +82,11 @@ useEffect(() => {
       localStorage.setItem("preferredTheme", "dark");
     }
     setIsDarkMode(!isDarkMode);
+  };
+
+    // Noe med hamburgermeny
+  const toggleNav = () => {
+    setNavOpen(!navOpen);
   };
 
   // Funksjon for å beregne sikkerhetsscore og tiltak basert på svar
@@ -461,44 +491,59 @@ useEffect(() => {
 
   return (
     <div className="app-container">
-      <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
-
       <header className="app-header">
-        <h1>LIGHTWEIGHT CYBERSECURITY</h1> 
-        {companyInfo && currentPage !== "startInfo" && currentPage !== "start"}
-        {currentPage !== "startInfo" && currentPage !== "start" && (
-          <nav>
-            <button
-              className={currentPage === "questionnaire" ? "active" : ""}
-              onClick={() => handleNavigate("questionnaire")}
-              disabled={currentPage === "startInfo"}
-            >
-              Spørsmål
-            </button>
-            <button
-              className={currentPage === "dashboard" ? "active" : ""}
-              onClick={() => handleNavigate("dashboard")}
-              disabled={Object.keys(answers).length === 0}
-            >
-              Dashboard
-            </button>
-            <button
-              className={currentPage === "measures" ? "active" : ""}
-              onClick={() => handleNavigate("measures")}
-              disabled={Object.keys(answers).length === 0}
-            >
-              Alle tiltak
-            </button>
-            {Object.keys(answers).length > 0 && (
+        <div className="left-section-header">
+          <h1>LIGHTWEIGHT CYBERSECURITY</h1>
+          
+          {currentPage !== "startInfo" && currentPage !== "start" && (
+            <nav className={navOpen ? "open" : ""}>
               <button
-                className="restart-button"
-                onClick={handleRestartAssessment}
+                className={currentPage === "dashboard" ? "active" : ""}
+                onClick={() => handleNavigate("dashboard")}
+                disabled={Object.keys(answers).length === 0}
               >
-                Start ny vurdering
+                Hjem
               </button>
-            )}
-          </nav>
-        )}
+              <button
+                className={currentPage === "measures" ? "active" : ""}
+                onClick={() => handleNavigate("measures")}
+                disabled={Object.keys(answers).length === 0}
+              >
+                Alle tiltak
+              </button>
+              <button>Data</button>
+              {Object.keys(answers).length > 0 && (
+                <button
+                  className="restart-button"
+                  onClick={handleRestartAssessment}
+                >
+                  Ny vurdering
+                </button>
+              )}
+              
+              {/* ThemeToggle i mobil-visning */}
+              <div className="mobile-theme-toggle">
+                <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+              </div>
+            </nav>
+          )}
+        </div>
+        
+        <div className="right-section-header">
+          {/* Hamburger-meny for mobil */}
+          {currentPage !== "startInfo" && currentPage !== "start" && (
+            <div className="hamburger-menu" onClick={toggleNav}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          )}
+          
+          {/* ThemeToggle i desktop-visning */}
+          <div className="desktop-theme-toggle">
+            <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+          </div>
+        </div>
       </header>
 
       <main>

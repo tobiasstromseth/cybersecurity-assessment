@@ -6,34 +6,27 @@
   }
   
   /* Progress bar */
-  .progress-bar {
-    height: 14px;
+  .progress-bar-q {
+    height: 15px;
     background-color: var(--container);
-    border-radius: var(--radius-sm);
     margin-bottom: 30px;
     overflow: hidden;
-    border-radius: var(--radius-xl);
   }
   
-  .progress-bar {
-    border-radius: var(--radius-lg);
-  }
-
-  .progress {
+  .progress-q {
     height: 100%;
-    background-color: var(--accent-primary);
+    background-color: var(--main-color);
     transition: width 0.3s ease;
     position: relative;
-    border-radius: var(--radius-lg);
   }
 
-  .progress-text {
+  .progress-text-q {
     position: absolute;
     right: 5px;
-    bottom: -4px;
-    color: var(--text-primary);
+    bottom: -5px;
+    color: var(--text-grey);
     font-weight: bold;
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .question-row {

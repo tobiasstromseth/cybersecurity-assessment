@@ -4,24 +4,16 @@ import "../styles/components/Dashboard.css";
 
 function Dashboard({
   securityScore,
-  priorityMeasures,
-  onViewAllMeasures,
-  companyInfo,
+  priorityMeasures
 }) {
-  // Score beregning og klassifisering
-  const getScoreColor = (score) => {
-    if (score >= 70) return "var(--green)";
-    if (score >= 40) return "var(--yellow)";
-    return "var(--red)";
-  };
-
+  // Vi trenger ikke lenger getScoreColor siden fargen nå styres av CSS-gradient
+  
   const getScoreLightColor = (score) => {
     if (score >= 70) return "var(--status-success-light)";
     if (score >= 40) return "var(--status-warning-light)";
     return "var(--status-danger-light)";
   };
 
-  const scoreColor = getScoreColor(securityScore);
   const scoreLightColor = getScoreLightColor(securityScore);
 
   const getScoreLabel = (score) => {
@@ -30,49 +22,11 @@ function Dashboard({
     return "Svak";
   };
 
-  const scoreExplanation = getDetailedExplanation(securityScore);
   const roundedScore = Math.round(securityScore);
-
-  // Få detaljert forklaring basert på scoren
-  function getDetailedExplanation(score) {
-    if (score >= 70) {
-      return {
-        heading: "Din organisasjon har god cybersikkerhet",
-        details: [
-          "Dere har implementert grunnleggende sikkerhetstiltak",
-          "De fleste kritiske sikkerhetskontroller er på plass",
-          "Dere har en proaktiv tilnærming til cybersikkerhet",
-        ],
-        icon: "✓",
-        recommendation:
-          "Fortsett det gode arbeidet og vurder å implementere de anbefalte tiltakene for å ytterligere styrke sikkerhetsposisjonen.",
-      };
-    } else if (score >= 40) {
-      return {
-        heading: "Din organisasjon har middels cybersikkerhet",
-        details: [
-          "Dere har implementert noen sikkerhetstiltak, men har fortsatt sårbarheter",
-          "Flere viktige sikkerhetskontroller mangler eller er ufullstendige",
-          "Dere har en reaktiv tilnærming til cybersikkerhet",
-        ],
-        icon: "!",
-        recommendation:
-          "Implementer de prioriterte tiltakene for å betydelig redusere risikoen for sikkerhetsbrudd.",
-      };
-    } else {
-      return {
-        heading: "Din organisasjon har svak cybersikkerhet",
-        details: [
-          "Dere mangler flere grunnleggende sikkerhetstiltak",
-          "Organisasjonen er sårbar for vanlige angrepstyper",
-          "Umiddelbare tiltak er nødvendig for å redusere risiko",
-        ],
-        icon: "×",
-        recommendation:
-          "Start umiddelbart med å implementere de høyt prioriterte tiltakene for å beskytte organisasjonens data og systemer.",
-      };
-    }
-  }
+  
+  // Beregn posisjonen for gradienten basert på score
+  // Vi må gjøre 100 - securityScore fordi vi vil ha fargen ved det punktet som vises
+  const scorePosition = `${100 - securityScore}%`;
 
   return (
     <div className="dashboard-container">
@@ -85,82 +39,93 @@ function Dashboard({
         {/* Score display */}
         <div className="score-display">
           <div className="score-number">
-            <span className="large-score">{roundedScore}</span>
-            <span className="max-score">/ 100</span>
+            <span 
+              className="large-score" 
+              style={{ 
+                //Flytt til CSS fil. Holdt på her for å gjøre ting lettere
+                backgroundImage: 'linear-gradient(to right, var(--red), var(--yellow) 50%, var(--green) 100%)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                color: 'transparent',
+                backgroundSize: '10000% 100%', //Dette er en gradient. Zoomer inn for å få riktig farge
+                backgroundPositionX: `${securityScore * 100 / (100 - 1)}%`
+              }}
+            >
+              {roundedScore}
+            </span>
+            <p className="max-score">/100</p>
+            <p className="security-level">Sikkerhetsnivå: Advanced</p>
           </div>
-          
-          <div>
-            <div>Sikkerhetsnivå: Advanced (2080 CELO)</div>
-            
-            {/* Progress bar */}
-            <div className="progress-container">
-              <div className="progress-bar-background">
-                <div 
-                  className="progress-bar"
-                  style={{ 
-                    width: `${securityScore}%`, 
-                    backgroundColor: scoreColor 
-                  }}
-                />
-              </div>
-              <div className="progress-labels">
-                <span>0</span>
-                <span>50</span>
-                <span>100</span>
-              </div>
-            </div>
+        </div>
+        
+        {/* Progress bar */}
+        <div className="progress-container">
+          <div 
+            className="progress-bar-background"
+            style={{ '--score': `${securityScore}%` }}
+          >
+            <div className="progress-bar-cover"></div>
+          </div>
+          <div className="progress-labels">
+            <span className="progress-labels-low">0</span>
+            <span className="progress-labels-medium">50</span>
+            <span className="progress-labels-high">100</span>
           </div>
         </div>
         
         {/* Security ranking section */}
         <div className="security-ranking-section">
-          <h3>Din sikkerhetsrangering</h3>
-          
-          <div className="ranking-buttons">
-            <button>B</button>
-            <button>N</button>
-            <button>I</button>
-            <button className="active">A</button>
-            <button>E</button>
-            <button>M</button>
-            <button>GM</button>
-          </div>
-          
-          <div className="ranking-info">
+          <div className="security-ranking-section-top">
+            <h3>Din sikkerhetsrangering</h3>
+            
+            <div className="ranking-buttons">
+              <button>B</button>
+              <button>N</button>
+              <button>I</button>
+              <button className="active">A</button>
+              <button>E</button>
+              <button>M</button>
+              <button>GM</button>
+            </div>
             <div className="current-next">
-              <div>
-                <span>Nåværende:</span>
-                <span>Advanced</span>
-              </div>
-              <div>
-                <span>Neste:</span>
-                <span>Expert (4 poeng)</span>
-              </div>
-            </div>
-            
-            <div className="stats-cards">
-              <div className="stat-card">
-                <div className="stat-icon">↗</div>
-                <div className="stat-label">Neste mål</div>
-                <div className="stat-value">4</div>
-              </div>
-              
-              <div className="stat-card">
-                <div className="stat-icon">📈</div>
-                <div className="stat-label">Over snitt</div>
-                <div className="stat-value">+7</div>
-              </div>
-              
-              <div className="stat-card">
-                <div className="stat-icon">🛡️</div>
-                <div className="stat-label">Rangering</div>
-                <div className="stat-value">#4 av 10</div>
+                <div>
+                  <span>Nåværende:</span>
+                  <span>Advanced</span>
+                </div>
+                <div>
+                  <span>Neste:</span>
+                  <span>Expert (4 poeng)</span>
+                </div>
               </div>
             </div>
             
-            <div className="points-needed">
-              Du trenger bare <strong>4 poeng</strong> for å nå <strong>Expert</strong> nivå!
-            </div>
+            <div className="security-ranking-section-bottom">
+              <div className="ranking-info">
+                            
+                <div className="stats-cards">
+                  <div className="stat-card">
+                    <div className="stat-icon">↗</div>
+                    <div className="stat-label">Neste mål</div>
+                    <div className="stat-value">4</div>
+                  </div>
+                  
+                  <div className="stat-card">
+                    <div className="stat-icon">📈</div>
+                    <div className="stat-label">Over snitt</div>
+                    <div className="stat-value">+7</div>
+                  </div>
+                  
+                  <div className="stat-card">
+                    <div className="stat-icon">🛡️</div>
+                    <div className="stat-label">Rangering</div>
+                    <div className="stat-value">#4 av 10</div>
+                  </div>
+                </div>
+                
+                <div className="points-needed">
+                  Du trenger bare <strong>4 poeng</strong> for å nå <strong>Expert</strong> nivå!
+                </div>
+              </div>
           </div>
         </div>
       </div>
