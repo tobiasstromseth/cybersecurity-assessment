@@ -23,9 +23,9 @@
   .progress-text-q {
     position: absolute;
     right: 5px;
-    bottom: -5px;
-    color: var(--text-grey);
-    font-weight: bold;
+    bottom: -4px;
+    color: var(--darkest-white);
+
     font-size: 15px;
   }
 

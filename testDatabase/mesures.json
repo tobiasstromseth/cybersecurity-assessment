@@ -1,0 +1,257 @@
+{
+    "measures": [
+      {
+        "id": 1,
+        "name": "Totrinnsverifisering",
+        "title": "Implementer totrinnsverifisering",
+        "description": "Sett opp totrinnsverifisering for alle brukere for å styrke påloggingssikkerheten.",
+        "category": "Identitets- og tilgangsstyring",
+        "reason": "Totrinnsverifisering kan forhindre 99% av automatiserte angrep og gjør det betydelig vanskeligere for hackere å få tilgang til kontoer.",
+        "weight": 40,
+        "implementationSteps": [
+          {
+            "id": 101,
+            "title": "Last ned programvare for administrasjon",
+            "description": "Last ned og installer sentralisert programvare for å håndtere totrinnsbekreftelse for alle kontoer.",
+            "completed": false,
+            "details": [
+              "Gå til leverandørens nettsted, opprett en konto hvis nødvendig og last ned administrasjonsverktøyet.",
+              "Installer på en server eller PC som vil fungere som kontrollpunkt."
+            ]
+          },
+          {
+            "id": 102,
+            "title": "Kartlegg viktige kontoer",
+            "description": "Lag en liste over alle viktige brukere og kontoer som skal ha totrinnsbekreftelse.",
+            "completed": false,
+            "details": [
+              "Inkluder e-postkontoer, tilganger til skytjenester, administrative kontoer og VPN-tilganger.",
+              "Prioriter basert på hvilke kontoer som har mest privilegier eller tilgang til sensitiv informasjon."
+            ]
+          },
+          {
+            "id": 103,
+            "title": "Velg autentiseringsmetode",
+            "description": "Bestem hvilken form for totrinnsbekreftelse som passer best for din bedrift.",
+            "completed": false,
+            "details": [
+              "Du kan velge mellom SMS-koder, e-postkoder, dedikerte app-genererte koder (som Google Authenticator, Microsoft Authenticator) eller fysiske sikkerhetsøkler (som YubiKey)."
+            ]
+          },
+          {
+            "id": 104,
+            "title": "Konfigurer løsningen",
+            "description": "Sett opp totrinnsbekreftelse i sentralisert administrasjonssystem.",
+            "completed": false,
+            "details": [
+              "Følg leverandørens veiledning for konfigurasjon. Sørg for at du setter gode standardinnstillinger som balanserer sikkerhet og brukervennlighet."
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Sikkerhetsopplæring",
+        "title": "Etabler sikkerhetsopplæring",
+        "description": "Gjennomfør regelmessig sikkerhetsopplæring for alle ansatte.",
+        "category": "Opplæring og bevisstgjøring",
+        "reason": "Menneskelige feil står bak 95% av alle sikkerhetsbrudd. Regelmessig opplæring reduserer denne risikoen betydelig.",
+        "weight": 35,
+        "implementationSteps": [
+          {
+            "id": 201,
+            "title": "Definer opplæringsbehov",
+            "description": "Identifiser hvilke sikkerhetsemner som er mest relevante for din organisasjon.",
+            "completed": false,
+            "details": [
+              "Vanlige emner inkluderer phishing-gjenkjenning, passordrutiner, sikker databehandling, og rapportering av hendelser.",
+              "Tilpass innholdet basert på bedriftens størrelse og risikoprofil."
+            ]
+          },
+          {
+            "id": 202,
+            "title": "Velg opplæringsformat",
+            "description": "Bestem hvordan opplæringen skal gjennomføres.",
+            "completed": false,
+            "details": [
+              "For små bedrifter kan månedlige sikkerhetsmøter være effektivt.",
+              "Vurder online kurs, webinarer, eller eksterne opplæringsressurser."
+            ]
+          },
+          {
+            "id": 203,
+            "title": "Lag en opplæringsplan",
+            "description": "Utvikle en årlig plan for sikkerhetsopplæring.",
+            "completed": false,
+            "details": [
+              "Sett opp en tidsplan for regelmessige opplæringsøkter.",
+              "Inkluder både grunnleggende og avanserte emner."
+            ]
+          },
+          {
+            "id": 204,
+            "title": "Gjennomfør opplæring",
+            "description": "Start med grunnleggende sikkerhetsopplæring for alle ansatte.",
+            "completed": false,
+            "details": [
+              "Sørg for at all opplæring dokumenteres.",
+              "Vurder å teste kunnskapen etter opplæringen."
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Sikkerhetskopier",
+        "title": "Implementer sikkerhetskopiering",
+        "description": "Sett opp automatisk sikkerhetskopiering av alle kritiske systemer og data.",
+        "category": "Datahåndtering",
+        "reason": "I tilfelle et ransomware-angrep eller datakorrupsjon er sikkerhetskopier avgjørende for å kunne gjenopprette virksomheten raskt.",
+        "weight": 45,
+        "implementationSteps": [
+          {
+            "id": 301,
+            "title": "Kartlegg kritiske data",
+            "description": "Identifiser hvilke data som er kritiske for virksomheten og må sikres.",
+            "completed": false,
+            "details": [
+              "Fokuser på forretningskritiske systemer, kundedata, og økonomisk informasjon.",
+              "Vurder lovkrav for oppbevaring av data (f.eks. regnskap, personopplysninger)."
+            ]
+          },
+          {
+            "id": 302,
+            "title": "Velg sikkerhetskopieringsløsning",
+            "description": "Velg en løsning som passer virksomhetens behov og budsjett.",
+            "completed": false,
+            "details": [
+              "For små bedrifter kan skybaserte løsninger være kostnadseffektive.",
+              "Større bedrifter bør vurdere hybride løsninger med både lokal og skybasert backup."
+            ]
+          },
+          {
+            "id": 303,
+            "title": "Definer backup-rutiner",
+            "description": "Bestem hvor ofte data skal sikkerhetskopieres og hvor lenge kopier skal oppbevares.",
+            "completed": false,
+            "details": [
+              "Implementer 3-2-1-regelen: 3 kopier, 2 forskjellige lagringsmedier, 1 offsite.",
+              "Definer RTO (Recovery Time Objective) og RPO (Recovery Point Objective)."
+            ]
+          },
+          {
+            "id": 304,
+            "title": "Test gjenoppretting",
+            "description": "Verifiser at sikkerhetskopiene fungerer ved å teste gjenoppretting regelmessig.",
+            "completed": false,
+            "details": [
+              "Test fullstendig gjenoppretting minst én gang i året.",
+              "Dokumenter gjenopprettingsprosedyren."
+            ]
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Programvareoppdateringer",
+        "title": "Oppdater programvare",
+        "description": "Etabler rutiner for regelmessig oppdatering av all programvare.",
+        "category": "Sårbarhetsadministrasjon",
+        "reason": "Utdatert programvare inneholder ofte kjente sårbarheter som angripere kan utnytte. Oppdaterte systemer beskytter mot disse.",
+        "weight": 30,
+        "implementationSteps": [
+          {
+            "id": 401,
+            "title": "Lag oversikt over programvare",
+            "description": "Kartlegg all programvare som brukes i virksomheten.",
+            "completed": false,
+            "details": [
+              "Inkluder operativsystemer, applikasjoner, og firmware.",
+              "Noter versjoner og når siste oppdatering ble gjort."
+            ]
+          },
+          {
+            "id": 402,
+            "title": "Etabler oppdateringsrutiner",
+            "description": "Definer faste rutiner for når og hvordan oppdateringer skal gjennomføres.",
+            "completed": false,
+            "details": [
+              "For kritiske sikkerhetsoppdateringer: Implementer innen 48 timer.",
+              "For andre oppdateringer: Implementer månedlig etter testing."
+            ]
+          },
+          {
+            "id": 403,
+            "title": "Konfigurer automatiske oppdateringer",
+            "description": "Aktiver automatiske oppdateringer der det er mulig.",
+            "completed": false,
+            "details": [
+              "Prioriter sikkerhetskritiske systemer.",
+              "Vurder å teste oppdateringer i et testmiljø før produksjon for kritiske systemer."
+            ]
+          },
+          {
+            "id": 404,
+            "title": "Følg opp utdatert programvare",
+            "description": "Identifiser og erstatt programvare som ikke lenger støttes av leverandøren.",
+            "completed": false,
+            "details": [
+              "Programmer som ikke lenger mottar sikkerhetsoppdateringer utgjør en betydelig risiko.",
+              "Planlegg for utfasing og migrasjon til støttede alternativer."
+            ]
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Brannmur",
+        "title": "Implementer brannmur",
+        "description": "Sett opp og konfigurer en brannmur for å beskytte nettverket.",
+        "category": "Nettverkssikkerhet",
+        "reason": "En brannmur er den første forsvarslinjen mot uautorisert tilgang til nettverket ditt og kan blokkere mange automatiserte angrep.",
+        "weight": 35,
+        "implementationSteps": [
+          {
+            "id": 501,
+            "title": "Velg brannmurløsning",
+            "description": "Velg en brannmurløsning som passer virksomhetens størrelse og behov.",
+            "completed": false,
+            "details": [
+              "For små bedrifter: Start med en god nettverksruter med brannmurfunksjonalitet.",
+              "For større bedrifter: Vurder dedikerte brannmurenheter eller UTM-løsninger (Unified Threat Management)."
+            ]
+          },
+          {
+            "id": 502,
+            "title": "Implementer grunnleggende konfigurasjon",
+            "description": "Sett opp grunnleggende brannmurregler basert på minste privilegiums prinsipp.",
+            "completed": false,
+            "details": [
+              "Blokker all innkommende trafikk som standard, og åpne kun for nødvendige tjenester.",
+              "Konfigurer logging for å fange opp blokkerte forsøk."
+            ]
+          },
+          {
+            "id": 503,
+            "title": "Definer avanserte regler",
+            "description": "Implementer mer detaljerte regler basert på virksomhetens behov.",
+            "completed": false,
+            "details": [
+              "Vurder å segmentere nettverket for å isolere sensitive systemer.",
+              "Implementer applikasjonsfiltrering for mer presis kontroll."
+            ]
+          },
+          {
+            "id": 504,
+            "title": "Overvåk og vedlikehold",
+            "description": "Etabler rutiner for regelmessig gjennomgang og oppdatering av brannmurregler.",
+            "completed": false,
+            "details": [
+              "Gjennomgå logger og blokkerte forsøk månedlig.",
+              "Oppdater reglene når nye tjenester implementeres eller eksisterende fjernes."
+            ]
+          }
+        ]
+      }
+    ]
+  }

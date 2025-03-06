@@ -119,6 +119,7 @@
   font-size: var(--font-size-h3);
   margin-bottom: 16px;
   color: var(--text-dark);
+  font-weight: 600;
 }
 
 .security-ranking-section-top {
@@ -131,19 +132,23 @@
 
 .ranking-buttons {
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 8px;
   margin-bottom: 16px;
 }
 
 .ranking-buttons button {
-  width: 40px;
-  height: 40px;
+  flex: 1; /* Dette gjør at alle knapper tar like mye plass */
+  min-width: 0; /* Tillater knappene å krympe under deres naturlige bredde */
+  height: 30px;
   border: 1px solid var(--darkest-white);
   background-color: var(--lightest-white);
   border-radius: var(--radius-sm);
   font-weight: 600;
   cursor: pointer;
   color: var(--text-dark);
+  border-radius: 4px;
 }
 
 .ranking-buttons button.active {
@@ -154,8 +159,8 @@
 .current-next {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 16px;
-  font-size: 14px;
+  margin-bottom: 5px;
+  font-size: 10px;
 }
 
 .current-next .label {
@@ -177,11 +182,11 @@
 
 .stat-card {
   flex: 1;
-  border: 1px solid var(--darkest-white);
+  border: 1px solid var(--text-grey);
   border-radius: var(--radius-sm);
   padding: 16px;
   text-align: center;
-  background-color: var(--lightest-white);
+  background-color: var(--darkest-white);
 }
 
 .stat-icon {

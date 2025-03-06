@@ -1,4 +1,4 @@
-// src/components/Dashboard.js - Omorganisert layout
+// src/components/Dashboard.js - Oppdatert for å bruke weight i stedet for eloPoints
 import React from "react";
 import "../styles/components/Dashboard.css";
 
@@ -27,6 +27,12 @@ function Dashboard({
   // Beregn posisjonen for gradienten basert på score
   // Vi må gjøre 100 - securityScore fordi vi vil ha fargen ved det punktet som vises
   const scorePosition = `${100 - securityScore}%`;
+
+  // Beregn totalt antall poeng som kan tjenes ved å implementere de foreslåtte tiltakene
+  const totalPotentialPoints = priorityMeasures.reduce(
+    (total, measure) => total + (measure.weight || 0), 
+    0
+  );
 
   return (
     <div className="dashboard-container">
@@ -89,12 +95,12 @@ function Dashboard({
             </div>
             <div className="current-next">
                 <div>
-                  <span>Nåværende:</span>
-                  <span>Advanced</span>
+                  <span>Nåværende: </span>
+                  <span style={{ fontWeight: 'bold' }}>Advanced</span>
                 </div>
                 <div>
-                  <span>Neste:</span>
-                  <span>Expert (4 poeng)</span>
+                  <span>Neste: </span>
+                  <span style={{ fontWeight: 'bold' }}>Expert (4 poeng)</span>
                 </div>
               </div>
             </div>
@@ -134,7 +140,7 @@ function Dashboard({
       <div className="right-section">
         <div className="measures-header">
           <h2>Tiltaksliste</h2>
-          <p>Ved å fullføre gjenstående tiltak kan du forbedre scoren med opptil 28 poeng og sikre bedriften din bedre!</p>
+          <p>Ved å fullføre gjenstående tiltak kan du forbedre scoren med opptil {totalPotentialPoints} poeng og sikre bedriften din bedre!</p>
         </div>
         
         <div className="measures-list">
@@ -157,11 +163,11 @@ function Dashboard({
               
               <div className="measure-meta">
                 <div className="measure-details">
-                  <span>Effekt: Medium</span>
-                  <span>Kritikalitet: Lav</span>
-                  <span>Innsats: Høy</span>
+                  <span>Effekt: {measure.weight >= 40 ? "Høy" : measure.weight >= 30 ? "Medium" : "Lav"}</span>
+                  <span>Kritikalitet: {measure.priority === "Høy" ? "Høy" : "Middels"}</span>
+                  <span>Innsats: {measure.implementationSteps?.length > 3 ? "Høy" : "Middels"}</span>
                 </div>
-                <div className="measure-points">+4 poeng</div>
+                <div className="measure-points">+{measure.weight || 0} poeng</div>
               </div>
             </div>
           ))}

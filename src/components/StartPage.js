@@ -5,10 +5,10 @@ import "../styles/components/StartPage.css";
 function StartPage({ onComplete, savedCompanyInfo }) {
   const [companyInfo, setCompanyInfo] = useState(
     savedCompanyInfo || {
-      companyName: "",
-      industry: "",
-      employeeCount: "",
-      itCompetence: "", // Added IT competence field
+      companyName: "Test",
+      industry: "Bygg og Anlegg",
+      employeeCount: "0-5",
+      itCompetence: "ingen", // Added IT competence field
     }
   );
 
