@@ -6,7 +6,7 @@ const StartInfo = ({ onComplete }) => {
   return (
     <div className="start-info-container">
       <div className="info-card">
-        <h2>Lorem Ipsum</h2>
+        <h2>Start Info</h2>
         
         <div className="info-section">
           <h3>Om verktøyet</h3>

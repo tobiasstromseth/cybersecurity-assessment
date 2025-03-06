@@ -15,7 +15,7 @@
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--text-primary);
-    background-color: var(--bg);
+    background-color: var(--medium-white);
     transition: background-color 0.3s ease, color 0.3s ease;
     min-height: 100vh;
   }

@@ -109,15 +109,15 @@ function Questionnaire({ onSubmit }) {
 
   return (
     <div className="questionnaire-container">
-      <div className="progress-bar">
+      <div className="progress-bar-q">
         <div
-          className="progress"
+          className="progress-q"
           style={{
             width: `${progressPercentage}%`,
           }}
         >
           {progressPercentage > 0 && (
-            <span className="progress-text">{progressPercentage}%</span>
+            <span className="progress-text-q">{progressPercentage}%</span>
           )}
         </div>
       </div>
