@@ -1,0 +1,19 @@
+Rammeverks ID,ID,Lokal ID,Rammeverk,Tiltak,Kapittel,KategoriID,Kategori
+1,9,2.1.2,NSMs grunnprinsipper for IKT sikkerhet,Kjøp moderne og oppdatert maskin- og programvare slik at nyere sikkerhetsfunksjonalitet er innebygd.,Beskytte og opprettholde,6,Oppdatering/Konfigurering
+1,14,2.3.1,NSMs grunnprinsipper for IKT sikkerhet,Etabler et sentralt styrt regime for sikkerhetsoppdatering.,Beskytte og opprettholde,6,Oppdatering/Konfigurering
+1,15,2.3.2,NSMs grunnprinsipper for IKT sikkerhet,Konfigurer klienter slik at kun kjent programvare kjører på dem.,Beskytte og opprettholde,6,Oppdatering/Konfigurering
+1,16,2.3.3,NSMs grunnprinsipper for IKT sikkerhet,Deaktiver unødvendig funksjonalitet.,Beskytte og opprettholde,6,Oppdatering/Konfigurering
+1,17,2.3.4,NSMs grunnprinsipper for IKT sikkerhet,Etabler og vedlikehold standard sikkerhetskonfigurasjoner.,Beskytte og opprettholde,6,Oppdatering/Konfigurering
+1,18,2.3.7,NSMs grunnprinsipper for IKT sikkerhet,Endre alle standardpassord på IKT-produktene før produksjonssetting.,Beskytte og opprettholde,6,Oppdatering/Konfigurering
+1,37,2.8.4,NSMs grunnprinsipper for IKT sikkerhet,Tillat kun virksomhetsgodkjente programtillegg.,Beskytte og opprettholde,6,Oppdatering/Konfigurering
+2,52,2.2,CIS Controls V8,Ensure Authorized Software is Currently Supported,Inventory and Control of Software Assets,6,Oppdatering/Konfigurering
+2,66,7.3,CIS Controls V8,Perform Automated Operating System Patch Management,Continuous Vulnerability Management,6,Oppdatering/Konfigurering
+2,67,7.4,CIS Controls V8,Perform Automated Application Patch Management,Continuous Vulnerability Management,6,Oppdatering/Konfigurering
+2,68,9.1,CIS Controls V8,Ensure Use of Only Fully Supported Browsers and Email Clients,Email and Web Browser Protections,6,Oppdatering/Konfigurering
+2,75,12.1,CIS Controls V8,Ensure Network Infrastructure is Up-to-Date,Network Infrastructure Management,6,Oppdatering/Konfigurering
+3,92,6,NISTIR7621,Patch your operating systems and applications,3.2 Protect,6,Oppdatering/Konfigurering
+4,113,ID.AM-08,NIST CSF,"Systems, hardware, software, services, and data are managed throughout their life cycles",Identify,6,Oppdatering/Konfigurering
+4,116,PR.AA-03,NIST CSF,Users services and hardware are authenticated,Protect,6,Oppdatering/Konfigurering
+4,126,PR.PS-02,NIST CSF,Software is maintained replaced and removed commensurate with risk,Protect,6,Oppdatering/Konfigurering
+4,127,PR.PS-03,NIST CSF,Hardware is maintained replaced and removed commensurate with risk,Protect,6,Oppdatering/Konfigurering
+4,128,PR.PS-05,NIST CSF,Installation and execution of unauthorized software are prevented,Protect,6,Oppdatering/Konfigurering

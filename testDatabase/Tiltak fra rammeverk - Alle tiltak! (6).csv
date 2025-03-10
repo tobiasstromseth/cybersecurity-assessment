@@ -1,0 +1,128 @@
+Rammeverks ID,ID,Lokal ID,Rammeverk,Tiltak,Kapittel,KategoriID,Kategori
+1,1,1.1.5,NSMs grunnprinsipper for IKT sikkerhet,"Kartlegg virksomhetens leveranser, informasjonssystemer og understøttende IKT-funksjoner.",Identifisere og kartlegge,1,Ressurshåndtering
+1,2,1.1.6,NSMs grunnprinsipper for IKT sikkerhet,Kartlegg informasjonsbehandling og dataflyt i virksomheten.,Identifisere og kartlegge,1,Ressurshåndtering
+1,3,1.2.1,NSMs grunnprinsipper for IKT sikkerhet,Etabler en prosess for å kartlegge enheter og programvare som er i bruk i virksomheten.,Identifisere og kartlegge,14,Vi-Tilbyr
+1,4,1.2.3,NSMs grunnprinsipper for IKT sikkerhet,Kartlegg enheter i bruk i virksomheten iht. prosess i 1.2.1.,Identifisere og kartlegge,1,Ressurshåndtering
+1,5,1.2.4,NSMs grunnprinsipper for IKT sikkerhet,Kartlegg programvare i bruk i virksomheten iht. prosess i 1.2.1.,Identifisere og kartlegge,1,Ressurshåndtering
+1,6,1.3.1,NSMs grunnprinsipper for IKT sikkerhet,"Kartlegg brukere i informasjonssystemene, inkludert brukeridentitet, arbeidslokasjon, tilgangsbehov til IKT-systemer, tjenester/applikasjoner og spesielle rettighetsbehov.",Identifisere og kartlegge,1,Ressurshåndtering
+1,7,1.3.2,NSMs grunnprinsipper for IKT sikkerhet,Kartlegg og definer de ulike brukerkategoriene som finnes i virksomheten for å definere tilgangsnivåer og behov for oppfølging og kontroll.,Identifisere og kartlegge,5,Tilgangskontroll
+1,8,1.3.3,NSMs grunnprinsipper for IKT sikkerhet,Kartlegg ansvar og roller spesielt knyttet til IKT-sikkerhet.,Identifisere og kartlegge,11,Hendelseshåndteringsplan
+1,9,2.1.2,NSMs grunnprinsipper for IKT sikkerhet,Kjøp moderne og oppdatert maskin- og programvare slik at nyere sikkerhetsfunksjonalitet er innebygd.,Beskytte og opprettholde,6,Oppdatering/Konfigurering
+1,10,2.1.3,NSMs grunnprinsipper for IKT sikkerhet,Foretrekk IKT-produkter som er sertifiserte og evaluert av en tiltrodd tredjepart.,Beskytte og opprettholde,1,Ressurshåndtering
+1,11,2.2.1,NSMs grunnprinsipper for IKT sikkerhet,Etabler og vedlikehold en helhetlig sikkerhetsarkitektur som ivaretar et sikkert og forsvarbart IKT-system.,Beskytte og opprettholde,13,Alle
+1,12,2.2.3,NSMs grunnprinsipper for IKT sikkerhet,Del opp virksomhetens nettverk etter virksomhetens risikoprofil.,Beskytte og opprettholde,8,Nettverkssikkerhet
+1,13,2.2.6,NSMs grunnprinsipper for IKT sikkerhet,Reguler tilgang til tjenester basert på kjennskap til både brukere og enhet.,Beskytte og opprettholde,5,Tilgangskontroll
+1,14,2.3.1,NSMs grunnprinsipper for IKT sikkerhet,Etabler et sentralt styrt regime for sikkerhetsoppdatering.,Beskytte og opprettholde,6,Oppdatering/Konfigurering
+1,15,2.3.2,NSMs grunnprinsipper for IKT sikkerhet,Konfigurer klienter slik at kun kjent programvare kjører på dem.,Beskytte og opprettholde,6,Oppdatering/Konfigurering
+1,16,2.3.3,NSMs grunnprinsipper for IKT sikkerhet,Deaktiver unødvendig funksjonalitet.,Beskytte og opprettholde,6,Oppdatering/Konfigurering
+1,17,2.3.4,NSMs grunnprinsipper for IKT sikkerhet,Etabler og vedlikehold standard sikkerhetskonfigurasjoner.,Beskytte og opprettholde,6,Oppdatering/Konfigurering
+1,18,2.3.7,NSMs grunnprinsipper for IKT sikkerhet,Endre alle standardpassord på IKT-produktene før produksjonssetting.,Beskytte og opprettholde,6,Oppdatering/Konfigurering
+1,19,2.4.1,NSMs grunnprinsipper for IKT sikkerhet,Etabler tilgangskontroll på flest mulige nettverksporter.,Beskytte og opprettholde,5,Tilgangskontroll
+1,20,2.4.2,NSMs grunnprinsipper for IKT sikkerhet,Krypter alle trådløse og kablede forbindelser.,Beskytte og opprettholde,8,Nettverkssikkerhet
+1,21,2.4.3,NSMs grunnprinsipper for IKT sikkerhet,Kartlegg fysisk tilgjengelighet for svitsjer og kabler.,Beskytte og opprettholde,9,Fysisk sikring
+1,22,2.4.4,NSMs grunnprinsipper for IKT sikkerhet,Aktiver brannmur på alle klienter og servere.,Beskytte og opprettholde,7,Brannmur/antivirus
+1,23,2.5.2,NSMs grunnprinsipper for IKT sikkerhet,Begrens tilgangen til interne tjenester fra eksterne lokasjoner.,Beskytte og opprettholde,5,Tilgangskontroll
+1,24,2.5.7,NSMs grunnprinsipper for IKT sikkerhet,Ha kontroll på trafikk mellom virksomheten og samarbeidspartnere/tjenesteleverandører.,Beskytte og opprettholde,1,Ressurshåndtering
+1,25,2.6.1,NSMs grunnprinsipper for IKT sikkerhet,Etabler retningslinjer for tilgangskontroll.,Beskytte og opprettholde,5,Tilgangskontroll
+1,26,2.6.2,NSMs grunnprinsipper for IKT sikkerhet,"Etabler en formell prosess for administrasjon av kontoer, tilganger og rettigheter.",Beskytte og opprettholde,5,Tilgangskontroll
+1,27,2.6.3,NSMs grunnprinsipper for IKT sikkerhet,"Benytt et sentralisert og automatiserbart verktøy for å styre kontoer, tilganger og rettigheter.",Beskytte og opprettholde,5,Tilgangskontroll
+1,28,2.6.4,NSMs grunnprinsipper for IKT sikkerhet,Minimer rettigheter til sluttbrukere og spesialbrukere.,Beskytte og opprettholde,5,Tilgangskontroll
+1,29,2.6.5,NSMs grunnprinsipper for IKT sikkerhet,Minimer rettigheter på drifts-kontoer.,Beskytte og opprettholde,5,Tilgangskontroll
+1,30,2.6.6,NSMs grunnprinsipper for IKT sikkerhet,Styr tilganger til enheter.,Beskytte og opprettholde,5,Tilgangskontroll
+1,31,2.6.7,NSMs grunnprinsipper for IKT sikkerhet,Bruk multi-faktor autentisering for å autentisere brukere.,Beskytte og opprettholde,4,Flerfaktor (MFA)
+1,32,2.7.1,NSMs grunnprinsipper for IKT sikkerhet,Etabler en strategi for håndtering av kryptografi i virksomheten.,Beskytte og opprettholde,10,Datakryptering
+1,33,2.7.2,NSMs grunnprinsipper for IKT sikkerhet,Aktiver kryptering i de tjenestene som tilbyr slik funksjonalitet og sikre at kun anbefalte algoritmer og nøkkellengder benyttes.,Beskytte og opprettholde,10,Datakryptering
+1,34,2.7.3,NSMs grunnprinsipper for IKT sikkerhet,Krypter lagringsmedier som holder konfidensiell data og som lett kan mistes eller kompromitteres.,Beskytte og opprettholde,10,Datakryptering
+1,35,2.7.4,NSMs grunnprinsipper for IKT sikkerhet,Benytt kryptering når konfidensiell informasjon overføres eller når tilliten til informasjonskanalen er lav.,Beskytte og opprettholde,10,Datakryptering
+1,36,2.8.3,NSMs grunnprinsipper for IKT sikkerhet,"Bruk kun støttede e-postklienter, nettlesere og programtillegg («plugins») i virksomheten.",Beskytte og opprettholde,16,Urelevant
+1,37,2.8.4,NSMs grunnprinsipper for IKT sikkerhet,Tillat kun virksomhetsgodkjente programtillegg.,Beskytte og opprettholde,6,Oppdatering/Konfigurering
+1,38,2.9.1,NSMs grunnprinsipper for IKT sikkerhet,Legg en plan for regelmessig sikkerhetskopiering av alle virksomhetsdata.,Beskytte og opprettholde,3,Sikkerhetskopiering
+1,39,2.9.2,NSMs grunnprinsipper for IKT sikkerhet,Inkluder sikkerhetskopier av programvare for å sikre gjenoppretting.,Beskytte og opprettholde,3,Sikkerhetskopiering
+1,40,2.9.3,NSMs grunnprinsipper for IKT sikkerhet,Test sikkerhetskopier regelmessig ved å utføre gjenopprettingstest.,Beskytte og opprettholde,3,Sikkerhetskopiering
+1,41,2.9.4,NSMs grunnprinsipper for IKT sikkerhet,"Beskytt sikkerhetskopier mot tilsiktet og utilsiktet sletting, manipulering og avlesning.",Beskytte og opprettholde,3,Sikkerhetskopiering
+1,42,2.10.2,NSMs grunnprinsipper for IKT sikkerhet,Involver nødvendig IKT-sikkerhetspersonell i forbindelse med endringer.,Beskytte og opprettholde,3,Sikkerhetskopiering
+1,43,3.1.3,NSMs grunnprinsipper for IKT sikkerhet,Benytt automatisert og sentralisert verktøy for å håndtere kjente trusler (som skadevare).,Oppdage,14,Vi-Tilbyr
+1,44,4.1.1,NSMs grunnprinsipper for IKT sikkerhet,Etabler et planverk for hendelseshåndtering som ivaretar behovet for virksomhetskontinuitet ved beredskap og krise.,Håndtere og gjenopprette,7,Brannmur/antivirus
+1,45,4.1.3,NSMs grunnprinsipper for IKT sikkerhet,Utarbeid rolle- og ansvarsbeskrivelse for personell som skal involveres i hendelseshåndtering.,Håndtere og gjenopprette,11,Hendelseshåndteringsplan
+1,46,4.1.4,NSMs grunnprinsipper for IKT sikkerhet,Utarbeid avtaler med relevante tredjeparter.,Håndtere og gjenopprette,11,Hendelseshåndteringsplan
+1,47,4.1.5,NSMs grunnprinsipper for IKT sikkerhet,Fastsett hvilke kommunikasjonskanaler som skal benyttes i forbindelse med hendelser.,Håndtere og gjenopprette,11,Hendelseshåndteringsplan
+2,49,1.1,CIS Controls V8,Establish and Maintain Detailed Enterprise Asset Inventory,Inventory and Control of Enterprise Assets,1,Ressurshåndtering
+2,50,1.2,CIS Controls V8,Address Unauthorized Assets,Inventory and Control of Enterprise Assets,1,Ressurshåndtering
+2,51,2.1,CIS Controls V8,Establish and Maintain a Software Inventory,Inventory and Control of Software Assets,1,Ressurshåndtering
+2,52,2.2,CIS Controls V8,Ensure Authorized Software is Currently Supported,Inventory and Control of Software Assets,6,Oppdatering/Konfigurering
+2,53,2.3,CIS Controls V8,Address Unauthorized Software,Inventory and Control of Software Assets,1,Ressurshåndtering
+2,54,3.6,CIS Controls V8,Encrypt Data on End-User Devices,Data Protection,10,Datakryptering
+2,55,4.3,CIS Controls V8,Configure Automatic Session Locking on Enterprise Assets,Secure Configuration of Enterprise Assets and Software,9,Fysisk sikring
+2,56,4.5,CIS Controls V8,Implement and Manage a Firewall on End-User Devices,Secure Configuration of Enterprise Assets and Software,7,Brannmur/antivirus
+2,57,4.7,CIS Controls V8,Manage Default Accounts on Enterprise Assets and Software,Secure Configuration of Enterprise Assets and Software,5,Tilgangskontroll
+2,58,5.1,CIS Controls V8,Establish and Maintain an Inventory of Accounts,Account Management,1,Ressurshåndtering
+2,59,5.2,CIS Controls V8,Use Unique Passwords,Account Management,2,Passord Policy
+2,60,5.3,CIS Controls V8,Disable Dormant Accounts,Account Management,5,Tilgangskontroll
+2,61,5.4,CIS Controls V8,Restrict Administrator Privileges to Dedicated Administrator Accounts,Account Management,5,Tilgangskontroll
+2,62,6.1,CIS Controls V8,Establish an Access Granting Process,Access Control Management,5,Tilgangskontroll
+2,63,6.3,CIS Controls V8,Require MFA for Externally-Exposed Applications,Access Control Management,4,Flerfaktor (MFA)
+2,64,6.4,CIS Controls V8,Require MFA for Remote Network Access,Access Control Management,4,Flerfaktor (MFA)
+2,65,6.5,CIS Controls V8,Require MFA for Administrative Access,Access Control Management,4,Flerfaktor (MFA)
+2,66,7.3,CIS Controls V8,Perform Automated Operating System Patch Management,Continuous Vulnerability Management,6,Oppdatering/Konfigurering
+2,67,7.4,CIS Controls V8,Perform Automated Application Patch Management,Continuous Vulnerability Management,6,Oppdatering/Konfigurering
+2,68,9.1,CIS Controls V8,Ensure Use of Only Fully Supported Browsers and Email Clients,Email and Web Browser Protections,6,Oppdatering/Konfigurering
+2,69,9.2,CIS Controls V8,Use DNS Filtering Services,Email and Web Browser Protections,8,Nettverkssikkerhet
+2,70,10.1,CIS Controls V8,Deploy and Maintain Anti-Malware Software,Malware Defenses,7,Brannmur/antivirus
+2,71,10.3,CIS Controls V8,Disable Autorun and Autoplay for Removable Media,Malware Defenses,9,Fysisk sikring
+2,72,11.1,CIS Controls V8,Establish and Maintain a Data Recovery Process,Data Recovery,11,Hendelseshåndteringsplan
+2,73,11.2,CIS Controls V8,Perform Automated Backups,Data Recovery,3,Sikkerhetskopiering
+2,74,11.3,CIS Controls V8,Protect Recovery Data,Data Recovery,3,Sikkerhetskopiering
+2,75,12.1,CIS Controls V8,Ensure Network Infrastructure is Up-to-Date,Network Infrastructure Management,6,Oppdatering/Konfigurering
+2,76,14.1,CIS Controls V8,Establish and Maintain a Security Awareness Program,Security Awareness and Skills Training,12,Opplæring
+2,77,14.2,CIS Controls V8,Train Workforce Members to Recognize Social Engineering Attacks,Security Awareness and Skills Training,12,Opplæring
+2,78,14.3,CIS Controls V8,Train Workforce Members on Authentication Best Practices,Security Awareness and Skills Training,12,Opplæring
+2,79,14.4,CIS Controls V8,Train Workforce on Data Handling Best Practices,Security Awareness and Skills Training,12,Opplæring
+2,80,14.5,CIS Controls V8,Train Workforce Members on Causes of Unintentional Data Exposure,Security Awareness and Skills Training,12,Opplæring
+2,81,14.6,CIS Controls V8,Train Workforce Members on Recognizing and Reporting Security Incidents,Security Awareness and Skills Training,12,Opplæring
+2,82,14.8,CIS Controls V8,Train Workforce on the Dangers of Connecting to and Transmitting Enterprise Data Over Insecure Networks,Security Awareness and Skills Training,12,Opplæring
+2,83,15.1,CIS Controls V8,Establish and Maintain an Inventory of Service Providers,Service Provider Management,1,Ressurshåndtering
+2,84,17.1,CIS Controls V8,Designate Personnel to Manage Incident Handling,Incident Response Management,11,Hendelseshåndteringsplan
+2,85,17.2,CIS Controls V8,Establish and Maintain Contact Information for Reporting Security Incidents,Incident Response Management,11,Hendelseshåndteringsplan
+2,86,17.3,CIS Controls V8,Establish and Maintain an Enterprise Process for Reporting Incidents,Incident Response Management,11,Hendelseshåndteringsplan
+3,87,1,NISTIR7621,Identify and control who has access to your business information,3.1 Identify,5,Tilgangskontroll
+3,88,2,NISTIR7621,Require individual user accounts for each employee,3.1 Identify,5,Tilgangskontroll
+3,89,3,NISTIR7621,Create policies and procedures for information security,3.1 Identify,13,Alle
+3,90,4,NISTIR7621,Limit employee access to data and information,3.2 Protect,5,Tilgangskontroll
+3,91,5,NISTIR7621,Install Surge Protectors and Uninterruptible Power Supplies (UPS),3.2 Protect,9,Fysisk sikring
+3,92,6,NISTIR7621,Patch your operating systems and applications,3.2 Protect,6,Oppdatering/Konfigurering
+3,93,7,NISTIR7621,Install and activate software and hardware firewalls on all your business networks,3.2 Protect,7,Brannmur/antivirus
+3,94,8,NISTIR7621,Secure your wireless access point and networks,3.2 Protect,8,Nettverkssikkerhet
+3,95,9,NISTIR7621,Use encryption for sensitive business information,3.2 Protect,10,Datakryptering
+3,96,10,NISTIR7621,Dispose of old computers and media safely,3.2 Protect,9,Fysisk sikring
+3,97,11,NISTIR7621,Train your employees,3.2 Protect,12,Opplæring
+3,98,12,NISTIR7621,"Install and update anti-virus, -spyware, and other –malware programs",3.3 Detect,7,Brannmur/antivirus
+3,99,13,NISTIR7621,Develop a plan for disasters and information security incidents,3.4 Respond,11,Hendelseshåndteringsplan
+3,100,14,NISTIR7621,Make full backups of important business data/information,3.5 Recover,3,Sikkerhetskopiering
+3,101,15,NISTIR7621,Make improvements to processes / procedures / technologies,3.5 Recover,15,Forbedring
+4,102,DE.AE-06,NIST CSF,Information on adverse events is provided to authorized staff and tools,Detect,11,Hendelseshåndteringsplan
+4,103,GV.RR-01,NIST CSF,"Organizational leadership is responsible and accountable for cybersecurity risk and fosters a culture that is risk-aware, ethical, and continually improving",Govern,1,Ressurshåndtering
+4,104,GV.RR-02,NIST CSF,"Roles, responsibilities, and authorities related to cybersecurity risk management are established, communicated, understood, and enforced",Govern,11,Hendelseshåndteringsplan
+4,105,GV.SC-02,NIST CSF,"Cybersecurity roles and responsibilities for suppliers, customers, and partners are established, communicated, and coordinated internally and externally",Govern,1,Ressurshåndtering
+4,106,GV.SC-04,NIST CSF,Suppliers are known and prioritized by criticality,Govern,1,Ressurshåndtering
+4,107,GV.SC-08,NIST CSF,"Relevant suppliers and other third parties are included in incident planning, response, and recovery activities",Govern,11,Hendelseshåndteringsplan
+4,108,ID.IM-04,NIST CSF,Incident response plans and other cybersecurity plans that affect operations are established communicated maintained and improved,Identify,11,Hendelseshåndteringsplan
+4,109,ID.RA-10,NIST CSF,Critical suppliers are assessed prior to acquisition,Identify,1,Ressurshåndtering
+4,110,ID.AM-01,NIST CSF,Inventories of hardware managed by the organization are maintained,Identify,1,Ressurshåndtering
+4,111,ID.AM-02,NIST CSF,"Inventories of software, services, and systems managed by the organization are maintained",Identify,1,Ressurshåndtering
+4,112,ID.AM-04,NIST CSF,Inventories of services provided by suppliers are maintained ,Identify,1,Ressurshåndtering
+4,113,ID.AM-08,NIST CSF,"Systems, hardware, software, services, and data are managed throughout their life cycles",Identify,6,Oppdatering/Konfigurering
+4,114,PR.AA-01,NIST CSF,Identities and credentials for authorized users services and hardware are managed by the organization,Protect,5,Tilgangskontroll
+4,115,PR.AA-02,NIST CSF,Identities are proofed and bound to credentials based on the context of interactions,Protect,5,Tilgangskontroll
+4,116,PR.AA-03,NIST CSF,Users services and hardware are authenticated,Protect,6,Oppdatering/Konfigurering
+4,117,PR.AA-05,NIST CSF,Access permissions entitlements and authorizations are defined in a policy managed enforced and reviewed and incorporate the principles of least privilege and separation of duties,Protect,5,Tilgangskontroll
+4,118,PR.AA-06,NIST CSF,Physical access to assets is managed monitored and enforced commensurate with risk,Protect,9,Fysisk sikring
+4,119,PR.AT-01,NIST CSF,Personnel are provided with awareness and training so that they possess the knowledge and skills to perform general tasks with cybersecurity risks in mind,Protect,12,Opplæring
+4,120,PR.DS-01,NIST CSF,The confidentiality integrity and availability of data-at-rest are protected,Protect,10,Datakryptering
+4,121,PR.DS-02,NIST CSF,The confidentiality integrity and availability of data-in-transit are protected,Protect,10,Datakryptering
+4,122,PR.DS-10,NIST CSF,The confidentiality integrity and availability of data-in-use are protected,Protect,10,Datakryptering
+4,123,PR.DS-11,NIST CSF,Backups of data are created protected maintained and tested,Protect,3,Sikkerhetskopiering
+4,124,PR.IR-01,NIST CSF,Networks and environments are protected from unauthorized logical access and usage,Protect,9,Fysisk sikring
+4,125,PR.IR-02,NIST CSF,The organization's technology assets are protected from environmental threats,Protect,9,Fysisk sikring
+4,126,PR.PS-02,NIST CSF,Software is maintained replaced and removed commensurate with risk,Protect,6,Oppdatering/Konfigurering
+4,127,PR.PS-03,NIST CSF,Hardware is maintained replaced and removed commensurate with risk,Protect,6,Oppdatering/Konfigurering
+4,128,PR.PS-05,NIST CSF,Installation and execution of unauthorized software are prevented,Protect,6,Oppdatering/Konfigurering
