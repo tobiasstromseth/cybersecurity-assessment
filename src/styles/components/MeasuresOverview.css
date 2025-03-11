@@ -65,12 +65,11 @@
 
 .category-filters button {
   padding: 8px 15px;
-  background-color: var(--elevated);
-  border: 1px solid var(--border);
-  border-radius: 20px;
+  background-color: var(--lightest-white);
+  border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s;
-  color: var(--text-secondary);
+  color: var(--text-dark);
 }
 
 .category-filters button:hover {
@@ -79,12 +78,11 @@
 }
 
 .category-filters button.active {
-  background-color: var(--accent-primary);
-  color: white;
-  border-color: var(--accent-primary);
+  background-color: var(--darkest-white);
+  color: var(--text-dark);
 }
 
-/* Measures list - endret fra grid til list */
+/* Measures list */
 .measures-list {
   display: flex;
   flex-direction: column;
@@ -100,13 +98,14 @@
 .measure-card {
   border-radius: 6px;
   padding: 20px;
-  background-color: red;
+  background-color: var(--darkest-white);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
+  position: relative;
 }
 
 .measure-card.expanded {
-  border-radius: 8px 8px 0 0;
+  border-radius: 6px;
   border-bottom: none;
 }
 
@@ -119,58 +118,58 @@
   top: 15px;
   right: 15px;
   padding: 3px 8px;
-  border-radius: var(--radius-sm);
+  border-radius: 4px;
   font-size: 12px;
   font-weight: bold;
 }
 
 .measure-priority[data-priority="høy"] {
-  background-color: var(--status-danger-light);
+  background-color: var(--subtle-red);
   color: var(--status-danger);
 }
 
 .measure-priority[data-priority="medium"] {
-  background-color: var(--status-warning-light);
+  background-color: var(--subtle-yellow);
   color: var(--status-warning);
 }
 
 .measure-priority[data-priority="lav"] {
-  background-color: var(--status-success-light);
+  background-color: var(--subtle-green);
   color: var(--status-success);
 }
 
 .measure-card h3 {
   margin-bottom: 10px;
   padding-right: 80px;
-  color: var(--text-primary);
+  color: var(--main-color);
 }
 
 .measure-description {
   margin-bottom: 15px;
   font-size: 14px;
-  color: var(--text-secondary);
+  color: var(--text-grey);
 }
 
 .measure-reason {
-  background-color: var(--status-info-light);
-  border-left: 3px solid var(--status-info);
+  background-color: var(--lightest-white);
+  border-left: 3px solid var(--main-color);
   padding: 12px;
   margin-bottom: 15px;
   font-size: 14px;
-  color: var(--text-primary);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--text-dark);
+  border-radius: 2px;
   line-height: 1.4;
 }
 
 .measure-context {
-  background-color: rgba(22, 160, 133, 0.1);
+  background-color: var(--lightest-white);
   border-left: 3px solid #16a085;
   padding: 12px;
   margin: 10px 0 15px;
   font-size: 14px;
   font-style: italic;
   color: var(--text-primary);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  border-radius: 2px;
   line-height: 1.4;
 }
 
@@ -184,8 +183,8 @@
   display: inline-block;
   padding: 3px 8px;
   background-color: rgba(63, 81, 181, 0.15);
-  color: #3f51b5;
-  border-radius: var(--radius-sm);
+  color: var(--main-color);
+  border-radius: 2px;
   font-size: 12px;
 }
 
@@ -203,14 +202,12 @@
   color: var(--text-tertiary);
 }
 
-/* Implementasjonsguide - nå direkte under measure-card */
+/* Implementation guide */
 .implementation-guide {
-  border: 1px solid var(--border);
   border-top: none;
   border-radius: 0 0 8px 8px;
   padding: 20px;
-  background-color: #f8f9fa;
-  box-shadow: var(--shadow-sm);
+  background-color: var(--lightest-white);
   animation: slideDown 0.3s ease-out;
 }
 
@@ -237,12 +234,12 @@
 .guide-header h4 {
   margin: 0;
   font-size: 16px;
-  color: var(--text-primary);
+  color: var(--main-color);
 }
 
 .elo-points {
-  background-color: #e8f5e9;
-  color: #2e7d32;
+  background-color: var(--subtle-green);
+  color: var(--green);
   padding: 5px 10px;
   border-radius: 15px;
   font-weight: bold;
@@ -252,7 +249,7 @@
 .guide-description {
   margin-bottom: 20px;
   font-size: 14px;
-  color: var(--text-secondary);
+  color: var(--text-grey);
   line-height: 1.5;
 }
 
@@ -263,10 +260,9 @@
 }
 
 .implementation-step {
-  border: 1px solid #e0e0e0;
   border-radius: 8px;
   padding: 15px;
-  background-color: white;
+  background-color: var(--darkest-white);
 }
 
 .step-header {
@@ -278,7 +274,7 @@
 .step-number {
   width: 28px;
   height: 28px;
-  background-color: var(--accent-primary);
+  background-color: var(--main-color);
   color: white;
   border-radius: 50%;
   display: flex;
@@ -296,7 +292,7 @@
 }
 
 .step-complete-button {
-  background-color: #f0f0f0;
+  background-color: var(--medium-white);
   border: 1px solid #ddd;
   padding: 6px 12px;
   border-radius: 4px;
@@ -323,7 +319,7 @@
 }
 
 .step-details {
-  background-color: #f5f5f5;
+  background-color: var(--lightest-white);
   border-radius: 6px;
   padding: 10px;
 }
@@ -359,193 +355,6 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .measures-overview-container h2 {
-    margin-bottom: 20px;
-    color: var(--text-primary);
-    text-align: center;
-  }
-
-  /* Filters section */
-  .measures-filters {
-    margin-bottom: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .search-container {
-    margin-bottom: 15px;
-  }
-
-  .search-input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    font-size: 16px;
-    background-color: var(--input);
-    color: var(--text-primary);
-    transition: border-color 0.2s;
-  }
-
-  .search-input:focus {
-    border-color: var(--accent-primary);
-    outline: none;
-  }
-
-  .category-filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .category-filters button {
-    padding: 8px 15px;
-    background-color: var(--elevated);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.2s;
-    color: var(--text-secondary);
-  }
-
-  .category-filters button:hover {
-    border-color: var(--accent-primary);
-    color: var(--accent-primary);
-  }
-
-  .category-filters button.active {
-    background-color: var(--accent-primary);
-    color: white;
-    border-color: var(--accent-primary);
-  }
-
-  /* Measures grid */
-  .measures-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-  }
-
-  .measure-card {
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 20px;
-    background-color: var(--card);
-    position: relative;
-    transition: transform 0.2s ease;
-  }
-
-  .measure-card:hover {
-    transform: translateY(-3px);
-  }
-
-  .measure-priority {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    padding: 3px 8px;
-    border-radius: var(--radius-sm);
-    font-size: 12px;
-    font-weight: bold;
-  }
-
-  .measure-priority[data-priority="høy"] {
-    background-color: var(--status-danger-light);
-    color: var(--status-danger);
-  }
-
-  .measure-priority[data-priority="medium"] {
-    background-color: var(--status-warning-light);
-    color: var(--status-warning);
-  }
-
-  .measure-priority[data-priority="lav"] {
-    background-color: var(--status-success-light);
-    color: var(--status-success);
-  }
-
-  .measure-card h3 {
-    margin-bottom: 10px;
-    padding-right: 80px;
-    color: var(--text-primary);
-  }
-
-  .measure-card p {
-    margin-bottom: 15px;
-    font-size: 14px;
-    color: var(--text-secondary);
-  }
-
-  .measure-reason {
-    background-color: var(--status-info-light);
-    border-left: 3px solid var(--status-info);
-    padding: 12px;
-    margin-bottom: 15px;
-    font-size: 14px;
-    color: var(--text-primary);
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    line-height: 1.4;
-  }
-
-  .measure-category {
-    display: inline-block;
-    padding: 3px 8px;
-    background-color: rgba(63, 81, 181, 0.15);
-    color: #3f51b5;
-    border-radius: var(--radius-sm);
-    font-size: 12px;
-  }
-
-  .no-measures {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 40px;
-    background-color: var(--container);
-    border-radius: var(--radius-md);
-    color: var(--text-tertiary);
-  }
-
-  /* Company context information */
-  .company-context-panel {
-    background-color: var(--accent-primary);
-    border-radius: var(--radius-md);
-    padding: 15px 20px;
-    margin-bottom: 20px;
-    font-size: 15px;
-    color: var(--text-primary);
-    line-height: 1.5;
-  }
-
-  .company-context-panel p {
-    margin: 0;
-  }
-
-  .measure-context {
-    background-color: rgba(22, 160, 133, 0.1);
-    border-left: 3px solid #16a085;
-    padding: 12px;
-    margin: 10px 0 15px;
-    font-size: 14px;
-    font-style: italic;
-    color: var(--text-primary);
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    line-height: 1.4;
-  }
-
-  .industry-recommendations {
-    margin-top: 15px;
-    background-color: var(--light-infobox);
-    border-radius: var(--radius-sm);
-    padding: 12px 15px;
-  }
-
-  .measure-expand-indicator {
-    margin-top: 10px;
   }
 
   .step-header {
@@ -559,5 +368,17 @@
 
   .step-complete-button {
     width: 100%;
+  }
+  
+  /* Mobile-specific styles for category buttons */
+  .category-filters button.active {
+    color: rgb(255, 0, 0);
+  }
+  
+  /* Mobile-specific measures grid layout */
+  .measures-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
   }
 }
