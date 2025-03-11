@@ -1,50 +1,49 @@
 [
   {
     "id": "q1",
-    "text": "Er virksomhetens IT-ressurser helhetlig kartlagt og dokumentert?",
-    "explanation": "Dette handler om å ha en fullstendig og oppdatert oversikt over alle digitale verktøy og utstyr som virksomheten bruker eller eier. Tenk på det som en digital \"inventarliste\" hvor alt fra servere til programvarelisenser finnes registrert. Uten en slik oversikt er det vanskelig å vite hva som skal sikres og vedlikeholdes.",
-    "measures": [
+    "text": "Hvordan administrerer virksomheten sine IT-ressurser?",
+    "category": "Ressurshåndtering",
+    "subCategories": [
       {
-        "id": "1.1", 
-        "text": "Fullstendig oversikt over IT-systemer",
-        "explanation": "Virksomheten trenger en komplett liste over alle fagsystemer og støttesystemer som brukes",
-        "measure": "Lag en sentral liste over alle IT-systemer inkludert økonomisystem, HR-system, e-post, og samhandlingsverktøy. Noter systemets funksjon og om det inneholder sensitive data"
-      },
-      {
-        "id": "1.2",
-        "text": "Kartlegging av fysisk IT-utstyr",
-        "explanation": "All maskinvare må være registrert for å sikre kontroll og vedlikehold",
-        "measure": "Registrer alle datamaskiner, servere, nettverksutstyr, skrivere, nettbrett og mobiltelefoner med unikt ID-nummer, modell, serienummer og anskaffelsesdato"
-      },
-      {
-        "id": "1.3",
-        "text": "Dokumentasjon av plassering og brukere",
-        "explanation": "Det må være kjent hvor utstyr befinner seg og hvem som bruker det",
-        "measure": "Noter fysisk plassering for hver enhet, hvem som er hovedbruker, om enheter deles mellom ansatte, og om utstyr tas med hjem eller brukes på reise"
-      },
-      {
-        "id": "1.4",
-        "text": "Programvareoversikt",
-        "explanation": "All programvare må være kartlagt for å sikre oppdateringer og riktige lisenser",
-        "measure": "Kartlegg alle installerte programmer, noter versjoner, verifiser at virksomheten har gyldige lisenser, og inkluder både standard- og spesialprogrammer"
-      },
-      {
-        "id": "1.5",
-        "text": "Dokumentasjon av brukertilganger",
-        "explanation": "Det må være oversikt over hvem som har tilgang til hvilke systemer og med hvilke rettigheter",
-        "measure": "Lag oversikt over alle brukere per system, registrer tilgangsnivåer/rettigheter, noter spesielt administratortilganger, og inkluder eksterne brukere"
-      },
-      {
-        "id": "1.6",
-        "text": "Kartlegging av informasjonsflyt",
-        "explanation": "Det må være kjent hvordan data beveger seg mellom systemer",
-        "measure": "Beskriv dataoverføringer mellom systemer, dokumenter hvilke systemer som er integrert, noter automatiserte overføringer, og marker spesielt overføringer av sensitive data"
-      },
-      {
-        "id": "1.7",
-        "text": "Etabler rutiner for vedlikehold av IT-oversikten",
-        "explanation": "Oversikten må holdes oppdatert for å være nyttig",
-        "measure": "Start enkelt med de viktigste systemene, bruk tilgjengelige verktøy som regneark, fordel ansvar for oppdatering, og sett av tid jevnlig til vedlikehold av oversikten"
+        "id": "1",
+        "name": "1. Ressursplanlegging og kontroll",
+        "questions": [
+          {
+            "id": "q1_1_1",
+            "text": "Fullstendig oversikt over IT-systemer",
+            "explanation": "Virksomheten trenger en komplett liste over alle fagsystemer og støttesystemer som brukes"
+          },
+          {
+            "id": "q1_1_2",
+            "text": "Kartlegging av fysisk IT-utstyr",
+            "explanation": "All maskinvare må være registrert for å sikre kontroll og vedlikehold"
+          },
+          {
+            "id": "q1_1_3",
+            "text": "Dokumentasjon av plassering og brukere",
+            "explanation": "Det må være kjent hvor utstyr befinner seg og hvem som bruker det"
+          },
+          {
+            "id": "q1_1_4",
+            "text": "Programvareoversikt",
+            "explanation": "All programvare må være kartlagt for å sikre oppdateringer og riktige lisenser"
+          },
+          {
+            "id": "q1_1_5",
+            "text": "Dokumentasjon av brukertilganger",
+            "explanation": "Det må være oversikt over hvem som har tilgang til hvilke systemer og med hvilke rettigheter"
+          },
+          {
+            "id": "q1_1_6",
+            "text": "Kartlegging av informasjonsflyt",
+            "explanation": "Det må være kjent hvordan data beveger seg mellom systemer"
+          },
+          {
+            "id": "q1_1_7",
+            "text": "Etabler rutiner for vedlikehold av IT-oversikten",
+            "explanation": "Oversikten må holdes oppdatert for å være nyttig"
+          }
+        ]
       }
     ]
   },
@@ -52,54 +51,136 @@
     "id": "q2",
     "text": "Hvordan sikrer virksomheten at IT-systemer og -utstyr er oppdaterte, korrekt konfigurert og beskyttet mot uautorisert bruk?",
     "category": "Oppdatering og konfigurering",
-    "measures": [
+    "subCategories": [
       {
-        "id": "2.1",
-        "text": "Sikre oppdaterte systemer",
-        "explanation": "Alle datamaskiner og programvare må motta sikkerhetsoppdateringer",
-        "measure": "Lag en liste over alle operativsystemer og programmer som brukes i bedriften. Sjekk hver programvare mot produsentens supportside for å verifisere støttestatus. Merk all utdatert programvare som ikke lenger mottar sikkerhetsoppdateringer. Prioriter oppgradering av utdaterte systemer og budsjetter for regelmessig utskiftning av eldre enheter."
+        "id": "1",
+        "name": "1. Nye datamaskiner og programmer",
+        "questions": [
+          {
+            "id": "q2_1_1",
+            "text": "Får alle datamaskiner og programvare fortsatt sikkerhetoppdateringer?",
+            "explanation": "Sjekk versjonsnummeret for operativsystemer og programvare i bruk. All programvare bør motta jevnlige sikkerhetsoppdateringer fra produsenten. Svarer du \"ja\" betyr det at alle systemer fortsatt mottar oppdateringer (ønskelig), svarer du \"nei\" betyr det at noen systemer er utdaterte og ikke lenger får oppdateringer (ikke ønskelig)."
+          }
+        ]
       },
       {
-        "id": "2.2",
-        "text": "Automatiske sikkerhetsoppdateringer",
-        "explanation": "Oppdateringer bør installeres automatisk for å sikre at de ikke glemmes",
-        "measure": "Aktiver automatiske oppdateringer på alle enheter. For Windows: Gå til Innstillinger > Oppdatering og sikkerhet > Windows Update og aktiver automatisk nedlasting og installasjon. For macOS: Aktiver automatiske oppdateringer i Systemvalg. Konfigurer også automatiske oppdateringer for vanlige programmer. Etabler månedlig kontroll for å verifisere at oppdateringer faktisk installeres."
+        "id": "2",
+        "name": "2. Oppdateringer",
+        "questions": [
+          {
+            "id": "q2_2_1",
+            "text": "Installeres sikkerhetsoppdateringer automatisk på alle datamaskiner og programmer?",
+            "explanation": "Kontroller innstillingene for oppdateringer på et utvalg enheter. Både operativsystemer og programvare bør oppdateres automatisk. Svarer du \"ja\" betyr det at oppdateringer installeres automatisk (ønskelig), svarer du \"nei\" betyr det at oppdateringer må installeres manuelt (ikke ønskelig)."
+          }
+        ]
       },
       {
-        "id": "2.3",
-        "text": "Begrenset programvareinstallasjon",
-        "explanation": "Ansatte bør ikke ha mulighet til å installere programmer selv uten godkjenning",
-        "measure": "Fjern administratorrettigheter fra vanlige brukerkontoer. For Windows: Verifiser i Kontrollpanel at vanlige brukere ikke er medlemmer av administratorgruppen. For macOS: Sørg for at brukere har 'Standard' kontotype. Etabler en prosess for programvareforespørsler med klare godkjenningsprosedyrer. Dokumenter hvem som har rettighet til å installere programvare."
+        "id": "3",
+        "name": "3. Kontroll over programmer",
+        "questions": [
+          {
+            "id": "q2_3_1",
+            "text": "Kan ansatte selv installere programmer på jobbdatamaskinene?",
+            "explanation": "Sjekk hvilke brukerrettigheter som er tildelt vanlige ansatte. Verifiser om standardbrukere har administratorrettigheter eller om programvareinstallasjon er begrenset."
+          },
+          {
+            "id": "q2_3_2",
+            "text": "Bruker dere verktøy som hindrer at ikke-godkjente programmer kan kjøres?",
+            "explanation": "Undersøk om det er implementert applikasjonskontroll-løsninger som begrenser hvilke programmer som kan kjøres. Vanlig antivirus er ikke tilstrekkelig. Svarer du \"ja\" betyr det at dere har applikasjonskontroll (ønskelig), svarer du \"nei\" betyr det at hvilken som helst programvare kan kjøres (ikke ønskelig)."
+          }
+        ]
       },
       {
-        "id": "2.4",
-        "text": "Applikasjonskontroll",
-        "explanation": "Bruk av verktøy som hindrer at ikke-godkjente programmer kan kjøres",
-        "measure": "Implementer applikasjonskontroll-løsninger. For Windows Enterprise/Education: Aktiver AppLocker via gruppepolicy. For Windows Pro: Aktiver Software Restriction Policies. Start med å kjøre i overvåkningsmodus, opprett en liste over godkjente applikasjoner, og implementer trinnvis, med start på kritiske systemer."
+        "id": "4",
+        "name": "4. Sikre innstillinger",
+        "questions": [
+          {
+            "id": "q2_4_1",
+            "text": "Har bedriften en standardmåte å sette opp nye datamaskiner på?",
+            "explanation": "Undersøk om det finnes en fast, dokumentert prosess for oppsett av nye enheter. Svarer du \"ja\" betyr det at dere har en standardisert oppsettsprosess (ønskelig), svarer du \"nei\" betyr det at oppsett gjøres ad hoc og varierer (ikke ønskelig)."
+          },
+          {
+            "id": "q2_4_2",
+            "text": "Fjerner dere programmer og funksjoner som ikke trengs før nye datamaskiner tas i bruk?",
+            "explanation": "Sjekk om prosessen for oppsett inkluderer fjerning av unødvendige programmer og tjenester. Svarer du \"ja\" betyr det at dere systematisk fjerner uønsket programvare (ønskelig), svarer du \"nei\" betyr det at forhåndsinstallert programvare forblir på maskinene (ikke ønskelig)."
+          },
+          {
+            "id": "q2_4_3",
+            "text": "Endrer dere alltid de forhåndsinnstilte passordene på nytt IT-utstyr (som rutere, skrivere, servere) før de kobles til nettverket?",
+            "explanation": "Undersøk om standardpassord endres systematisk på alt nytt utstyr før det tas i bruk. Svarer du \"ja\" betyr det at alle standardpassord alltid endres (ønskelig), svarer du \"nei\" betyr det at utstyr kan kobles til nettverket med fabrikkinnstilte passord (ikke ønskelig)."
+          },
+          {
+            "id": "q2_4_4",
+            "text": "Sjekker dere regelmessig at IT-utstyret fortsatt har sikre innstillinger, eller at ingen har endret på dem?",
+            "explanation": "Kontroller at det finnes rutiner for å verifisere at sikkerhetsinnstillinger forblir intakte over tid. Svarer du \"ja\" betyr det at det gjennomføres regelmessige kontroller (ønskelig), svarer du \"nei\" betyr det at konfigurasjon ikke verifiseres etter initial oppsett (ikke ønskelig)."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "q3",
+    "text": "Hvordan kontrollerer virksomheten tilgang til systemer og informasjon?",
+    "category": "Tilgangskontroll",
+    "subCategories": [
+      {
+        "id": "1",
+        "name": "1. Tilgangsstyring",
+        "questions": [
+          {
+            "id": "q3_1_1",
+            "text": "Har dere kartlagt hvilke grupper av ansatte som finnes i virksomheten og laget skriftlige regler for hvilken informasjon og hvilke systemer hver gruppe skal ha tilgang til?",
+            "explanation": "Å vite hvem som skal ha tilgang til hva er første steg i god tilgangskontroll. Uten denne oversikten kan sensitive data være tilgjengelig for feil personer, eller ansatte kan mangle tilgang til nødvendige systemer. En strukturert tilnærming til dette reduserer både sikkerhetsrisiko og driftsproblemer."
+          },
+          {
+            "id": "q3_1_2",
+            "text": "Finnes det faste rutiner for å opprette, endre, og slette brukerkontoer når ansatte begynner, endrer rolle eller slutter?",
+            "explanation": "Uten faste rutiner for brukeradministrasjon kan avsluttede kontoer forbli aktive, noe som utgjør en sikkerhetsrisiko. Det kan også føre til at nye ansatte venter unødvendig lenge på tilganger de trenger."
+          }
+        ]
       },
       {
-        "id": "2.5",
-        "text": "Standardisert oppsett av nye enheter",
-        "explanation": "Nye datamaskiner bør settes opp på en standardisert måte for å sikre at alle sikkerhetstiltak er på plass",
-        "measure": "Dokumenter en standard konfigurasjon med sjekkliste for alle innstillinger som skal konfigureres. For større miljøer: Opprett en 'gullkopi'-image med riktig konfigurasjon. For mindre miljøer: Lag en detaljert steg-for-steg guide med skjermbilder. Inkluder verifiseringstrinn for å sikre at alle punkter er fulgt."
+        "id": "2",
+        "name": "2. Identitetsadministrasjon",
+        "questions": [
+          {
+            "id": "q3_2_1",
+            "text": "Har hver ansatt sin egen personlige brukerkonto som kan spores tilbake til vedkommende?",
+            "explanation": "Delte kontoer gjør det umulig å vite hvem som har gjort hva i systemene. Dette er problematisk ved feilsøking og ved eventuelle sikkerhetsbrudd eller misbruk."
+          },
+          {
+            "id": "q3_2_2",
+            "text": "Begrenses tilganger slik at ansatte kun har tilgang til det de faktisk trenger i jobben sin?",
+            "explanation": "Prinsippet om minste privilegium er en grunnleggende sikkerhetspraksis. Når ansatte har mer tilgang enn nødvendig, øker både risikoen for interne sikkerhetsbrudd og konsekvensene hvis en brukerkonto blir kompromittert."
+          }
+        ]
       },
       {
-        "id": "2.6",
-        "text": "Fjerning av unødvendig programvare",
-        "explanation": "Programmer og funksjoner som ikke trengs bør fjernes for å redusere angrepsflaten",
-        "measure": "Opprett en liste over godkjent programvare for ulike brukerroller. Alt som ikke er på listen skal fjernes. For Windows: Fjern bloatware med PowerShell og deaktiver unødvendige Windows-funksjoner. For macOS: Avinstaller unødvendige programmer fra Applications-mappen. Inkluder fjerning av unødvendig programvare i standard oppsettsprosessen."
+        "id": "3",
+        "name": "3. Privilegert tilgang",
+        "questions": [
+          {
+            "id": "q3_3_1",
+            "text": "Bruker administratorer egne kontoer med utvidede rettigheter kun når det er nødvendig for administrative oppgaver?",
+            "explanation": "Administratorkontoer har utvidede rettigheter som gir mulighet til å gjøre store endringer i systemene. Daglig bruk av slike kontoer øker risikoen betydelig, da et enkelt phishing-angrep eller en skadelig nettside kan utnytte disse rettighetene."
+          }
+        ]
       },
       {
-        "id": "2.7",
-        "text": "Endring av standardpassord",
-        "explanation": "Forhåndsinnstilte passord på nytt IT-utstyr må endres før utstyret kobles til nettverket",
-        "measure": "Lag en standardisert prosedyre for idriftsettelse som inkluderer endring av standardpassord som første punkt. For nettverksenheter: Endre adminpassordet til et unikt, sterkt passord. For skrivere og multifunksjonsmaskiner: Endre alle standardpassord via webgrensesnittet. For servere: Endre alle administrative passord ved første oppstart. Dokumenter nye passord på en sikker måte."
-      },
-      {
-        "id": "2.8",
-        "text": "Regelmessig kontroll av sikkerhetsinnstillinger",
-        "explanation": "Innstillinger må kontrolleres regelmessig for å sikre at de ikke har blitt endret",
-        "measure": "Etabler en kvartalsvis kontrollrutine for konfigurasjon. For Windows: Bruk Group Policy Results og Windows Security Center-sjekk. For nettverksenheter: Logg inn og sjekk innstillinger mot dokumentert baseline. Dokumenter resultater av hver kontroll, eventuelle avvik og oppfølgingstiltak."
+        "id": "4",
+        "name": "4. Nettverkskontroll",
+        "questions": [
+          {
+            "id": "q3_4_1",
+            "text": "Har dere begrensninger for hvordan eksterne kan koble seg til og få tilgang til interne systemer?",
+            "explanation": "Ekstern tilgang til interne systemer er ofte nødvendig, men utgjør også en betydelig risiko hvis den ikke sikres tilstrekkelig. Uten begrensninger kan uvedkommende potensielt få tilgang til sensitive data eller systemer."
+          },
+          {
+            "id": "q3_4_2",
+            "text": "Sikrer dere nettverket ved å kontrollere tilgangen på flest mulige nettverksporter og enheter?",
+            "explanation": "Ukontrollerte nettverksporter og enheter kan gi angripere enkel tilgang til nettverket. Ved å stenge unødvendige porter og kontrollere hvilke enheter som får koble seg til, reduseres angrepsflatene betydelig."
+          }
+        ]
       }
     ]
   }
