@@ -10,27 +10,27 @@
         "questions": [
           {
             "id": "q1_1_1",
-            "text": "Har virksomheten fullstendig oversikt over IT-systemer?",
-            "explanation": "Virksomheten trenger en komplett liste over alle fagsystemer og støttesystemer som brukes",
-            "measure": "Lag en sentral liste over alle IT-systemer inkludert økonomisystem, HR-system, e-post, og samhandlingsverktøy. Noter systemets funksjon og om det inneholder sensitive data"
-          },
-          {
-            "id": "q1_1_2",
             "text": "Kartlegger virksomheten alt av fysisk IT-utstyr?",
             "explanation": "All maskinvare må være registrert for å sikre kontroll og vedlikehold",
             "measure": "Registrer alle datamaskiner, servere, nettverksutstyr, skrivere, nettbrett og mobiltelefoner med unikt ID-nummer, modell, serienummer og anskaffelsesdato"
           },
           {
-            "id": "q1_1_3",
-            "text": "Dokumenterer virksomheten plassering og brukere?",
-            "explanation": "Det må være kjent hvor utstyr befinner seg og hvem som bruker det",
-            "measure": "Noter fysisk plassering for hver enhet, hvem som er hovedbruker, om enheter deles mellom ansatte, og om utstyr tas med hjem eller brukes på reise"
+            "id": "q1_1_2",
+            "text": "Har virksomheten fullstendig oversikt over IT-systemer?",
+            "explanation": "Virksomheten trenger en komplett liste over alle elektroniske systemer og støttesystemer som brukes",
+            "measure": "Lag en sentral liste over alle IT-systemer inkludert økonomisystem, HR-system, e-post, og samhandlingsverktøy. Noter systemets funksjon og om det inneholder sensitive data"
           },
           {
-            "id": "q1_1_4",
+            "id": "q1_1_3",
             "text": "Har virksomheten programvareoversikt?",
             "explanation": "All programvare må være kartlagt for å sikre oppdateringer og riktige lisenser",
             "measure": "Kartlegg alle installerte programmer, noter versjoner, verifiser at virksomheten har gyldige lisenser, og inkluder både standard- og spesialprogrammer"
+          },
+          {
+            "id": "q1_1_4",
+            "text": "Dokumenterer virksomheten plassering av utstyr og bruker?",
+            "explanation": "Det må være kjent hvor utstyr befinner seg og hvem som bruker det",
+            "measure": "Noter fysisk plassering for hver enhet, hvem som er hovedbruker, om enheter deles mellom ansatte, og om utstyr tas med hjem eller brukes på reise"
           },
           {
             "id": "q1_1_5",
