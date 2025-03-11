@@ -1,0 +1,100 @@
+[
+{
+    id: "q1",
+    text: "Hvordan sikrer virksomheten at IT-systemer og -utstyr er oppdaterte, korrekt konfigurert og beskyttet mot uautorisert bruk?",
+    category: "Oppdatering og konfigurering",
+    subCategories: [
+      {
+        id: "1",
+        name: "1. Nye datamaskiner og programmer",
+        questions: [
+          {
+            id: "q1_1_1",
+            text: "Får alle datamaskiner og programvare fortsatt sikkerhetoppdateringer?"
+          }
+        ]
+      },
+      {
+        id: "2",
+        name: "2. Oppdateringer",
+        questions: [
+          {
+            id: "q1_2_1",
+            text: "Installeres sikkerhetsoppdateringer automatisk på alle datamaskiner og programmer?"
+          }
+        ]
+      },
+      {
+        id: "3",
+        name: "3. Kontroll over programmer",
+        questions: [
+          {
+            id: "q1_3_1",
+            text: "Kan ansatte selv installere programmer på jobbdatamaskinene?"
+          },
+          {
+            id: "q1_3_2",
+            text: "Bruker dere verktøy som hindrer at ikke-godkjente programmer kan kjøres?"
+          }
+        ]
+      },
+      {
+        id: "4",
+        name: "4. Sikre innstillinger",
+        questions: [
+          {
+            id: "q1_4_1",
+            text: "Har bedriften en standardmåte å sette opp nye datamaskiner på?"
+          },
+          {
+            id: "q1_4_2",
+            text: "Fjerner dere programmer og funksjoner som ikke trengs før nye datamaskiner tas i bruk?"
+          },
+          {
+            id: "q1_4_3",
+            text: "Endrer dere alltid de forhåndsinnstilte passordene på nytt IT-utstyr (som rutere, skrivere, servere) før de kobles til nettverket?"
+          },
+          {
+            id: "q1_4_4",
+            text: "Sjekker dere regelmessig at IT-utstyret fortsatt har sikre innstillinger, eller at ingen har endret på dem?"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "q2",
+    text: "Hvordan administrerer virksomheten sine IT-ressurser?",
+    category: "Ressurshåndtering",
+    subCategories: [
+      {
+        id: "1",
+        name: "1. Oversikt over ressurser",
+        questions: [
+          {
+            id: "q2_1_1",
+            text: "Har virksomheten en oppdatert oversikt over alle IT-ressurser (maskinvare, programvare, lisenser)?"
+          },
+          {
+            id: "q2_1_2",
+            text: "Er det etablert rutiner for regelmessig gjennomgang og oppdatering av ressursoversikten?"
+          }
+        ]
+      },
+      {
+        id: "2",
+        name: "2. Ansvarsfordeling",
+        questions: [
+          {
+            id: "q2_2_1",
+            text: "Er det tydelig definert hvem som har ansvar for ulike IT-ressurser?"
+          },
+          {
+            id: "q2_2_2",
+            text: "Har virksomheten dedikerte ressurser til cybersikkerhet?"
+          }
+        ]
+      }
+    ]
+  }
+}
