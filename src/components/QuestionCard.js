@@ -3,331 +3,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/components/Questionnaire.css";
 
 // Styling som kan kopieres til egen CSS-fil
-const inlineStyles = `
-/* Container styling */
-.questionnaire-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
 
-/* Progress bar styling */
-.progress-bar-container {
-  margin-bottom: 25px;
-}
-
-.progress-label {
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  color: #666;
-  margin-bottom: 5px;
-}
-
-.progress-bar-q {
-  height: 10px;
-  background-color: #e0e0e0;
-  border-radius: 5px;
-  margin-bottom: 15px;
-  overflow: hidden;
-}
-
-.progress-q {
-  height: 100%;
-  background-color: #4CAF50;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: width 0.5s ease;
-}
-
-.category-progress-bar {
-  height: 6px;
-  background-color: #e0e0e0;
-  border-radius: 3px;
-  margin-bottom: 5px;
-  overflow: hidden;
-}
-
-.category-progress {
-  height: 100%;
-  background-color: #4a90e2;
-  border-radius: 3px;
-  transition: width 0.5s ease;
-}
-
-.progress-text-q {
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-/* Question card styling */
-.question-card {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
-.question-category {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #4a90e2;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.main-question {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 25px;
-  color: #333;
-  line-height: 1.4;
-}
-
-/* Subcategory styling */
-.subcategory-section {
-  margin-bottom: 25px;
-  border-left: 3px solid #4a90e2;
-  padding-left: 15px;
-}
-
-.subcategory-title {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #4a90e2;
-  margin-bottom: 15px;
-}
-
-/* Subquestion styling */
-.subquestion-item {
-  background-color: #f8f8f8;
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 15px;
-  transition: all 0.3s ease;
-  border: 1px solid #e0e0e0;
-  cursor: pointer;
-}
-
-.subquestion-item.answered {
-  border-left: 4px solid #4CAF50;
-}
-
-.subquestion-item.answered:not(.expanded) {
-  padding: 10px 15px;
-  background-color: #f0f8f0;
-}
-
-.subquestion-item.expanded {
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.subquestion-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.subquestion-text {
-  font-weight: 500;
-  color: #333;
-  flex: 1;
-  margin-right: 15px;
-  transition: color 0.2s ease;
-}
-
-.subquestion-header .answer-badge {
-  display: inline-block;
-  padding: 3px 8px;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: white;
-}
-
-.answer-badge.ja {
-  background-color: #4CAF50;
-}
-
-.answer-badge.delvis {
-  background-color: #FFC107;
-}
-
-.answer-badge.nei {
-  background-color: #F44336;
-}
-
-.subquestion-content {
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px solid #e0e0e0;
-}
-
-/* Guide styling */
-.guide-toggle-button {
-  padding: 6px 12px;
-  background-color: #f0f0f0;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.2s ease;
-}
-
-.guide-toggle-button.active {
-  background-color: #e0e0e0;
-}
-
-.guide-toggle-button:hover {
-  background-color: #e0e0e0;
-}
-
-.guide-container {
-  background-color: #f9f9f9;
-  border-radius: 6px;
-  padding: 15px;
-  margin: 15px 0;
-  border-left: 3px solid #4a90e2;
-}
-
-.guide-container h4 {
-  margin-top: 0;
-  margin-bottom: 10px;
-  font-size: 0.95rem;
-  color: #555;
-}
-
-.guide-steps {
-  margin: 0;
-  padding-left: 20px;
-}
-
-.guide-step {
-  margin-bottom: 8px;
-  font-size: 0.9rem;
-  color: #444;
-}
-
-/* Answer options styling */
-.answer-options {
-  display: flex;
-  gap: 10px;
-  margin-top: 15px;
-}
-
-.answer-options button {
-  padding: 10px 15px;
-  border-radius: 4px;
-  border: 1px solid #ddd;
-  background-color: #fff;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: 0.95rem;
-  min-width: 80px;
-}
-
-.answer-options button.selected {
-  background-color: #4a90e2;
-  color: white;
-  border-color: #3a80d2;
-}
-
-.answer-options button:hover:not(.selected) {
-  background-color: #f0f0f0;
-}
-
-/* Navigation styling */
-.navigation-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 30px;
-}
-
-.navigation-buttons button {
-  padding: 10px 20px;
-  border-radius: 4px;
-  border: 1px solid #ddd;
-  background-color: #fff;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: 0.95rem;
-}
-
-.navigation-buttons button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.navigation-buttons button.submit-button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-}
-
-.navigation-buttons button.submit-button:disabled {
-  background-color: #9e9e9e;
-}
-
-/* Expanded subquestion styling */
-.subquestion-item:not(.expanded) .subquestion-content {
-  display: none;
-}
-
-.subquestion-item.answered:not(.expanded) .subquestion-text {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 80%;
-}
-
-.chevron-icon {
-  transition: transform 0.3s ease;
-}
-
-.subquestion-item.expanded .chevron-icon {
-  transform: rotate(180deg);
-}
-
-/* Loading state styling */
-.loading-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 300px;
-  font-size: 1.2rem;
-  color: #666;
-}
-
-.loading-spinner {
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #4a90e2;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  animation: spin 1s linear infinite;
-  margin-right: 10px;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Error state styling */
-.error-container {
-  text-align: center;
-  padding: 30px;
-  background-color: #fff3f3;
-  border-radius: 8px;
-  border-left: 4px solid #f44336;
-  color: #d32f2f;
-}
-`;
 
 // Hjelpefunksjon for å hente alle underspørsmål for et gitt hovedspørsmål
 const getSubQuestions = (question) => {
@@ -364,6 +40,7 @@ function Questionnaire({ onSubmit }) {
   const [showGuide, setShowGuide] = useState({});
   const [expanded, setExpanded] = useState({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [explVisible, setExplVisible] = useState({});
 
   // Fetch questions from JSON file
   useEffect(() => {
@@ -645,7 +322,6 @@ function Questionnaire({ onSubmit }) {
   if (loading) {
     return (
       <div className="questionnaire-container">
-        <style>{inlineStyles}</style>
         <div className="loading-container">
           <div className="loading-spinner"></div>
           <span>Laster spørsmål...</span>
@@ -658,7 +334,6 @@ function Questionnaire({ onSubmit }) {
   if (error) {
     return (
       <div className="questionnaire-container">
-        <style>{inlineStyles}</style>
         <div className="error-container">
           <h3>Feil ved lasting av spørsmål</h3>
           <p>{error}</p>
@@ -672,7 +347,6 @@ function Questionnaire({ onSubmit }) {
   if (questions.length === 0) {
     return (
       <div className="questionnaire-container">
-        <style>{inlineStyles}</style>
         <div className="error-container">
           <h3>Ingen spørsmål funnet</h3>
           <p>Kunne ikke finne noen spørsmål å vise. Sjekk at spørsmålsfilen er korrekt formatert.</p>
@@ -688,7 +362,6 @@ function Questionnaire({ onSubmit }) {
 
   return (
     <div className="questionnaire-container">
-      <style>{inlineStyles}</style>
       
       <div className="progress-bar-container">
         {/* Total fremgangsprosent */}
@@ -701,9 +374,6 @@ function Questionnaire({ onSubmit }) {
             className="progress-q"
             style={{ width: `${totalProgressPercentage}%` }}
           >
-            {totalProgressPercentage > 10 && (
-              <span className="progress-text-q">{totalProgressPercentage}%</span>
-            )}
           </div>
         </div>
         
@@ -723,148 +393,119 @@ function Questionnaire({ onSubmit }) {
       <div className="question-card">
       
       {currentQuestion.subCategories ? (
-        /* Vis spørsmål med underkategorier */
-        <>
-          <div className="question-category">{currentQuestion.category}</div>
-          <div className="main-question">{currentQuestion.text}</div>
+      /* Vis spørsmål med underkategorier */
+      <>
+        <div className="question-category">{currentQuestion.category}</div>
+        <div className="main-question">{currentQuestion.text}</div>
+        
+        {/* Vis alle underkategorier og deres underspørsmål */}
+        {currentQuestion.subCategories.map((subCat, subCatIndex) => {
+          // Determine if this subcategory should be active (showing its questions)
+          let isSubCategoryActive = true;
           
-          {/* Vis alle underkategorier og deres underspørsmål */}
-          {currentQuestion.subCategories.map((subCat, subCatIndex) => {
-            // Determine if this subcategory should be active (showing its questions)
-            let isSubCategoryActive = true;
-            
-            // Check if all questions in previous subcategories are answered
-            if (subCatIndex > 0) {
-              for (let i = 0; i < subCatIndex; i++) {
-                const prevSubCat = currentQuestion.subCategories[i];
-                const allPrevAnswered = prevSubCat.questions.every(q => answers[q.id] !== undefined);
-                
-                if (!allPrevAnswered) {
-                  isSubCategoryActive = false;
-                  break;
-                }
+          // Check if all questions in previous subcategories are answered
+          if (subCatIndex > 0) {
+            for (let i = 0; i < subCatIndex; i++) {
+              const prevSubCat = currentQuestion.subCategories[i];
+              const allPrevAnswered = prevSubCat.questions.every(q => answers[q.id] !== undefined);
+              
+              if (!allPrevAnswered) {
+                isSubCategoryActive = false;
+                break;
               }
             }
-            
-            return (
-              <div key={subCat.id} className="subcategory-section">
-                <h3 className="subcategory-title">{subCat.name}</h3>
+          }
+          
+          return (
+            <div key={subCat.id} className="subcategory-section">
+              <h3 className="subcategory-title">{subCat.name}</h3>
+              
+              {/* Only render questions if subcategory is active */}
+              {isSubCategoryActive && subCat.questions.map((question, qIndex) => {
+                const isAnswered = answers[question.id] !== undefined;
+                const isExpandedState = expanded[question.id] || false;
                 
-                {/* Only render questions if subcategory is active */}
-                {isSubCategoryActive && subCat.questions.map((question, qIndex) => {
-                  const isAnswered = answers[question.id] !== undefined;
-                  const isExpandedState = expanded[question.id] || false;
-                  
-                  return (
-                    <div 
-                      key={question.id} 
-                      className={`subquestion-item ${isAnswered ? 'answered' : ''} ${isExpandedState ? 'expanded' : ''}`}
-                      onClick={() => toggleExpanded(question.id)}
-                    >
-                      <div className="subquestion-header">
-                        <div className="subquestion-text">{question.text}</div>
-                        {isAnswered ? (
-                          <div className={`answer-badge ${answers[question.id]}`}>
-                            {getAnswerBadgeText(answers[question.id])}
-                          </div>
-                        ) : (
-                          renderChevron(isExpandedState)
-                        )}
-                      </div>
-                      
-                      <div className="subquestion-content">
-                        {/* Display explanation if available */}
-                        {question.explanation && (
-                          <div className="question-explanation">
-                            <p>{question.explanation}</p>
-                          </div>
-                        )}
-                        
-                        <div className="answer-options">
-                          <button
-                            className={answers[question.id] === "ja" ? "selected" : ""}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleAnswer(question.id, "ja");
-                            }}
-                          >
-                            Ja
-                          </button>
-                          <button
-                            className={answers[question.id] === "delvis" ? "selected" : ""}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleAnswer(question.id, "delvis");
-                            }}
-                          >
-                            Delvis
-                          </button>
-                          <button
-                            className={answers[question.id] === "nei" ? "selected" : ""}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleAnswer(question.id, "nei");
-                            }}
-                          >
-                            Nei
-                          </button>
+                return (
+                  <div 
+                    key={question.id} 
+                    className={`subquestion-item ${isAnswered ? 'answered' : ''} ${isExpandedState ? 'expanded' : ''}`}
+                    onClick={() => toggleExpanded(question.id)}
+                  >
+                    <div className="subquestion-header">
+                      <div className="subquestion-text">{question.text}</div>
+                      {isAnswered ? (
+                        <div className={`answer-badge ${answers[question.id]}`}>
+                          {getAnswerBadgeText(answers[question.id])}
                         </div>
+                      ) : (
+                        renderChevron(isExpandedState)
+                      )}
+                    </div>
+                    
+                    <div className="subquestion-content">
+                      {/* Display explanation if available with toggle button */}
+                      {question.explanation && (
+                        <>
+                          <button 
+                            className="explanation-toggle"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              // Toggle explanation visibility
+                              setExplVisible(prev => ({
+                                ...prev,
+                                [question.id]: !prev[question.id]
+                              }));
+                            }}
+                          >
+                            {(explVisible && explVisible[question.id]) ? 'Skjul forklaring' : 'Vis forklaring'}
+                          </button>
+                          
+                          {(explVisible && explVisible[question.id]) && (
+                            <div className="question-explanation">
+                              <p>{question.explanation}</p>
+                            </div>
+                          )}
+                        </>
+                      )}
+                      
+                      <div className="answer-options">
+                        <button
+                          className={answers[question.id] === "ja" ? "selected" : ""}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleAnswer(question.id, "ja");
+                          }}
+                        >
+                          Ja
+                        </button>
+                        <button
+                          className={answers[question.id] === "delvis" ? "selected" : ""}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleAnswer(question.id, "delvis");
+                          }}
+                        >
+                          Delvis
+                        </button>
+                        <button
+                          className={answers[question.id] === "nei" ? "selected" : ""}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleAnswer(question.id, "nei");
+                          }}
+                        >
+                          Nei
+                        </button>
                       </div>
                     </div>
-                  );
-                })}
-              </div>
-            );
-          })}
-        </>
-      ) : (
-        /* Vis vanlige spørsmål med guide (for gamle q2-q5 format) */
-        <>
-          <div className="question-category">{currentQuestion.category}</div>
-          <div className="question-row">
-            <p className="question-text">{currentQuestion.text}</p>
-            <button 
-              className={`guide-toggle-button ${showGuide[currentQuestion.id] ? 'active' : ''}`}
-              onClick={() => toggleGuide(currentQuestion.id)}
-              aria-expanded={showGuide[currentQuestion.id]}
-            >
-              {showGuide[currentQuestion.id] ? 'Skjul guide' : 'Vis guide'}
-            </button>
-          </div>
-          
-          {showGuide[currentQuestion.id] && currentQuestion.guide && (
-            <div className="guide-container">
-              <h4>Slik vurderer du dette spørsmålet:</h4>
-              <ol className="guide-steps">
-                {currentQuestion.guide.map((step, index) => (
-                  <li key={index} className="guide-step">{step}</li>
-                ))}
-              </ol>
+                  </div>
+                );
+              })}
             </div>
-          )}
-          
-          <div className="answer-options">
-            <button
-              className={answers[currentQuestion.id] === "ja" ? "selected" : ""}
-              onClick={() => handleAnswer(currentQuestion.id, "ja")}
-            >
-              Ja
-            </button>
-            <button
-              className={answers[currentQuestion.id] === "delvis" ? "selected" : ""}
-              onClick={() => handleAnswer(currentQuestion.id, "delvis")}
-            >
-              Delvis
-            </button>
-            <button
-              className={answers[currentQuestion.id] === "nei" ? "selected" : ""}
-              onClick={() => handleAnswer(currentQuestion.id, "nei")}
-            >
-              Nei
-            </button>
-          </div>
-        </>
-      )}
+          );
+        })}
+      </>
+    ) : null}
         
         {/* Navigasjonsknapper */}
         <div className="navigation-buttons">
