@@ -299,7 +299,7 @@ const questions = [
   {
     id: "q1",
     text: "Hvordan sikrer virksomheten at IT-systemer og -utstyr er oppdaterte, korrekt konfigurert og beskyttet mot uautorisert bruk?",
-    category: "Oppdatering og Konfigurering",
+    category: "Oppdatering og konfigurering",
     subCategories: [
       {
         id: "1",
@@ -537,7 +537,7 @@ const questions = [
   {
     id: "q7",
     text: "Hvilke tiltak har virksomheten for å beskytte mot skadelig programvare?",
-    category: "Brannmur/antivirus",
+    category: "Brannmur og antivirus",
     subCategories: [
       {
         id: "1",
