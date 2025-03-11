@@ -162,14 +162,14 @@ function MeasuresOverview({ measures, companyInfo, updateMeasureProgress }) {
                     <h4>Implementeringsguide</h4>
                     {measure.eloPoints && (
                       <div className="elo-points">
-                        +{measure.eloPoints} ELO
+                        +{measure.eloPoints} 
                       </div>
                     )}
                   </div>
                   
                   <p className="guide-description">
                     Følg denne steg-for-steg-guiden for å implementere {measure.title.toLowerCase()} i din virksomhet.
-                    Gjennomføring av alle stegene gir din bedrift +{measure.eloPoints || 0} ELO-poeng i sikkerhetsscore.
+                    Gjennomføring av alle stegene gir din bedrift +{measure.eloPoints || 0} poeng i sikkerhetsscore.
                   </p>
                   
                   <div className="implementation-steps">
