@@ -225,17 +225,7 @@ function Dashboard({
           </p>
         </div>
 
-        {/* Integrated company context panel from MeasuresOverview */}
-        {companyInfo && (
-          <div className="company-context-panel">
-            <p>
-              Tiltakene nedenfor er relevante for{" "}
-              <strong>{companyInfo.companyName}</strong>, en{" "}
-              <strong>{companyInfo.industry.toLowerCase()}</strong> virksomhet
-              med <strong>{companyInfo.employeeCount}</strong> ansatte.
-            </p>
-          </div>
-        )}
+        {/* Company context panel removed as requested */}
 
         {/* Integrated filter and search from MeasuresOverview */}
         <div className="measures-filters">

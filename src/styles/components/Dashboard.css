@@ -12,6 +12,13 @@
 .left-section {
   flex: 1;
   max-width: 30%;
+  position: sticky;
+  top: 20px; /* Gives a little space from the top of the viewport */
+  align-self: flex-start;
+  max-height: calc(
+    100vh - 40px
+  ); /* Prevents it from being taller than viewport */
+  overflow-y: auto; /* Allows scrolling if content is too tall */
 }
 
 .left-section h2 {
@@ -591,6 +598,18 @@
   .left-section,
   .right-section {
     max-width: 100%;
+    width: 100%;
+  }
+
+  /* Remove sticky behavior on mobile - security status stays at top */
+  .left-section {
+    position: static; /* Override the sticky position */
+    top: auto;
+    z-index: auto;
+    background-color: var(--bg);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border);
   }
 
   .measure-footer {
