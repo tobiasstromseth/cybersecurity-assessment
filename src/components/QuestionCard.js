@@ -819,6 +819,149 @@ function Questionnaire({ onSubmit }) {
                           className={`subquestion-item ${
                             isAnswered ? "answered" : ""
                           } ${isExpandedState ? "expanded" : ""}`}
+                          // Remove onClick from here
+                        >
+                          <div
+                            className="subquestion-header"
+                            onClick={() => toggleExpanded(question.id)} // Add onClick here instead
+                          >
+                            <div className="subquestion-text">
+                              {question.text}
+                            </div>
+                            {isAnswered ? (
+                              <div
+                                className={`answer-badge ${
+                                  answers[question.id]
+                                }`}
+                              >
+                                {getAnswerBadgeText(answers[question.id])}
+                              </div>
+                            ) : (
+                              renderChevron(isExpandedState)
+                            )}
+                          </div>
+
+                          <div className="subquestion-content">
+                            {/* Display explanation if available with toggle button */}
+                            {question.explanation && (
+                              <>
+                                <button
+                                  className="explanation-toggle"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    // Toggle explanation visibility
+                                    setExplVisible((prev) => ({
+                                      ...prev,
+                                      [question.id]: !prev[question.id],
+                                    }));
+                                  }}
+                                >
+                                  {explVisible && explVisible[question.id]
+                                    ? "Skjul forklaring"
+                                    : "Vis forklaring"}
+                                </button>
+
+                                {explVisible && explVisible[question.id] && (
+                                  <div className="question-explanation">
+                                    <p>{question.explanation}</p>
+                                  </div>
+                                )}
+                              </>
+                            )}
+
+                            <div className="answer-options">
+                              <button
+                                className={
+                                  answers[question.id] === "ja"
+                                    ? "selected"
+                                    : ""
+                                }
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  handleAnswer(question.id, "ja");
+                                }}
+                              >
+                                Ja
+                              </button>
+                              <button
+                                className={
+                                  answers[question.id] === "delvis"
+                                    ? "selected"
+                                    : ""
+                                }
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  handleAnswer(question.id, "delvis");
+                                }}
+                              >
+                                Delvis
+                              </button>
+                              <button
+                                className={
+                                  answers[question.id] === "nei"
+                                    ? "selected"
+                                    : ""
+                                }
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  handleAnswer(question.id, "nei");
+                                }}
+                              >
+                                Nei
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                </div>
+              );
+            })}
+          </>
+        ) : null}
+
+        {currentQuestion.subCategories ? (
+          /* Vis spørsmål med underkategorier */
+          <>
+            <div className="question-category">{currentQuestion.category}</div>
+            <div className="main-question">{currentQuestion.text}</div>
+
+            {/* Vis alle underkategorier og deres underspørsmål */}
+            {currentQuestion.subCategories.map((subCat, subCatIndex) => {
+              // Determine if this subcategory should be active (showing its questions)
+              let isSubCategoryActive = true;
+
+              // Check if all questions in previous subcategories are answered
+              if (subCatIndex > 0) {
+                for (let i = 0; i < subCatIndex; i++) {
+                  const prevSubCat = currentQuestion.subCategories[i];
+                  const allPrevAnswered = prevSubCat.questions.every(
+                    (q) => answers[q.id] !== undefined
+                  );
+
+                  if (!allPrevAnswered) {
+                    isSubCategoryActive = false;
+                    break;
+                  }
+                }
+              }
+
+              return (
+                <div key={subCat.id} className="subcategory-section">
+                  <h3 className="subcategory-title">{subCat.name}</h3>
+
+                  {/* Only render questions if subcategory is active */}
+                  {isSubCategoryActive &&
+                    subCat.questions.map((question, qIndex) => {
+                      const isAnswered = answers[question.id] !== undefined;
+                      const isExpandedState = expanded[question.id] || false;
+
+                      return (
+                        <div
+                          key={question.id}
+                          className={`subquestion-item ${
+                            isAnswered ? "answered" : ""
+                          } ${isExpandedState ? "expanded" : ""}`}
                           onClick={() => toggleExpanded(question.id)}
                         >
                           <div className="subquestion-header">

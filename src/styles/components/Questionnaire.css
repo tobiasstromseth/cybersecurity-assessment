@@ -298,16 +298,16 @@
 /* Subquestion styling */
 .subquestion-item {
   background-color: var(--darkest-white);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 15px;
   margin-bottom: 15px;
   transition: all 0.3s ease;
-  border: 1px solid var(--text-grey);
-  cursor: pointer;
 }
 
 .subquestion-item.answered {
   border-left: 4px solid var(--green);
+  font-size: 12px;
+  /*transform: rotate(360deg);*/
 }
 
 .subquestion-item.answered:not(.expanded) {
@@ -318,6 +318,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
 }
 
 .subquestion-text {
