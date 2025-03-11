@@ -10,43 +10,43 @@
         "questions": [
           {
             "id": "q1_1_1",
-            "text": "Fullstendig oversikt over IT-systemer",
+            "text": "Har virksomheten fullstendig oversikt over IT-systemer?",
             "explanation": "Virksomheten trenger en komplett liste over alle fagsystemer og støttesystemer som brukes",
             "measure": "Lag en sentral liste over alle IT-systemer inkludert økonomisystem, HR-system, e-post, og samhandlingsverktøy. Noter systemets funksjon og om det inneholder sensitive data"
           },
           {
             "id": "q1_1_2",
-            "text": "Kartlegging av fysisk IT-utstyr",
+            "text": "Kartlegger virksomheten alt av fysisk IT-utstyr?",
             "explanation": "All maskinvare må være registrert for å sikre kontroll og vedlikehold",
             "measure": "Registrer alle datamaskiner, servere, nettverksutstyr, skrivere, nettbrett og mobiltelefoner med unikt ID-nummer, modell, serienummer og anskaffelsesdato"
           },
           {
             "id": "q1_1_3",
-            "text": "Dokumentasjon av plassering og brukere",
+            "text": "Dokumenterer virksomheten plassering og brukere?",
             "explanation": "Det må være kjent hvor utstyr befinner seg og hvem som bruker det",
             "measure": "Noter fysisk plassering for hver enhet, hvem som er hovedbruker, om enheter deles mellom ansatte, og om utstyr tas med hjem eller brukes på reise"
           },
           {
             "id": "q1_1_4",
-            "text": "Programvareoversikt",
+            "text": "Har virksomheten programvareoversikt?",
             "explanation": "All programvare må være kartlagt for å sikre oppdateringer og riktige lisenser",
             "measure": "Kartlegg alle installerte programmer, noter versjoner, verifiser at virksomheten har gyldige lisenser, og inkluder både standard- og spesialprogrammer"
           },
           {
             "id": "q1_1_5",
-            "text": "Dokumentasjon av brukertilganger",
+            "text": "Dokumenterer virksomheten brukertilganger?",
             "explanation": "Det må være oversikt over hvem som har tilgang til hvilke systemer og med hvilke rettigheter",
             "measure": "Lag oversikt over alle brukere per system, registrer tilgangsnivåer/rettigheter, noter spesielt administratortilganger, og inkluder eksterne brukere"
           },
           {
             "id": "q1_1_6",
-            "text": "Kartlegging av informasjonsflyt",
+            "text": "Kartlegger virksomheten informasjonsflyt?",
             "explanation": "Det må være kjent hvordan data beveger seg mellom systemer",
             "measure": "Beskriv dataoverføringer mellom systemer, dokumenter hvilke systemer som er integrert, noter automatiserte overføringer, og marker spesielt overføringer av sensitive data"
           },
           {
             "id": "q1_1_7",
-            "text": "Etabler rutiner for vedlikehold av IT-oversikten",
+            "text": "Etabler virksomheten rutiner for vedlikehold av IT-oversikten?",
             "explanation": "Oversikten må holdes oppdatert for å være nyttig",
             "measure": "Start enkelt med de viktigste systemene, bruk tilgjengelige verktøy som regneark, fordel ansvar for oppdatering, og sett av tid jevnlig til vedlikehold av oversikten"
           }
