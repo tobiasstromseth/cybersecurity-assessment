@@ -102,36 +102,5 @@
         "measure": "Etabler en kvartalsvis kontrollrutine for konfigurasjon. For Windows: Bruk Group Policy Results og Windows Security Center-sjekk. For nettverksenheter: Logg inn og sjekk innstillinger mot dokumentert baseline. Dokumenter resultater av hver kontroll, eventuelle avvik og oppfølgingstiltak."
       }
     ]
-  },
-  {
-    "id": "q3",
-    "text": "Hvordan administrerer virksomheten sine IT-ressurser?",
-    "category": "Ressurshåndtering",
-    "measures": [
-      {
-        "id": "3.1",
-        "text": "Oppdatert IT-ressursoversikt",
-        "explanation": "Virksomheten trenger en komplett og oppdatert inventarliste over alle IT-eiendeler",
-        "measure": "Etabler en sentral IT-ressursdatabase som dokumenterer alle maskinvareenheter, programvare og lisenser. Inkluder informasjon om eier, plassering, innkjøpsdato og forventet levetid. Bruk et dedikert verktøy for asset management eller en strukturert regnearkløsning for små virksomheter. Tagg fysisk utstyr med unike identifikatorer."
-      },
-      {
-        "id": "3.2",
-        "text": "Rutiner for vedlikehold av oversikten",
-        "explanation": "Det må finnes systematiske prosesser for å holde IT-inventarlisten oppdatert",
-        "measure": "Etabler rutiner for registrering av nye eiendeler ved anskaffelse og prosedyrer for utfasing av utstyr. Gjennomfør kvartalsvise revisjoner av ressursoversikten. Utnevn en ressursansvarlig med dedikert tid til vedlikehold av oversikten. Gjennomfør årlig fysisk kontroll av IT-utstyr for å verifisere nøyaktigheten."
-      },
-      {
-        "id": "3.3",
-        "text": "Tydelig definerte ansvarsområder",
-        "explanation": "Det må være klart hvem som har ansvar for ulike IT-ressurser",
-        "measure": "Etabler en formell ansvarsmatrise for IT-ressurser som identifiserer rollebaserte ansvarsområder. Definer eierskap for systemer, applikasjoner, data og infrastruktur. Dokumenter spesifikke ansvarsområder for vedlikehold, sikkerhetskonfigurering og brukeradministrasjon. Kommuniser ansvarsfordelingen til alle relevante parter."
-      },
-      {
-        "id": "3.4",
-        "text": "Dedikerte ressurser til cybersikkerhet",
-        "explanation": "Virksomheten bør ha allokert spesifikke ressurser til cybersikkerhet",
-        "measure": "Utnevn en sikkerhetsansvarlig med klart definert ansvar. Avsett et spesifikt budsjett for sikkerhetstiltak og opplæring. For mindre virksomheter, vurder delt ansvar med tydelig tidstildeling eller outsourcing. Etabler et sikkerhetsråd med representanter fra ulike avdelinger. Sørg for at sikkerhetsressurser har nødvendig autoritet og støtte fra ledelsen."
-      }
-    ]
   }
 ]
