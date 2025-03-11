@@ -351,9 +351,16 @@ background-color: var(--red);
 }
 
 .subquestion-content {
-margin-top: 15px;
-padding-top: 15px;
-border-top: 1px solid var(--text-grey);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease-out, opacity 0.2s ease-out, margin-top 0.3s ease-out;
+}
+
+.subquestion-item.expanded .subquestion-content {
+  max-height: 500px; /* Adjust based on your content's maximum height */
+  opacity: 1;
+  margin-top: 15px; /* Match your existing margin-top value */
 }
 
 /* Guide styling */
@@ -406,7 +413,7 @@ background-color: var(--medium-white);
 
 /* Expanded subquestion styling */
 .subquestion-item:not(.expanded) .subquestion-content {
-display: none;
+  margin-top: 0;
 }
 
 .subquestion-item.answered:not(.expanded) .subquestion-text {
