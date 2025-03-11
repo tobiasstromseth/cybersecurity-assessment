@@ -429,9 +429,12 @@ function Questionnaire({ onSubmit }) {
                   <div 
                     key={question.id} 
                     className={`subquestion-item ${isAnswered ? 'answered' : ''} ${isExpandedState ? 'expanded' : ''}`}
-                    onClick={() => toggleExpanded(question.id)}
+                    // Remove onClick from here
                   >
-                    <div className="subquestion-header">
+                    <div 
+                      className="subquestion-header"
+                      onClick={() => toggleExpanded(question.id)} // Add onClick here instead
+                    >
                       <div className="subquestion-text">{question.text}</div>
                       {isAnswered ? (
                         <div className={`answer-badge ${answers[question.id]}`}>

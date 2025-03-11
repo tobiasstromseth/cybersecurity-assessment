@@ -303,7 +303,6 @@
   margin-bottom: 15px;
   transition: all 0.3s ease;
   border: 1px solid var(--text-grey);
-  cursor: pointer;
 }
 
 .subquestion-item.answered {
@@ -318,6 +317,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
 }
 
 .subquestion-text {
