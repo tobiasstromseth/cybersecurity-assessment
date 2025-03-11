@@ -367,6 +367,7 @@ function Questionnaire({ onSubmit }) {
   const [answers, setAnswers] = useState({});
   const [showGuide, setShowGuide] = useState({});
   const [expanded, setExpanded] = useState({});
+  const [explVisible, setExplVisible] = useState({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [prefillComplete, setPrefillComplete] = useState(false); // New state to track if prefill has been done
 
