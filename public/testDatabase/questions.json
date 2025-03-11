@@ -1,112 +1,137 @@
 [
-    {
-      "id": "q1",
-      "text": "Hvordan sikrer virksomheten at IT-systemer og -utstyr er oppdaterte, korrekt konfigurert og beskyttet mot uautorisert bruk?",
-      "category": "Oppdatering og konfigurering",
-      "subCategories": [
-        {
-          "id": "1",
-          "name": "1. Nye datamaskiner og programmer",
-          "questions": [
-            {
-              "id": "q1_1_1",
-              "text": "Får alle datamaskiner og programvare fortsatt sikkerhetoppdateringer?",
-              "explanation": "Dette spørsmålet handler om å sikre at alle IT-systemer bruker programvare som fortsatt mottar sikkerhetsoppdateringer fra leverandørene. Systemer som ikke lenger vedlikeholdes utgjør en betydelig sikkerhetsrisiko."
-            }
-          ]
-        },
-        {
-          "id": "2",
-          "name": "2. Oppdateringer",
-          "questions": [
-            {
-              "id": "q1_2_1",
-              "text": "Installeres sikkerhetsoppdateringer automatisk på alle datamaskiner og programmer?",
-              "explanation": "Dette spørsmålet undersøker om virksomheten har automatiserte rutiner for å installere sikkerhetsoppdateringer, noe som er viktig for å sikre at sårbarheter raskt blir tettet uten å være avhengig av manuell handling."
-            }
-          ]
-        },
-        {
-          "id": "3",
-          "name": "3. Kontroll over programmer",
-          "questions": [
-            {
-              "id": "q1_3_1",
-              "text": "Kan ansatte selv installere programmer på jobbdatamaskinene?",
-              "explanation": "Dette spørsmålet kartlegger om virksomheten har begrensninger for hva ansatte kan installere på sine arbeidsstasjoner. Ukontrollert installasjon av programvare kan introdusere sikkerhetsproblemer og uautoriserte applikasjoner."
-            },
-            {
-              "id": "q1_3_2",
-              "text": "Bruker dere verktøy som hindrer at ikke-godkjente programmer kan kjøres?",
-              "explanation": "Dette spørsmålet handler om implementering av application whitelisting eller andre teknologier som begrenser kjøring av programmer til kun godkjente applikasjoner, noe som gir et ekstra sikkerhetslag."
-            }
-          ]
-        },
-        {
-          "id": "4",
-          "name": "4. Sikre innstillinger",
-          "questions": [
-            {
-              "id": "q1_4_1",
-              "text": "Har bedriften en standardmåte å sette opp nye datamaskiner på?",
-              "explanation": "Dette spørsmålet undersøker om virksomheten bruker standardiserte oppsett (images) for nye enheter, som sikrer konsistent sikkerhetskonfigurasjon på tvers av organisasjonen."
-            },
-            {
-              "id": "q1_4_2",
-              "text": "Fjerner dere programmer og funksjoner som ikke trengs før nye datamaskiner tas i bruk?",
-              "explanation": "Dette spørsmålet handler om å redusere angrepsflaten ved å fjerne unødvendig programvare og deaktivere tjenester som ikke er nødvendige for virksomhetens drift."
-            },
-            {
-              "id": "q1_4_3",
-              "text": "Endrer dere alltid de forhåndsinnstilte passordene på nytt IT-utstyr (som rutere, skrivere, servere) før de kobles til nettverket?",
-              "explanation": "Dette spørsmålet fokuserer på en kritisk sikkerhetspraksis: å endre standard påloggingsinformasjon på enheter før de tas i bruk, siden standardpassord ofte er kjent og utgjør en betydelig sikkerhetsrisiko."
-            },
-            {
-              "id": "q1_4_4",
-              "text": "Sjekker dere regelmessig at IT-utstyret fortsatt har sikre innstillinger, eller at ingen har endret på dem?",
-              "explanation": "Dette spørsmålet undersøker om virksomheten har rutiner for å verifisere at sikkerhetskonfigurasjoner opprettholdes over tid, og for å oppdage og korrigere uautoriserte eller utilsiktede endringer i konfigurasjoner."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "q2",
-      "text": "Hvordan administrerer virksomheten sine IT-ressurser?",
-      "category": "Ressurshåndtering",
-      "subCategories": [
-        {
-          "id": "1",
-          "name": "1. Oversikt over ressurser",
-          "questions": [
-            {
-              "id": "q2_1_1",
-              "text": "Har virksomheten en oppdatert oversikt over alle IT-ressurser (maskinvare, programvare, lisenser)?",
-              "explanation": "Dette spørsmålet kartlegger om virksomheten har en komplett og oppdatert inventarliste over alle IT-eiendeler, noe som er grunnleggende for effektiv sikkerhetsstyring og ressursplanlegging."
-            },
-            {
-              "id": "q2_1_2",
-              "text": "Er det etablert rutiner for regelmessig gjennomgang og oppdatering av ressursoversikten?",
-              "explanation": "Dette spørsmålet undersøker om virksomheten aktivt vedlikeholder sin IT-inventarliste gjennom systematiske prosesser, for å sikre at den forblir nøyaktig og pålitelig over tid."
-            }
-          ]
-        },
-        {
-          "id": "2",
-          "name": "2. Ansvarsfordeling",
-          "questions": [
-            {
-              "id": "q2_2_1",
-              "text": "Er det tydelig definert hvem som har ansvar for ulike IT-ressurser?",
-              "explanation": "Dette spørsmålet undersøker om virksomheten har klare ansvarsområder for IT-ressurser, noe som sikrer at alle systemer og data har dedikerte eiere som er ansvarlige for deres sikkerhet og vedlikehold."
-            },
-            {
-              "id": "q2_2_2",
-              "text": "Har virksomheten dedikerte ressurser til cybersikkerhet?",
-              "explanation": "Dette spørsmålet kartlegger om virksomheten har allokert spesifikke personer, tid eller budsjettmidler til cybersikkerhet, noe som indikerer prioritering av og forpliktelse til sikkerhet."
-            }
-          ]
-        }
-      ]
-    }
-  ]
+  {
+    "id": "q1",
+    "text": "Er virksomhetens IT-ressurser helhetlig kartlagt og dokumentert?",
+    "explanation": "Dette handler om å ha en fullstendig og oppdatert oversikt over alle digitale verktøy og utstyr som virksomheten bruker eller eier. Tenk på det som en digital \"inventarliste\" hvor alt fra servere til programvarelisenser finnes registrert. Uten en slik oversikt er det vanskelig å vite hva som skal sikres og vedlikeholdes.",
+    "measures": [
+      {
+        "id": "1.1", 
+        "text": "Fullstendig oversikt over IT-systemer",
+        "explanation": "Virksomheten trenger en komplett liste over alle fagsystemer og støttesystemer som brukes",
+        "measure": "Lag en sentral liste over alle IT-systemer inkludert økonomisystem, HR-system, e-post, og samhandlingsverktøy. Noter systemets funksjon og om det inneholder sensitive data"
+      },
+      {
+        "id": "1.2",
+        "text": "Kartlegging av fysisk IT-utstyr",
+        "explanation": "All maskinvare må være registrert for å sikre kontroll og vedlikehold",
+        "measure": "Registrer alle datamaskiner, servere, nettverksutstyr, skrivere, nettbrett og mobiltelefoner med unikt ID-nummer, modell, serienummer og anskaffelsesdato"
+      },
+      {
+        "id": "1.3",
+        "text": "Dokumentasjon av plassering og brukere",
+        "explanation": "Det må være kjent hvor utstyr befinner seg og hvem som bruker det",
+        "measure": "Noter fysisk plassering for hver enhet, hvem som er hovedbruker, om enheter deles mellom ansatte, og om utstyr tas med hjem eller brukes på reise"
+      },
+      {
+        "id": "1.4",
+        "text": "Programvareoversikt",
+        "explanation": "All programvare må være kartlagt for å sikre oppdateringer og riktige lisenser",
+        "measure": "Kartlegg alle installerte programmer, noter versjoner, verifiser at virksomheten har gyldige lisenser, og inkluder både standard- og spesialprogrammer"
+      },
+      {
+        "id": "1.5",
+        "text": "Dokumentasjon av brukertilganger",
+        "explanation": "Det må være oversikt over hvem som har tilgang til hvilke systemer og med hvilke rettigheter",
+        "measure": "Lag oversikt over alle brukere per system, registrer tilgangsnivåer/rettigheter, noter spesielt administratortilganger, og inkluder eksterne brukere"
+      },
+      {
+        "id": "1.6",
+        "text": "Kartlegging av informasjonsflyt",
+        "explanation": "Det må være kjent hvordan data beveger seg mellom systemer",
+        "measure": "Beskriv dataoverføringer mellom systemer, dokumenter hvilke systemer som er integrert, noter automatiserte overføringer, og marker spesielt overføringer av sensitive data"
+      },
+      {
+        "id": "1.7",
+        "text": "Etabler rutiner for vedlikehold av IT-oversikten",
+        "explanation": "Oversikten må holdes oppdatert for å være nyttig",
+        "measure": "Start enkelt med de viktigste systemene, bruk tilgjengelige verktøy som regneark, fordel ansvar for oppdatering, og sett av tid jevnlig til vedlikehold av oversikten"
+      }
+    ]
+  },
+  {
+    "id": "q2",
+    "text": "Hvordan sikrer virksomheten at IT-systemer og -utstyr er oppdaterte, korrekt konfigurert og beskyttet mot uautorisert bruk?",
+    "category": "Oppdatering og konfigurering",
+    "measures": [
+      {
+        "id": "2.1",
+        "text": "Sikre oppdaterte systemer",
+        "explanation": "Alle datamaskiner og programvare må motta sikkerhetsoppdateringer",
+        "measure": "Lag en liste over alle operativsystemer og programmer som brukes i bedriften. Sjekk hver programvare mot produsentens supportside for å verifisere støttestatus. Merk all utdatert programvare som ikke lenger mottar sikkerhetsoppdateringer. Prioriter oppgradering av utdaterte systemer og budsjetter for regelmessig utskiftning av eldre enheter."
+      },
+      {
+        "id": "2.2",
+        "text": "Automatiske sikkerhetsoppdateringer",
+        "explanation": "Oppdateringer bør installeres automatisk for å sikre at de ikke glemmes",
+        "measure": "Aktiver automatiske oppdateringer på alle enheter. For Windows: Gå til Innstillinger > Oppdatering og sikkerhet > Windows Update og aktiver automatisk nedlasting og installasjon. For macOS: Aktiver automatiske oppdateringer i Systemvalg. Konfigurer også automatiske oppdateringer for vanlige programmer. Etabler månedlig kontroll for å verifisere at oppdateringer faktisk installeres."
+      },
+      {
+        "id": "2.3",
+        "text": "Begrenset programvareinstallasjon",
+        "explanation": "Ansatte bør ikke ha mulighet til å installere programmer selv uten godkjenning",
+        "measure": "Fjern administratorrettigheter fra vanlige brukerkontoer. For Windows: Verifiser i Kontrollpanel at vanlige brukere ikke er medlemmer av administratorgruppen. For macOS: Sørg for at brukere har 'Standard' kontotype. Etabler en prosess for programvareforespørsler med klare godkjenningsprosedyrer. Dokumenter hvem som har rettighet til å installere programvare."
+      },
+      {
+        "id": "2.4",
+        "text": "Applikasjonskontroll",
+        "explanation": "Bruk av verktøy som hindrer at ikke-godkjente programmer kan kjøres",
+        "measure": "Implementer applikasjonskontroll-løsninger. For Windows Enterprise/Education: Aktiver AppLocker via gruppepolicy. For Windows Pro: Aktiver Software Restriction Policies. Start med å kjøre i overvåkningsmodus, opprett en liste over godkjente applikasjoner, og implementer trinnvis, med start på kritiske systemer."
+      },
+      {
+        "id": "2.5",
+        "text": "Standardisert oppsett av nye enheter",
+        "explanation": "Nye datamaskiner bør settes opp på en standardisert måte for å sikre at alle sikkerhetstiltak er på plass",
+        "measure": "Dokumenter en standard konfigurasjon med sjekkliste for alle innstillinger som skal konfigureres. For større miljøer: Opprett en 'gullkopi'-image med riktig konfigurasjon. For mindre miljøer: Lag en detaljert steg-for-steg guide med skjermbilder. Inkluder verifiseringstrinn for å sikre at alle punkter er fulgt."
+      },
+      {
+        "id": "2.6",
+        "text": "Fjerning av unødvendig programvare",
+        "explanation": "Programmer og funksjoner som ikke trengs bør fjernes for å redusere angrepsflaten",
+        "measure": "Opprett en liste over godkjent programvare for ulike brukerroller. Alt som ikke er på listen skal fjernes. For Windows: Fjern bloatware med PowerShell og deaktiver unødvendige Windows-funksjoner. For macOS: Avinstaller unødvendige programmer fra Applications-mappen. Inkluder fjerning av unødvendig programvare i standard oppsettsprosessen."
+      },
+      {
+        "id": "2.7",
+        "text": "Endring av standardpassord",
+        "explanation": "Forhåndsinnstilte passord på nytt IT-utstyr må endres før utstyret kobles til nettverket",
+        "measure": "Lag en standardisert prosedyre for idriftsettelse som inkluderer endring av standardpassord som første punkt. For nettverksenheter: Endre adminpassordet til et unikt, sterkt passord. For skrivere og multifunksjonsmaskiner: Endre alle standardpassord via webgrensesnittet. For servere: Endre alle administrative passord ved første oppstart. Dokumenter nye passord på en sikker måte."
+      },
+      {
+        "id": "2.8",
+        "text": "Regelmessig kontroll av sikkerhetsinnstillinger",
+        "explanation": "Innstillinger må kontrolleres regelmessig for å sikre at de ikke har blitt endret",
+        "measure": "Etabler en kvartalsvis kontrollrutine for konfigurasjon. For Windows: Bruk Group Policy Results og Windows Security Center-sjekk. For nettverksenheter: Logg inn og sjekk innstillinger mot dokumentert baseline. Dokumenter resultater av hver kontroll, eventuelle avvik og oppfølgingstiltak."
+      }
+    ]
+  },
+  {
+    "id": "q3",
+    "text": "Hvordan administrerer virksomheten sine IT-ressurser?",
+    "category": "Ressurshåndtering",
+    "measures": [
+      {
+        "id": "3.1",
+        "text": "Oppdatert IT-ressursoversikt",
+        "explanation": "Virksomheten trenger en komplett og oppdatert inventarliste over alle IT-eiendeler",
+        "measure": "Etabler en sentral IT-ressursdatabase som dokumenterer alle maskinvareenheter, programvare og lisenser. Inkluder informasjon om eier, plassering, innkjøpsdato og forventet levetid. Bruk et dedikert verktøy for asset management eller en strukturert regnearkløsning for små virksomheter. Tagg fysisk utstyr med unike identifikatorer."
+      },
+      {
+        "id": "3.2",
+        "text": "Rutiner for vedlikehold av oversikten",
+        "explanation": "Det må finnes systematiske prosesser for å holde IT-inventarlisten oppdatert",
+        "measure": "Etabler rutiner for registrering av nye eiendeler ved anskaffelse og prosedyrer for utfasing av utstyr. Gjennomfør kvartalsvise revisjoner av ressursoversikten. Utnevn en ressursansvarlig med dedikert tid til vedlikehold av oversikten. Gjennomfør årlig fysisk kontroll av IT-utstyr for å verifisere nøyaktigheten."
+      },
+      {
+        "id": "3.3",
+        "text": "Tydelig definerte ansvarsområder",
+        "explanation": "Det må være klart hvem som har ansvar for ulike IT-ressurser",
+        "measure": "Etabler en formell ansvarsmatrise for IT-ressurser som identifiserer rollebaserte ansvarsområder. Definer eierskap for systemer, applikasjoner, data og infrastruktur. Dokumenter spesifikke ansvarsområder for vedlikehold, sikkerhetskonfigurering og brukeradministrasjon. Kommuniser ansvarsfordelingen til alle relevante parter."
+      },
+      {
+        "id": "3.4",
+        "text": "Dedikerte ressurser til cybersikkerhet",
+        "explanation": "Virksomheten bør ha allokert spesifikke ressurser til cybersikkerhet",
+        "measure": "Utnevn en sikkerhetsansvarlig med klart definert ansvar. Avsett et spesifikt budsjett for sikkerhetstiltak og opplæring. For mindre virksomheter, vurder delt ansvar med tydelig tidstildeling eller outsourcing. Etabler et sikkerhetsråd med representanter fra ulike avdelinger. Sørg for at sikkerhetsressurser har nødvendig autoritet og støtte fra ledelsen."
+      }
+    ]
+  }
+]
