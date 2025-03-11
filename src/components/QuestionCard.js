@@ -292,494 +292,42 @@ const inlineStyles = `
 .subquestion-item.expanded .chevron-icon {
   transform: rotate(180deg);
 }
-`;
 
-// Datastruktur for spørsmål
-const questions = [
-  {
-    id: "q1",
-    text: "Hvordan sikrer virksomheten at IT-systemer og -utstyr er oppdaterte, korrekt konfigurert og beskyttet mot uautorisert bruk?",
-    category: "Oppdatering og konfigurering",
-    subCategories: [
-      {
-        id: "1",
-        name: "1. Nye datamaskiner og programmer",
-        questions: [
-          {
-            id: "q1_1_1",
-            text: "Får alle datamaskiner og programvare fortsatt sikkerhetoppdateringer?"
-          }
-        ]
-      },
-      {
-        id: "2",
-        name: "2. Oppdateringer",
-        questions: [
-          {
-            id: "q1_2_1",
-            text: "Installeres sikkerhetsoppdateringer automatisk på alle datamaskiner og programmer?"
-          }
-        ]
-      },
-      {
-        id: "3",
-        name: "3. Kontroll over programmer",
-        questions: [
-          {
-            id: "q1_3_1",
-            text: "Kan ansatte selv installere programmer på jobbdatamaskinene?"
-          },
-          {
-            id: "q1_3_2",
-            text: "Bruker dere verktøy som hindrer at ikke-godkjente programmer kan kjøres?"
-          }
-        ]
-      },
-      {
-        id: "4",
-        name: "4. Sikre innstillinger",
-        questions: [
-          {
-            id: "q1_4_1",
-            text: "Har bedriften en standardmåte å sette opp nye datamaskiner på?"
-          },
-          {
-            id: "q1_4_2",
-            text: "Fjerner dere programmer og funksjoner som ikke trengs før nye datamaskiner tas i bruk?"
-          },
-          {
-            id: "q1_4_3",
-            text: "Endrer dere alltid de forhåndsinnstilte passordene på nytt IT-utstyr (som rutere, skrivere, servere) før de kobles til nettverket?"
-          },
-          {
-            id: "q1_4_4",
-            text: "Sjekker dere regelmessig at IT-utstyret fortsatt har sikre innstillinger, eller at ingen har endret på dem?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: "q2",
-    text: "Hvordan administrerer virksomheten sine IT-ressurser?",
-    category: "Ressurshåndtering",
-    subCategories: [
-      {
-        id: "1",
-        name: "1. Oversikt over ressurser",
-        questions: [
-          {
-            id: "q2_1_1",
-            text: "Har virksomheten en oppdatert oversikt over alle IT-ressurser (maskinvare, programvare, lisenser)?"
-          },
-          {
-            id: "q2_1_2",
-            text: "Er det etablert rutiner for regelmessig gjennomgang og oppdatering av ressursoversikten?"
-          }
-        ]
-      },
-      {
-        id: "2",
-        name: "2. Ansvarsfordeling",
-        questions: [
-          {
-            id: "q2_2_1",
-            text: "Er det tydelig definert hvem som har ansvar for ulike IT-ressurser?"
-          },
-          {
-            id: "q2_2_2",
-            text: "Har virksomheten dedikerte ressurser til cybersikkerhet?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: "q3",
-    text: "Hvilke rutiner har virksomheten for passord og tilgangsstyring?",
-    category: "Passord Policy",
-    subCategories: [
-      {
-        id: "1",
-        name: "1. Passordkrav",
-        questions: [
-          {
-            id: "q3_1_1",
-            text: "Har virksomheten definerte krav til sikre passord (lengde, kompleksitet, utløp)?"
-          },
-          {
-            id: "q3_1_2",
-            text: "Brukes tekniske løsninger for å håndheve passordpolicyen?"
-          }
-        ]
-      },
-      {
-        id: "2",
-        name: "2. Passordadministrasjon",
-        questions: [
-          {
-            id: "q3_2_1",
-            text: "Bruker virksomheten et verktøy for passordadministrasjon?"
-          },
-          {
-            id: "q3_2_2",
-            text: "Er det rutiner for å endre standardpassord på alle systemer og enheter?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: "q4",
-    text: "Hvordan sikres virksomhetens data gjennom sikkerhetskopiering?",
-    category: "Sikkerhetskopiering",
-    subCategories: [
-      {
-        id: "1",
-        name: "1. Rutiner og omfang",
-        questions: [
-          {
-            id: "q4_1_1",
-            text: "Har virksomheten definert hvilke data som skal sikkerhetskopieres og hvor ofte?"
-          },
-          {
-            id: "q4_1_2",
-            text: "Følger virksomheten 3-2-1-prinsippet for sikkerhetskopiering?"
-          }
-        ]
-      },
-      {
-        id: "2",
-        name: "2. Testing og verifisering",
-        questions: [
-          {
-            id: "q4_2_1",
-            text: "Testes sikkerhetskopier regelmessig for å verifisere at de kan gjenopprettes?"
-          },
-          {
-            id: "q4_2_2",
-            text: "Er det dokumenterte prosedyrer for gjenoppretting av data fra sikkerhetskopier?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: "q5",
-    text: "Hvordan implementerer virksomheten flerfaktorautentisering (MFA)?",
-    category: "Flerfaktor (MFA)",
-    subCategories: [
-      {
-        id: "1",
-        name: "1. Omfang og dekning",
-        questions: [
-          {
-            id: "q5_1_1",
-            text: "Er MFA implementert for alle kritiske systemer og tjenester?"
-          },
-          {
-            id: "q5_1_2",
-            text: "Er MFA påkrevd for fjernaksess til virksomhetens nettverk og systemer?"
-          }
-        ]
-      },
-      {
-        id: "2",
-        name: "2. MFA-løsninger",
-        questions: [
-          {
-            id: "q5_2_1",
-            text: "Hvilke typer MFA-løsninger bruker virksomheten (app, SMS, fysiske nøkler)?"
-          },
-          {
-            id: "q5_2_2",
-            text: "Er det rutiner for å håndtere tap av MFA-enheter?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: "q6",
-    text: "Hvordan styrer virksomheten tilgang til systemer og data?",
-    category: "Tilgangskontroll",
-    subCategories: [
-      {
-        id: "1",
-        name: "1. Tildelingsrutiner",
-        questions: [
-          {
-            id: "q6_1_1",
-            text: "Følger virksomheten prinsippet om laveste nødvendige tilgangsnivå?"
-          },
-          {
-            id: "q6_1_2",
-            text: "Er det formelle rutiner for tildeling og revurdering av tilgangsrettigheter?"
-          }
-        ]
-      },
-      {
-        id: "2",
-        name: "2. Oppfølging og revisjon",
-        questions: [
-          {
-            id: "q6_2_1",
-            text: "Gjennomføres det regelmessig gjennomgang av tilgangsrettigheter?"
-          },
-          {
-            id: "q6_2_2",
-            text: "Logges tilgang til sensitive systemer og data?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: "q7",
-    text: "Hvilke tiltak har virksomheten for å beskytte mot skadelig programvare?",
-    category: "Brannmur og antivirus",
-    subCategories: [
-      {
-        id: "1",
-        name: "1. Brannmur",
-        questions: [
-          {
-            id: "q7_1_1",
-            text: "Er brannmur aktivert og korrekt konfigurert på alle enheter?"
-          },
-          {
-            id: "q7_1_2",
-            text: "Gjennomgås brannmurregler regelmessig for å sikre at de er oppdaterte?"
-          }
-        ]
-      },
-      {
-        id: "2",
-        name: "2. Antivirus og beskyttelse",
-        questions: [
-          {
-            id: "q7_2_1",
-            text: "Er det installert antivirusprogramvare på alle enheter?"
-          },
-          {
-            id: "q7_2_2",
-            text: "Oppdateres virusdefinisjonene automatisk og regelmessig?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: "q8",
-    text: "Hvordan sikrer virksomheten sitt nettverk mot uautorisert tilgang?",
-    category: "Nettverkssikkerhet",
-    subCategories: [
-      {
-        id: "1",
-        name: "1. Nettverkssegmentering",
-        questions: [
-          {
-            id: "q8_1_1",
-            text: "Er nettverket segmentert for å isolere sensitive systemer?"
-          },
-          {
-            id: "q8_1_2",
-            text: "Er det implementert nettverksovervåkning for å oppdage uvanlig aktivitet?"
-          }
-        ]
-      },
-      {
-        id: "2",
-        name: "2. Trådløs sikkerhet",
-        questions: [
-          {
-            id: "q8_2_1",
-            text: "Er virksomhetens Wi-Fi-nettverk sikret med sterk kryptering (WPA2/WPA3)?"
-          },
-          {
-            id: "q8_2_2",
-            text: "Er gjestenettverk atskilt fra virksomhetens hovednettverk?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: "q9",
-    text: "Hvilke tiltak har virksomheten for fysisk sikring av IT-utstyr?",
-    category: "Fysisk sikring",
-    subCategories: [
-      {
-        id: "1",
-        name: "1. Adgangskontroll",
-        questions: [
-          {
-            id: "q9_1_1",
-            text: "Er det adgangskontroll til områder med kritisk IT-infrastruktur?"
-          },
-          {
-            id: "q9_1_2",
-            text: "Registreres og kontrolleres besøkende til områder med IT-utstyr?"
-          }
-        ]
-      },
-      {
-        id: "2",
-        name: "2. Miljøsikring",
-        questions: [
-          {
-            id: "q9_2_1",
-            text: "Er serverrom og IT-utstyr beskyttet mot miljøtrusler (brann, vann, strømbrudd)?"
-          },
-          {
-            id: "q9_2_2",
-            text: "Har virksomheten rutiner for sikker avhending av IT-utstyr og lagringsmedier?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: "q10",
-    text: "Hvordan beskytter virksomheten sensitive data gjennom kryptering?",
-    category: "Datakryptering",
-    subCategories: [
-      {
-        id: "1",
-        name: "1. Lagringskryptering",
-        questions: [
-          {
-            id: "q10_1_1",
-            text: "Er harddisker på bærbare enheter kryptert?"
-          },
-          {
-            id: "q10_1_2",
-            text: "Er sensitive data i databaser og filsystemer kryptert?"
-          }
-        ]
-      },
-      {
-        id: "2",
-        name: "2. Kommunikasjonskryptering",
-        questions: [
-          {
-            id: "q10_2_1",
-            text: "Bruker virksomheten krypterte kommunikasjonskanaler (HTTPS, VPN, etc.)?"
-          },
-          {
-            id: "q10_2_2",
-            text: "Er det rutiner for sikker utveksling av sensitive data med eksterne parter?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: "q11",
-    text: "Hvordan er virksomheten forberedt på å håndtere sikkerhetshendelser?",
-    category: "Hendelseshåndteringsplan",
-    subCategories: [
-      {
-        id: "1",
-        name: "1. Beredskapsplan",
-        questions: [
-          {
-            id: "q11_1_1",
-            text: "Har virksomheten en dokumentert plan for håndtering av sikkerhetshendelser?"
-          },
-          {
-            id: "q11_1_2",
-            text: "Er roller og ansvar tydelig definert i hendelseshåndteringsplanen?"
-          }
-        ]
-      },
-      {
-        id: "2",
-        name: "2. Øvelser og oppfølging",
-        questions: [
-          {
-            id: "q11_2_1",
-            text: "Gjennomføres det regelmessige øvelser på håndtering av sikkerhetshendelser?"
-          },
-          {
-            id: "q11_2_2",
-            text: "Evalueres og oppdateres hendelseshåndteringsplanen etter hendelser eller øvelser?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: "q12",
-    text: "Hvilke tiltak har virksomheten for å sikre at ansatte har nødvendig kompetanse innen IT-sikkerhet?",
-    category: "Opplæring",
-    subCategories: [
-      {
-        id: "1",
-        name: "1. Opplæringsprogram",
-        questions: [
-          {
-            id: "q12_1_1",
-            text: "Har virksomheten et strukturert opplæringsprogram for IT-sikkerhet?"
-          },
-          {
-            id: "q12_1_2",
-            text: "Gjennomgår alle nyansatte grunnleggende sikkerhetsopplæring?"
-          }
-        ]
-      },
-      {
-        id: "2",
-        name: "2. Løpende bevisstgjøring",
-        questions: [
-          {
-            id: "q12_2_1",
-            text: "Gjennomføres det regelmessige bevisstgjøringskampanjer om IT-sikkerhet?"
-          },
-          {
-            id: "q12_2_2",
-            text: "Testes ansattes årvåkenhet med simulerte phishing-angrep eller lignende?"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: "q13",
-    text: "Hvordan arbeider virksomheten systematisk med å forbedre IT-sikkerheten?",
-    category: "Forbedring",
-    subCategories: [
-      {
-        id: "1",
-        name: "1. Risikovurdering",
-        questions: [
-          {
-            id: "q13_1_1",
-            text: "Gjennomføres det regelmessige risikovurderinger av IT-sikkerheten?"
-          },
-          {
-            id: "q13_1_2",
-            text: "Følges identifiserte sårbarheter opp med konkrete tiltak?"
-          }
-        ]
-      },
-      {
-        id: "2",
-        name: "2. Evaluering og forbedring",
-        questions: [
-          {
-            id: "q13_2_1",
-            text: "Evalueres effekten av implementerte sikkerhetstiltak?"
-          },
-          {
-            id: "q13_2_2",
-            text: "Har virksomheten en prosess for kontinuerlig forbedring av IT-sikkerheten?"
-          }
-        ]
-      }
-    ]
-  }
-];
+/* Loading state styling */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.loading-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #4a90e2;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin-right: 10px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error state styling */
+.error-container {
+  text-align: center;
+  padding: 30px;
+  background-color: #fff3f3;
+  border-radius: 8px;
+  border-left: 4px solid #f44336;
+  color: #d32f2f;
+}
+`;
 
 // Hjelpefunksjon for å hente alle underspørsmål for et gitt hovedspørsmål
 const getSubQuestions = (question) => {
@@ -809,13 +357,47 @@ const renderChevron = (isExpanded) => (
 );
 
 function Questionnaire({ onSubmit }) {
+  const [questions, setQuestions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [answers, setAnswers] = useState({});
   const [showGuide, setShowGuide] = useState({});
   const [expanded, setExpanded] = useState({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
+  // Fetch questions from JSON file
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      try {
+        // Enkel sti til JSON-filen i public-mappen
+        const response = await fetch('/testDatabase/questions.json', {
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        if (!response.ok) {
+          throw new Error(`Kunne ikke hente spørsmål: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        console.log("Spørsmål lastet:", data);
+        setQuestions(data);
+      } catch (err) {
+        console.error("Feil ved henting av spørsmål:", err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchQuestions();
+  }, []);
+
   // Initialiser første underspørsmål til åpent i hver aktiv underkategori
   useEffect(() => {
+    if (loading || error || questions.length === 0) return;
+    
     const currentQ = questions[currentQuestionIndex];
     if (!currentQ.subCategories) return;
     
@@ -852,10 +434,12 @@ function Questionnaire({ onSubmit }) {
     }
     
     setExpanded(newExpandedState);
-  }, [currentQuestionIndex, answers]);
+  }, [currentQuestionIndex, answers, loading, error, questions]);
 
   // Når brukeren svarer på et spørsmål, lukk det og åpne det neste
   useEffect(() => {
+    if (loading || error || questions.length === 0) return;
+    
     // Finn alle underspørsmål i rekkefølge for gjeldende hovedspørsmål
     const currentQ = questions[currentQuestionIndex];
     if (!currentQ.subCategories) return;
@@ -897,7 +481,7 @@ function Questionnaire({ onSubmit }) {
         }));
       }
     });
-  }, [answers, currentQuestionIndex]);
+  }, [answers, currentQuestionIndex, loading, error, questions]);
 
   // This function handles when a user answers a question
   const handleAnswer = (questionId, answer) => {
@@ -976,6 +560,8 @@ function Questionnaire({ onSubmit }) {
 
   // Beregn total fremgang på tvers av alle spørsmål
   const calculateTotalProgress = () => {
+    if (questions.length === 0) return 0;
+    
     let totalQuestionCount = 0;
     let answeredCount = 0;
     
@@ -994,18 +580,23 @@ function Questionnaire({ onSubmit }) {
       }
     });
     
-    return Math.round((answeredCount / totalQuestionCount) * 100);
+    return totalQuestionCount === 0 ? 0 : Math.round((answeredCount / totalQuestionCount) * 100);
   };
 
   // Beregn fremgang for gjeldende hovedspørsmål
   const calculateQuestionProgress = () => {
+    if (questions.length === 0 || !questions[currentQuestionIndex]) return 0;
+    
     const currentQ = questions[currentQuestionIndex];
     
     // Sjekk om spørsmålet har underkategorier
     if (currentQ && currentQ.subCategories) {
       const subQuestions = currentQ.subCategories.flatMap(subCat => subCat.questions);
+      const total = subQuestions.length;
+      if (total === 0) return 0;
+      
       const answeredSubQuestions = subQuestions.filter(q => answers[q.id] !== undefined).length;
-      return Math.round((answeredSubQuestions / subQuestions.length) * 100);
+      return Math.round((answeredSubQuestions / total) * 100);
     }
     
     // Hvis ikke, er det enten 0% eller 100%
@@ -1014,6 +605,8 @@ function Questionnaire({ onSubmit }) {
 
   // Sjekk om alle spørsmål er besvart i gjeldende hovedspørsmål
   const isCurrentQuestionAnswered = () => {
+    if (questions.length === 0 || !questions[currentQuestionIndex]) return false;
+    
     const currentQ = questions[currentQuestionIndex];
     
     // Hvis spørsmålet har underkategorier, sjekk alle underspørsmål
@@ -1028,6 +621,8 @@ function Questionnaire({ onSubmit }) {
 
   // Sjekk om alle spørsmål er besvart totalt
   const hasAnsweredAllQuestions = () => {
+    if (questions.length === 0) return false;
+    
     // Sjekk alle hovedspørsmål og deres underspørsmål
     return questions.every(q => {
       if (q.subCategories) {
@@ -1045,6 +640,46 @@ function Questionnaire({ onSubmit }) {
   const getAnswerBadgeText = (answer) => {
     return answer.charAt(0).toUpperCase() + answer.slice(1);
   };
+
+  // Handle loading state
+  if (loading) {
+    return (
+      <div className="questionnaire-container">
+        <style>{inlineStyles}</style>
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <span>Laster spørsmål...</span>
+        </div>
+      </div>
+    );
+  }
+
+  // Handle error state
+  if (error) {
+    return (
+      <div className="questionnaire-container">
+        <style>{inlineStyles}</style>
+        <div className="error-container">
+          <h3>Feil ved lasting av spørsmål</h3>
+          <p>{error}</p>
+          <p>Prøv å laste siden på nytt eller kontakt support hvis problemet vedvarer.</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Handle empty questions array
+  if (questions.length === 0) {
+    return (
+      <div className="questionnaire-container">
+        <style>{inlineStyles}</style>
+        <div className="error-container">
+          <h3>Ingen spørsmål funnet</h3>
+          <p>Kunne ikke finne noen spørsmål å vise. Sjekk at spørsmålsfilen er korrekt formatert.</p>
+        </div>
+      </div>
+    );
+  }
 
   const totalProgressPercentage = calculateTotalProgress();
   const questionProgressPercentage = calculateQuestionProgress();
@@ -1087,7 +722,6 @@ function Questionnaire({ onSubmit }) {
       
       <div className="question-card">
       
-
       {currentQuestion.subCategories ? (
         /* Vis spørsmål med underkategorier */
         <>
@@ -1139,6 +773,13 @@ function Questionnaire({ onSubmit }) {
                       </div>
                       
                       <div className="subquestion-content">
+                        {/* Display explanation if available */}
+                        {question.explanation && (
+                          <div className="question-explanation">
+                            <p>{question.explanation}</p>
+                          </div>
+                        )}
+                        
                         <div className="answer-options">
                           <button
                             className={answers[question.id] === "ja" ? "selected" : ""}
@@ -1191,7 +832,7 @@ function Questionnaire({ onSubmit }) {
             </button>
           </div>
           
-          {showGuide[currentQuestion.id] && (
+          {showGuide[currentQuestion.id] && currentQuestion.guide && (
             <div className="guide-container">
               <h4>Slik vurderer du dette spørsmålet:</h4>
               <ol className="guide-steps">
