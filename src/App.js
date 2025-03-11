@@ -663,7 +663,7 @@ function App() {
       </main>
 
       <footer>
-        <p>© 2025 Cybersikkerhets Vurderingsverktøy</p>
+        <p></p>
       </footer>
     </div>
   );

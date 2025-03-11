@@ -98,11 +98,9 @@
 }
 
 .measure-card {
-  border: 1px solid var(--border);
-  border-radius: 8px 8px 8px 8px;
+  border-radius: 6px;
   padding: 20px;
-  background-color: var(--card);
-  box-shadow: var(--shadow-sm);
+  background-color: red;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
 }
@@ -114,7 +112,6 @@
 
 .measure-card:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
 }
 
 .measure-priority {

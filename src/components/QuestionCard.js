@@ -2,9 +2,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles/components/Questionnaire.css";
 
-// Styling som kan kopieres til egen CSS-fil
-
-
 // Hjelpefunksjon for å hente alle underspørsmål for et gitt hovedspørsmål
 const getSubQuestions = (question) => {
   if (question && question.subCategories) {
