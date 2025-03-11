@@ -40,6 +40,10 @@
   margin-bottom: 15px;
 }
 
+.search-container input{
+  background-color: var(--lightest-white);
+}
+
 .search-input {
   width: 100%;
   padding: 12px;
