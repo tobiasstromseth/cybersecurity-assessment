@@ -1,12 +1,12 @@
 // src/App.js - Oppdatert med mørkt tema-støtte og ny siderekkefølge
 import React, { useState, useEffect } from "react";
 import "./styles/index.css"; // Importer Claude-farger
-import Questionnaire from "./components/QuestionCard";
-import Dashboard from "./components/Dashboard";
-import MeasuresOverview from "./components/MeasuresOverview";
-import StartPage from "./components/StartPage";
+import Questionnaire from "./components/QuestionCard.js";
+import Dashboard from "./components/Dashboard.js";
+import MeasuresOverview from "./components/MeasuresOverview.js";
+import StartPage from "./components/StartPage.js";
 import StartInfo from "./components/startInfo.js";
-import ThemeToggle from "./components/ThemeToggle";
+import ThemeToggle from "./components/ThemeToggle.js";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("startInfo");
