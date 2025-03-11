@@ -3,16 +3,22 @@
 
 .app-container {
   margin: 0 auto;
+  padding-top: 60px; /* Add space for the fixed header */
 }
 
 .app-header {
-  margin-bottom: 15px;
+  position: fixed; /* Make the header fixed at the top */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Ensure header is above all other content */
   background-color: var(--main-color);
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
 }
 
 .left-section-header {
@@ -116,22 +122,22 @@ nav button:disabled {
   .hamburger-menu {
     display: flex;
   }
-  
+
   .desktop-theme-toggle {
     display: none;
   }
-  
+
   .mobile-theme-toggle {
     display: flex;
     justify-content: flex-start;
     align-items: center;
   }
-  
+
   .left-section {
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   nav {
     position: absolute;
     top: 60px;
@@ -146,12 +152,12 @@ nav button:disabled {
     z-index: 1000;
     align-items: flex-start;
   }
-  
+
   nav.open {
     max-height: 350px; /* Juster basert på antall elementer */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  
+
   nav button {
     width: 100%;
     text-align: left;
@@ -159,14 +165,11 @@ nav button:disabled {
     margin: 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
-  
+
   .restart-button {
     margin-top: 0;
   }
 }
-
-
-
 
 .edit-info-button {
   background: none;
@@ -237,7 +240,7 @@ footer {
 .form-group input[type="text"],
 .form-group select {
   padding: 12px 15px;
-  border: 0px solid ;
+  border: 0px solid;
   border-radius: var(--radius-md);
   font-size: var(--font-size-p);
   transition: border-color 0.2s;
@@ -288,6 +291,7 @@ footer {
 @media (max-width: 768px) {
   .app-container {
     padding: 10px;
+    padding-top: 60px; /* Maintain space for fixed header */
   }
 
   main {
