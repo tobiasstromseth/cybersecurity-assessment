@@ -1,23 +1,73 @@
 [
   {
     "id": "q1",
-    "text": "Hvordan administrerer virksomheten sine IT-ressurser?",
+    "text": "Hvordan sikrer virksomheten at IT-ressurser er identifisert registrert og forvaltet riktig?",
     "category": "Ressurshåndtering",
     "subCategories": [
       {
         "id": "1",
-        "name": "1. Ressursplanlegging og kontroll",
+        "name": "Oversikt",
         "questions": [
           {
             "id": "q1_1_1",
-            "text": "Kartlegger virksomheten alt av fysisk IT-utstyr?",
-            "explanation": "All maskinvare må være registrert for å sikre kontroll og vedlikehold",
+            "text": "Er alle enheter i bruk i virksomhenten kartlagt?",
+            "explanation": "Forklaring til spørsmål:
+              Dette handler om hvorvidt bedriften har en fullstendig oversikt over alle digitale enheter som er i bruk i virksomheten.
+
+              Hva menes med dette spørsmålet?
+
+              Spørsmålet handler om hvorvidt bedriften har:
+              En oppdatert liste eller oversikt over alle datamaskiner, mobiltelefoner, nettbrett og andre digitale enheter som brukes i bedriften
+              Informasjon om hvilke enheter som er koblet til bedriftens nettverk
+              Kontroll på både bedriftseide enheter og eventuelle private enheter som brukes til jobbformål
+
+              Hvorfor er dette viktig for en bedrift?
+              Sikkerhet: Uten oversikt over enheter kan det finnes ukjente sårbarheter i nettverket
+              Vedlikehold: Lettere å planlegge oppdateringer og utskiftninger når man vet hva som finnes
+              Kostnadseffektivitet: Gir kontroll over IT-utgifter og hjelper med å unngå unødvendige innkjøp
+              Risikostyring: Enklere å identifisere og håndtere risiko knyttet til eldre eller usikre enheter
+              Beredskap: Ved sikkerhetshendelser er det viktig raskt å vite hvilke enheter som kan være berørt
+
+              Hva betyr et JA-svar?
+              Et JA betyr at bedriften har en konkret og fullstendig oversikt over alle digitale enheter som brukes i virksomheten. 
+              Dette kan være i form av en liste, et register eller et system som holdes oppdatert når nye enheter anskaffes eller 
+              gamle tas ut av bruk. Bedriften vet til enhver tid hvilke enheter som finnes, hvem som bruker dem, og hva de brukes til.
+
+              Hva betyr et NEI-svar?
+              Et NEI betyr at bedriften mangler en fullstendig oversikt over enhetene som brukes. Det kan være at noen enheter er 
+              registrert, men ikke alle, eller at oversikten ikke oppdateres jevnlig. Dette kan bety at bedriften ikke har kontroll på hvilke 
+              enheter ansatte bruker til jobbformål.",
             "measure": "Registrer alle datamaskiner, servere, nettverksutstyr, skrivere, nettbrett og mobiltelefoner med unikt ID-nummer, modell, serienummer og anskaffelsesdato"
           },
           {
             "id": "q1_1_2",
-            "text": "Har virksomheten fullstendig oversikt over IT-systemer?",
-            "explanation": "Virksomheten trenger en komplett liste over alle elektroniske systemer og støttesystemer som brukes",
+            "text": "Er all programvare i bruk i virksomheten kartlagt",
+            "explanation": "Forklaring til spørsmål:
+              Dette handler om hvorvidt bedriften har oversikt over alle dataprogram, apper og systemer som brukes i virksomheten.
+
+              Hva menes med dette spørsmålet?
+
+              Spørsmålet handler om hvorvidt bedriften har:
+              En komplett liste over alle programmer som er installert på bedriftens datamaskiner
+              Oversikt over hvilke nettbaserte tjenester og apper ansatte bruker i arbeidet
+              Kontroll på hvilken programvare som er godkjent for bruk i bedriften
+              Kunnskap om hvilke formål de forskjellige programmene brukes til
+
+              Hvorfor er dette viktig for en bedrift?
+              Sikkerhet: Ukjent programvare kan inneholde sikkerhetshull eller skadelig kode
+              Lisenskontroll: Sikrer at bedriften har lovlige lisenser for all programvare som brukes
+              Kostnadsstyring: Gir oversikt over hva bedriften betaler for og kan avdekke unødvendige utgifter
+              Vedlikehold: Gjør det enklere å holde all programvare oppdatert og sikker
+              Risikohåndtering: Enklere å vurdere sikkerhetsrisiko når man vet hva som brukes
+
+              Hva betyr et JA-svar?
+              Ja betyr at bedriften har full oversikt over alle programmer som brukes. Bedriften vet hvilke programmer som er installert på 
+              alle enheter, hvilke nettbaserte tjenester ansatte bruker, og har en oppdatert liste over all denne programvaren.
+
+              Hva betyr et NEI-svar?
+              Nei betyr at bedriften mangler fullstendig oversikt over programvaren som brukes. Det kan bety at ansatte kan installere 
+              programmer uten godkjenning, at det brukes skyggeprogramvare (uautoriserte apper eller tjenester), eller at bedriften ikke 
+              har en oppdatert liste over hvilke programmer som faktisk er i bruk.",
             "measure": "Lag en sentral liste over alle IT-systemer inkludert økonomisystem, HR-system, e-post, og samhandlingsverktøy. Noter systemets funksjon og om det inneholder sensitive data"
           },
           {
