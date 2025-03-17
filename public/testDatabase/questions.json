@@ -41,7 +41,7 @@
           },
           {
             "id": "q1_1_2",
-            "text": "Er all programvare i bruk i virksomheten kartlagt",
+            "text": "Er all programvare i bruk i virksomheten kartlagt?",
             "explanation": "Forklaring til spørsmål:
               Dette handler om hvorvidt bedriften har oversikt over alle dataprogram, apper og systemer som brukes i virksomheten.
 
@@ -72,33 +72,75 @@
           },
           {
             "id": "q1_1_3",
-            "text": "Har virksomheten programvareoversikt?",
-            "explanation": "All programvare må være kartlagt for å sikre oppdateringer og riktige lisenser",
+            "text": "Er alle brukere og brukerkontorer i bedriften kartlagt?",
+            "explanation": "Forklaring til spørsmål:
+              Dette handler om hvorvidt bedriften har en fullstendig oversikt over alle personer som har tilgang til bedriftens systemer og hvilke 
+              brukerkontoer som finnes.
+
+              Hva menes med dette spørsmålet?
+
+              Spørsmålet handler om hvorvidt bedriften:
+              Vet nøyaktig hvor mange brukere som har tilgang til systemene
+              Har dokumentert hvilke brukerkontoer som eksisterer
+              Har kontroll på hvilke tilganger hver brukerkonto har
+              Regelmessig gjennomgår og oppdaterer denne oversikten
+              Inkluderer både nåværende ansatte og eventuelle eksterne brukere (f.eks. konsulenter)
+
+              Hvorfor er dette viktig for en bedrift?
+              Sikkerhet: Forhindrer uautorisert tilgang ved å vite hvem som har tilgang til hva
+              Kontroll: Gir bedriften oversikt over hvem som kan komme inn i systemene
+              Etterlevelse: Hjelper bedriften å følge personvernregler og andre forskrifter
+              Kostnadseffektivitet: Unngår å betale for lisenser til brukerkontoer som ikke brukes
+              Beredskap: Ved sikkerhetsbrudd vet bedriften hvilke kontoer som kan være berørt
+
+              Hva betyr et JA-svar?
+              Et JA betyr at bedriften har en oppdatert liste over alle brukerkontoer, hvem de tilhører, og hvilke tilganger de har. Bedriften vet 
+              hvem som har tilgang til hvilke systemer, og denne oversikten oppdateres når noen begynner eller slutter i bedriften.
+
+              Hva betyr et NEI-svar?
+              Et NEI betyr at bedriften mangler full oversikt over hvem som har tilgang til systemene. Det kan være brukerkontoer som ikke 
+              er dokumentert, eller bedriften vet ikke med sikkerhet hvilke tilganger som finnes. Dette kan inkludere gamle kontoer som aldri 
+              ble slettet etter at ansatte sluttet.",
             "measure": "Kartlegg alle installerte programmer, noter versjoner, verifiser at virksomheten har gyldige lisenser, og inkluder både standard- og spesialprogrammer"
-          },
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "name": "Ledelsens ansvar",
+        "questions": [
           {
-            "id": "q1_1_4",
-            "text": "Dokumenterer virksomheten plassering av utstyr og bruker?",
-            "explanation": "Det må være kjent hvor utstyr befinner seg og hvem som bruker det",
-            "measure": "Noter fysisk plassering for hver enhet, hvem som er hovedbruker, om enheter deles mellom ansatte, og om utstyr tas med hjem eller brukes på reise"
-          },
-          {
-            "id": "q1_1_5",
-            "text": "Dokumenterer virksomheten brukertilganger?",
-            "explanation": "Det må være oversikt over hvem som har tilgang til hvilke systemer og med hvilke rettigheter",
-            "measure": "Lag oversikt over alle brukere per system, registrer tilgangsnivåer/rettigheter, noter spesielt administratortilganger, og inkluder eksterne brukere"
-          },
-          {
-            "id": "q1_1_6",
-            "text": "Kartlegger virksomheten informasjonsflyt?",
-            "explanation": "Det må være kjent hvordan data beveger seg mellom systemer",
-            "measure": "Beskriv dataoverføringer mellom systemer, dokumenter hvilke systemer som er integrert, noter automatiserte overføringer, og marker spesielt overføringer av sensitive data"
-          },
-          {
-            "id": "q1_1_7",
-            "text": "Etabler virksomheten rutiner for vedlikehold av IT-oversikten?",
-            "explanation": "Oversikten må holdes oppdatert for å være nyttig",
-            "measure": "Start enkelt med de viktigste systemene, bruk tilgjengelige verktøy som regneark, fordel ansvar for oppdatering, og sett av tid jevnlig til vedlikehold av oversikten"
+            "id": "q1_2_1",
+            "text": "Er organisasjonsledelsen ansvarlig for og ansvarliggjort for IT-sikkerhetsrisiko?",
+            "explanation": "Forklaring til spørsmål:
+              Dette handler om hvorvidt toppledelsen i virksomheten tar ansvar for og blir holdt ansvarlig for IT-sikkerhetsrisiko i organisasjonen.
+
+              Hva menes med dette spørsmålet?
+
+              Spørsmålet handler om hvorvidt:
+              Ledelsen er klar over sitt ansvar for IT-sikkerhet i virksomheten
+              Ledelsen aktivt involverer seg i beslutninger om IT-sikkerhet
+              Det er tydelig plassert hvem i ledelsen som har det overordnede ansvaret
+              Ledelsen får regelmessig informasjon om IT-sikkerhetsrisiko
+              Ledelsen tar nødvendige avgjørelser for å håndtere IT-sikkerhetsrisiko
+
+              Hvorfor er dette viktig for en bedrift?
+              Prioritering: Når ledelsen er ansvarlig, får IT-sikkerhet nødvendig oppmerksomhet og ressurser
+              Beslutningsmyndighet: De som kan bevilge ressurser må forstå risikoen virksomheten står overfor
+              Helhetlig sikkerhet: IT-sikkerhet blir en del av virksomhetens overordnede risikostyring
+              Kultur: Når ledelsen tar ansvar, signaliserer det til alle ansatte at IT-sikkerhet er viktig
+              Beredskap: Ved sikkerhetshendelser er det klart hvem som har ansvar for å ta avgjørelser
+
+              Hva betyr et JA-svar?
+              Et JA betyr at ledelsen er bevisst sitt ansvar for IT-sikkerheten, involverer seg aktivt i viktige beslutninger om IT-sikkerhet, og at det er 
+              klart hvem i ledelsen som har det overordnede ansvaret. Det betyr også at ledelsen får jevnlig informasjon om IT-sikkerhetsrisiko og 
+              tar beslutninger for å håndtere disse risikoene.
+
+              Hva betyr et NEI-svar?
+              Et NEI betyr at ledelsen ikke tar aktivt ansvar for IT-sikkerheten, at ansvaret kanskje er overlatt til IT-personell uten 
+              beslutningsmyndighet, eller at det er uklart hvem som har ansvaret. Det kan bety at ledelsen ikke får informasjon om IT-sikkerhetsrisiko, 
+              eller at de ikke tar beslutninger for å håndtere disse risikoene.",
+            "measure": "For Windows 10/11: Gå til Innstillinger > Oppdatering og sikkerhet > Windows Update. Klikk \"Avanserte alternativer\" og aktiver \"Motta oppdateringer for andre Microsoft-produkter\". Still inn til \"Automatisk nedlasting og installasjon\". For macOS: Gå til Systemvalg > Programvareoppdatering. Aktiver \"Installer macOS-oppdateringer automatisk\". Aktiver \"Installer app-oppdateringer fra App Store automatisk\". For vanlige programmer: Sjekk innstillinger i hvert program for automatiske oppdateringer. Aktiver automatiske oppdateringer i Adobe Reader, browsers, Office, osv. For større organisasjoner: Konfigurer WSUS (Windows Server Update Services) eller annen sentralisert oppdateringsstyring. Innstill oppdateringer til å installeres utenfor arbeidstid. Opprett månedlig kontrollrutine for å verifisere at oppdateringer faktisk installeres."
           }
         ]
       }

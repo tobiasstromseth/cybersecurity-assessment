@@ -343,11 +343,11 @@ background-color: var(--green);
 }
 
 .answer-badge.delvis {
-background-color: var(--yellow);
+background-color: var(--green);
 }
 
 .answer-badge.nei {
-background-color: var(--red);
+background-color: var(--green);
 }
 
 .subquestion-content {
@@ -358,7 +358,7 @@ background-color: var(--red);
 }
 
 .subquestion-item.expanded .subquestion-content {
-  max-height: 500px; /* Adjust based on your content's maximum height */
+  max-height: 5000px; /* Adjust based on your content's maximum height */
   opacity: 1;
   margin-top: 15px; /* Match your existing margin-top value */
 }

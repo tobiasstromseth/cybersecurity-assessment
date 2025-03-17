@@ -39,34 +39,101 @@ function Questionnaire({ onSubmit }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [explVisible, setExplVisible] = useState({});
 
-  // Fetch questions from JSON file
-  useEffect(() => {
-    const fetchQuestions = async () => {
-      try {
-        // Enkel sti til JSON-filen i public-mappen
-        const response = await fetch('/testDatabase/questions.json', {
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-        
-        if (!response.ok) {
-          throw new Error(`Kunne ikke hente spørsmål: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        console.log("Spørsmål lastet:", data);
-        setQuestions(data);
-      } catch (err) {
-        console.error("Feil ved henting av spørsmål:", err);
-        setError(err.message);
-      } finally {
-        setLoading(false);
+// Fetch questions from JSON file
+useEffect(() => { 
+  const fetchQuestions = async () => { 
+    try { 
+      // Henter JSON-filen som tekst for å unngå automatisk parsing 
+      const response = await fetch('/testDatabase/questions.json', { 
+        headers: { 'Content-Type': 'text/plain' } 
+      });
+      
+      if (!response.ok) { 
+        throw new Error(`Kunne ikke hente spørsmål: ${response.status}`); 
       }
-    };
+      
+      // Hent råteksten 
+      const rawText = await response.text();
+      
+      // Erstatt linjeskift og andre kontrolltegn i tekststrengen 
+      // Dette er en enkel løsning som kan mislykkes hvis JSON er kompleks 
+      const fixedText = rawText
+      
+      try { 
+        // Prøv å parse den fiksede teksten 
+        const data = JSON.parse(fixedText); 
+        console.log("Spørsmål lastet:", data); 
+        setQuestions(data); 
+      } catch (parseError) { 
+        console.error("Kunne ikke parse JSON etter enkel fiksing:", parseError);
+        
+        // Forsøk en mer robust fiksing hvis den enkle ikke fungerte 
+        try { 
+          // Mer robust løsning, men tyngre, for JSON med linjeskift 
+          let inString = false; 
+          let result = ''; 
+          let isEscaped = false;
+          
+          for (let i = 0; i < rawText.length; i++) { 
+            const c = rawText.charAt(i);
+            
+            if (!inString) { 
+              result += c; 
+              if (c === '"' && !isEscaped) { 
+                inString = true; 
+              } 
+            } else { 
+              if (c === '\n' || c === '\r') { 
+                result += '<br>'; 
+              } else { 
+                result += c; 
+                if (c === '"' && !isEscaped) { 
+                  inString = false; 
+                } 
+              } 
+            }
+            
+            isEscaped = c === '\\' && !isEscaped; 
+          }
+          
+          // Håndterer <br>-tags etter spesifikke regler:
+          // - Tre <br> etter hverandre reduseres til to
+          // - To <br> etter hverandre reduseres til én
+          let cleanedResult = result;
+          
+          // Først erstatt tre <br> med to <br>
+          // This will only replace exactly 4 consecutive <br> tags
+          cleanedResult = cleanedResult.replace(/<br><br><br><br>/g, 'FOUR_BR_PLACEHOLDER');
 
-    fetchQuestions();
-  }, []);
+          // Deretter erstatt to <br> med én <br>
+          while (cleanedResult.includes('<br><br>')) {
+            cleanedResult = cleanedResult.replace(/<br><br>/g, '<br>');
+          }
+
+          while (cleanedResult.includes('FOUR_BR_PLACEHOLDER')) {
+            cleanedResult = cleanedResult.replace(/FOUR_BR_PLACEHOLDER/g, '<br><br>');
+          }
+
+          
+          
+          const data = JSON.parse(cleanedResult); 
+          console.log("Spørsmål lastet (med robust fiksing):", data); 
+          setQuestions(data); 
+        } catch (robustError) { 
+          console.error("Kunne ikke parse JSON selv etter robust fiksing:", robustError); 
+          setError("Feil format på spørsmålsdataene. Sjekk JSON-syntaksen."); 
+        } 
+      } 
+    } catch (err) { 
+      console.error("Feil ved henting av spørsmål:", err); 
+      setError(err.message); 
+    } finally { 
+      setLoading(false); 
+    } 
+  }; 
+  
+  fetchQuestions(); 
+}, []);
 
   // Initialiser første underspørsmål til åpent i hver aktiv underkategori
   useEffect(() => {
@@ -462,7 +529,7 @@ function Questionnaire({ onSubmit }) {
                           
                           {(explVisible && explVisible[question.id]) && (
                             <div className="question-explanation">
-                              <p>{question.explanation}</p>
+                              <p dangerouslySetInnerHTML={{ __html: question.explanation }}></p>
                             </div>
                           )}
                         </>
