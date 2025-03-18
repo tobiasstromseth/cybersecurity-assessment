@@ -1,95 +1,113 @@
-// app.js
-import React, { useState, useEffect } from 'react';
-import { createRoot } from 'react-dom/client';
+// src/App.js
+import React, { useEffect, useState } from "react";
 
-// Inkluderer all CSS som en streng; denne injiseres dynamisk i <head>
+// CSS-injeksjon: Denne strengen med stilregler injiseres dynamisk i dokumentets <head>
 const cssString = `
-.cyber-assessment-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-.assessment-board {
-  position: relative;
-  transition: transform 1s;
-  transform-style: preserve-3d;
-}
-.assessment-board.flipped {
-  transform: rotateY(180deg);
-}
-.board-front, .board-back {
-  backface-visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-.board-back {
-  transform: rotateY(180deg);
-}
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  gap: 20px;
-}
-.security-card {
-  border: 1px solid #ccc;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  min-height: 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.security-card.green { background-color: #d4edda; }
-.security-card.light-green { background-color: #e8f5e9; }
-.security-card.yellow { background-color: #fff3cd; }
-.security-card.orange { background-color: #ffe0b2; }
-.security-card.red { background-color: #f8d7da; }
-.score-display {
-  text-align: center;
-  margin-bottom: 20px;
-}
-.score-circle {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto 10px;
-  border-radius: 50%;
-  background-color: #007bff;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-}
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-}
-.modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 500px;
-  width: 100%;
-}
-.modal-content h3 {
-  margin-top: 0;
-}
+  .cyber-assessment-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .assessment-board {
+    position: relative;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    min-height: 600px;
+  }
+  .assessment-board.flipped {
+    transform: rotateY(180deg);
+  }
+  .board-front, .board-back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 600px;
+  }
+  .board-back {
+    transform: rotateY(180deg);
+  }
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 20px;
+  }
+  .security-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .security-card.green { background-color: #d4edda; }
+  .security-card.light-green { background-color:rgb(0, 255, 21); }
+  .security-card.yellow { background-color: #fff3cd; }
+  .security-card.orange { background-color: #ffe0b2; }
+  .security-card.red { background-color: #f8d7da; }
+  .score-display {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .score-circle {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 10px;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+  }
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+  }
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+  }
+  .modal-content h3 {
+    margin-top: 0;
+  }
+  .front-page {
+    padding: 30px;
+    text-align: left;
+    max-width: 800px;
+    margin: 50px auto;
+    line-height: 1.6;
+    font-family: sans-serif;
+  }
+  .front-page h1 {
+    text-align: center;
+  }
+  .front-page button {
+    display: block;
+    margin: 30px auto 0;
+    padding: 12px 24px;
+    font-size: 18px;
+    cursor: pointer;
+  }
 `;
 
-// Liste over de 15 baseline cybersikkerhetstiltakene med tilhørende spørsmål og egenskaper
 const initialMeasures = [
   {
     id: 1,
@@ -101,7 +119,8 @@ const initialMeasures = [
         options: ["Ja", "Nei", "Delvis"]
       },
       {
-        question: "Er passordene minst 12 tegn med blanding av tall, bokstaver og symboler?",
+        question:
+          "Er passordene minst 12 tegn med blanding av tall, bokstaver og symboler?",
         options: ["Ja", "Nei", "Usikker"]
       }
     ],
@@ -171,11 +190,11 @@ const initialMeasures = [
   },
   {
     id: 6,
-    title: "Sikker Wi-Fi",
-    description: "Sett opp og konfigurer et sikkert Wi-Fi nettverk.",
+    title: "Sikker Wi‑Fi",
+    description: "Sett opp og konfigurer et sikkert Wi‑Fi nettverk.",
     questions: [
       {
-        question: "Er Wi-Fi satt opp med sterkt passord og kryptering?",
+        question: "Er Wi‑Fi satt opp med sterkt passord og kryptering?",
         options: ["Ja", "Nei", "Delvis"]
       }
     ],
@@ -241,11 +260,11 @@ const initialMeasures = [
   },
   {
     id: 11,
-    title: "Sikker e-post",
-    description: "Implementer sikkerhetsprotokoller for e-post.",
+    title: "Sikker e‑post",
+    description: "Implementer sikkerhetsprotokoller for e‑post.",
     questions: [
       {
-        question: "Er e-postfiltrering og spam-beskyttelse aktivert?",
+        question: "Er e‑postfiltrering og spam‑beskyttelse aktivert?",
         options: ["Ja", "Nei", "Delvis"]
       }
     ],
@@ -259,7 +278,8 @@ const initialMeasures = [
     description: "Bruk kryptering for sensitive data.",
     questions: [
       {
-        question: "Er sensitive data kryptert både i ro og under overføring?",
+        question:
+          "Er sensitive data kryptert både i ro og under overføring?",
         options: ["Ja", "Nei", "Delvis"]
       }
     ],
@@ -301,7 +321,8 @@ const initialMeasures = [
     description: "Vurder sikkerhetstiltak hos dine leverandører.",
     questions: [
       {
-        question: "Er leverandører vurdert og godkjent etter sikkerhetskriterier?",
+        question:
+          "Er leverandører vurdert og godkjent etter sikkerhetskriterier?",
         options: ["Ja", "Nei", "Delvis"]
       }
     ],
@@ -311,86 +332,87 @@ const initialMeasures = [
   }
 ];
 
-const App = () => {
+function App() {
+  // Statuser for visning av forside, interaktiv vurdering, modal osv.
+  const [showFrontPage, setShowFrontPage] = useState(true);
   const [measures, setMeasures] = useState(initialMeasures);
   const [selectedMeasure, setSelectedMeasure] = useState(null);
   const [assessmentComplete, setAssessmentComplete] = useState(false);
   const [score, setScore] = useState(0);
 
-  // Injiser CSSen når komponenten mountes
+  // Injiser CSS når komponenten mountes.
   useEffect(() => {
-    const style = document.createElement('style');
-    style.innerHTML = cssString;
-    document.head.appendChild(style);
-    return () => {
-      document.head.removeChild(style);
-    };
+    const styleEl = document.createElement("style");
+    styleEl.innerHTML = cssString;
+    document.head.appendChild(styleEl);
+    return () => document.head.removeChild(styleEl);
   }, []);
 
-  // Starter spørsmålsfasen ved å sette valgt tiltak
+  // Starter vurderingen ved å bytte fra forside til interaktiv plansje.
+  const startAssessment = () => {
+    setShowFrontPage(false);
+  };
+
+  // Håndterer klikk på et kort (åpner modal for spørsmål)
   const handleCardClick = (id) => {
     if (!assessmentComplete) {
-      const measure = measures.find(m => m.id === id);
-      setSelectedMeasure(measure);
+      const m = measures.find((measure) => measure.id === id);
+      setSelectedMeasure(m);
     }
   };
 
-  // Oppdaterer svar for et spesifikt spørsmål i delt tiltak
+  // Oppdaterer svar for et spørsmål
   const handleAnswer = (questionIndex, answer) => {
-    setSelectedMeasure(prev => {
+    setSelectedMeasure((prev) => {
       const newAnswers = prev.answers ? [...prev.answers] : [];
       newAnswers[questionIndex] = answer;
       return { ...prev, answers: newAnswers };
     });
   };
 
-  // Ved innsending av svar, lagres svaret og undersøkes om alle tiltak er besvart.
+  // Lagre svar for et tiltak og sjekk om alle spørsmål er besvart
   const handleSubmitMeasure = () => {
     if (
       !selectedMeasure.answers ||
       selectedMeasure.answers.length !== selectedMeasure.questions.length ||
-      selectedMeasure.answers.some(a => !a)
+      selectedMeasure.answers.some((a) => !a)
     ) {
       alert("Vennligst svar på alle spørsmålene.");
       return;
     }
-    const updatedMeasures = measures.map(m =>
+    const updatedMeasures = measures.map((m) =>
       m.id === selectedMeasure.id ? selectedMeasure : m
     );
     setMeasures(updatedMeasures);
     setSelectedMeasure(null);
 
     const allAnswered = updatedMeasures.every(
-      m => m.answers && m.answers.length === m.questions.length
+      (m) => m.answers && m.answers.length === m.questions.length
     );
     if (allAnswered) {
       setAssessmentComplete(true);
-      // Når alt er besvart (og før brukeren evt. markerer implementering),
-      // kalkuleres score – initialt vil trolig ingen være implementert.
       calculateScore(updatedMeasures, true);
     } else {
       calculateScore(updatedMeasures, false);
     }
   };
 
-  // Kalkulerer sikkerhetsscore basert på svar (under vurderingsfasen)
-  // eller basert på implementeringsstatus (når vurderingen er fullført)
+  // Kalkulerer sikkerhetsscore basert på svar (eller implementering hvis ferdig)
   const calculateScore = (measuresArray, isFinal) => {
     let totalPoints = 0;
     let maxPoints = 0;
-    measuresArray.forEach(measure => {
+    measuresArray.forEach((measure) => {
       maxPoints += measure.importance;
       if (isFinal) {
         if (measure.implemented) totalPoints += measure.importance;
-      } else {
-        if (measure.answers) {
-          let measureScore = 0;
-          measure.answers.forEach(ans => {
-            if (ans === "Ja") measureScore += measure.importance;
-            else if (ans === "Delvis") measureScore += measure.importance * 0.5;
-          });
-          totalPoints += measureScore;
-        }
+      } else if (measure.answers) {
+        let measureScore = 0;
+        measure.answers.forEach((ans) => {
+          if (ans === "Ja") measureScore += measure.importance;
+          else if (ans === "Delvis")
+            measureScore += measure.importance * 0.5;
+        });
+        totalPoints += measureScore;
       }
     });
     if (maxPoints > 0) {
@@ -398,22 +420,21 @@ const App = () => {
     }
   };
 
-  // Når brukeren klikker på et tiltak i sluttfasen, toggles "implementert"
+  // Skifter implementeringsstatus for et tiltak
   const toggleImplementation = (id) => {
-    const updatedMeasures = measures.map(m =>
+    const updatedMeasures = measures.map((m) =>
       m.id === id ? { ...m, implemented: !m.implemented } : m
     );
     setMeasures(updatedMeasures);
-    let totalPoints = updatedMeasures.reduce(
+    const totalPoints = updatedMeasures.reduce(
       (acc, m) => acc + (m.implemented ? m.importance : 0),
       0
     );
-    let maxPoints = updatedMeasures.reduce((acc, m) => acc + m.importance, 0);
+    const maxPoints = updatedMeasures.reduce((acc, m) => acc + m.importance, 0);
     setScore(Math.round((totalPoints / maxPoints) * 100));
   };
 
-  // Fargevalg for hvert kort basert på svarskvaliteten,
-  // med implementerte tiltak som alltid blir grønt.
+  // Returnerer farge for hvert kort basert på svarskvalitet eller implementeringsstatus
   const getCardColor = (measure) => {
     if (measure.implemented) return "green";
     if (measure.answers && measure.answers.length > 0) {
@@ -432,14 +453,47 @@ const App = () => {
     return "";
   };
 
+  // Hvis forsiden skal vises, returner en informasjonsrik forside
+  if (showFrontPage) {
+    return (
+      <div className="front-page">
+        <h1>Velkommen til Cybersikkerhets Vurderingsverktøy</h1>
+        <p>
+          Dette verktøyet er utviklet med et solid fundament i anerkjent forskning
+          og beste praksis innen cybersikkerhet. Tiltakene som benyttes er hentet fra
+          flere ledende kilder, blant annet CIS Controls, NSMs grunnprinsipper for IKT-sikkerhet
+          og NIST Cybersecurity Framework (CSF), samt andre ressurser som bidrar til å sikre
+          en helhetlig tilnærming til digital sikkerhet.
+        </p>
+        <p>
+          Verktøyet er designet for å være enkelt å bruke, spesielt for små bedrifter uten egen dedikert
+          IT-kompetanse. Her kombineres teoretisk innsikt med praktiske, gjennomførbare tiltak – slik at du
+          raskt kan identifisere risikoområder og få konkrete anbefalinger for hvordan sikkerheten kan forbedres.
+        </p>
+        <p>
+          Uavhengig av om du er ny i sikkerhetsarbeidet eller ønsker å verifisere at de essensielle tiltakene
+          er på plass, gir denne løsningen en oversiktlig og interaktiv tilnærming som setter deg i førersetet
+          for din egen cybersikkerhet.
+        </p>
+        <p>
+          Verktøyet bygger på et bredt spekter av metodikker og rammeverk, og er tilpasset det moderne trussellandskapet.
+          Vi ønsker at du skal føle deg trygg på at anbefalingene og tiltakene er nøye utvalgt for å gi deg et
+          solid grunnlag for videre sikkerhetsarbeid.
+        </p>
+        <button onClick={startAssessment}>Start vurdering</button>
+      </div>
+    );
+  }
+
+  // Hovedvisning: Interaktiv vurderingsplansje
   return (
     <div className="cyber-assessment-container">
-      <div className={`assessment-board ${assessmentComplete ? 'flipped' : ''}`}>
-        {/* Forside: Vurderingsfasen */}
+      <div className={`assessment-board ${assessmentComplete ? "flipped" : ""}`}>
+        {/* Første fasen – visning av tiltak med spørsmål */}
         <div className="board-front">
           <h2>Cybersikkerhetsvurdering for Mikrobedrifter</h2>
           <div className="card-grid">
-            {measures.map(measure => (
+            {measures.map((measure) => (
               <div
                 key={measure.id}
                 className="security-card"
@@ -449,14 +503,14 @@ const App = () => {
                 <p>{measure.description}</p>
                 {measure.answers && measure.answers.length > 0 && (
                   <div className="answer-indicator">
-                    {measure.answers.filter(a => a).length}/{measure.questions.length} besvart
+                    {measure.answers.filter((a) => a).length}/{measure.questions.length} besvart
                   </div>
                 )}
               </div>
             ))}
           </div>
         </div>
-        {/* Bakside: Implementeringsfase og samlet score */}
+        {/* Andre fasen – visning av score og mulighet for å krysse av implementering */}
         <div className="board-back">
           <h2>Din Cybersikkerhetsprofil</h2>
           <div className="score-display">
@@ -464,7 +518,7 @@ const App = () => {
             <p>Sikkerhetsscore</p>
           </div>
           <div className="card-grid">
-            {measures.map(measure => (
+            {measures.map((measure) => (
               <div key={measure.id} className={`security-card ${getCardColor(measure)}`}>
                 <h3>{measure.title}</h3>
                 <p>{measure.description}</p>
@@ -483,7 +537,7 @@ const App = () => {
           </div>
         </div>
       </div>
-      {/* Modal for spørsmål og svar */}
+      {/* Modalvindu for spørsmål og svar */}
       {selectedMeasure && (
         <div className="modal">
           <div className="modal-content">
@@ -498,7 +552,10 @@ const App = () => {
                         type="radio"
                         name={`measure-${selectedMeasure.id}-q${index}`}
                         value={option}
-                        checked={selectedMeasure.answers && selectedMeasure.answers[index] === option}
+                        checked={
+                          selectedMeasure.answers &&
+                          selectedMeasure.answers[index] === option
+                        }
                         onChange={() => handleAnswer(index, option)}
                       />
                       {option}
@@ -514,9 +571,6 @@ const App = () => {
       )}
     </div>
   );
-};
+}
 
-// Starter React‑applikasjonen
-const rootElement = document.getElementById('root');
-const root = createRoot(rootElement);
-root.render(<App />);
+export default App;
