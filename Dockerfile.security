@@ -1,0 +1,30 @@
+# Dedikert Dockerfile for sikkerhetsskanning
+FROM node:alpine
+
+# Installer sikkerhetsverktøy
+RUN npm install -g npm@latest && \
+    npm install -g snyk || echo "Snyk kunne ikke installeres, fortsetter med npm audit"
+
+# Sett arbeidskatalogen i containeren
+WORKDIR /app
+
+# Kopier package.json og package-lock.json
+COPY package*.json ./
+
+# Installer avhengigheter
+RUN npm install
+
+# Kopier resten av applikasjonskoden
+COPY . .
+
+# Utfør flere sikkerhetsskanninger
+CMD echo "Kjører sikkerhetsskanning..." && \
+    npm audit --production && \
+    echo "npm audit fullført!" && \
+    if command -v snyk &> /dev/null; then \
+    echo "Kjører Snyk test..." && \
+    snyk test --severity-threshold=high || echo "Snyk fant sårbarheter"; \
+    else \
+    echo "Snyk ikke tilgjengelig, hopper over"; \
+    fi && \
+    echo "Sikkerhetsskanning fullført!"

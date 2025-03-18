@@ -12,6 +12,12 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true # Nødvendig for hot-reload i Docker
     command: npm start
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:3000" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
 
   # Produksjonsmiljø
   react-prod:
@@ -20,3 +26,23 @@ services:
       dockerfile: Dockerfile
     ports:
       - "80:80"
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:80" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+
+  # Sikkerhetsskanning
+  security-scan:
+    build:
+      context: .
+      dockerfile: Dockerfile.security
+    volumes:
+      - ./:/app
+    command: npm run security-check

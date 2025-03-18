@@ -1,5 +1,5 @@
 # Utviklings-Dockerfile for React-applikasjon
-FROM node:18-alpine
+FROM node:alpine
 
 # Sett arbeidskatalogen i containeren
 WORKDIR /app
@@ -7,8 +7,9 @@ WORKDIR /app
 # Kopier package.json og package-lock.json
 COPY package*.json ./
 
-# Installer avhengigheter
-RUN npm install
+# Installer avhengigheter og kjør sikkerhetsskanning
+RUN npm install && \
+    npm audit --production || echo "Sikkerhetsproblemer funnet, men fortsetter ettersom dette er et utviklingsmiljø"
 
 # Kopier resten av applikasjonskoden
 COPY . .
