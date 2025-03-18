@@ -1,672 +1,522 @@
-// src/App.js - Modified to remove separate measures page
-import React, { useState, useEffect } from "react";
-import "./styles/index.css"; // Importer Claude-farger
-import Questionnaire from "./components/QuestionCard.js";
-import Dashboard from "./components/Dashboard.js";
-import StartPage from "./components/StartPage.js";
-import StartInfo from "./components/startInfo.js";
-import ThemeToggle from "./components/ThemeToggle.js";
+// app.js
+import React, { useState, useEffect } from 'react';
+import { createRoot } from 'react-dom/client';
 
-function App() {
-  const [currentPage, setCurrentPage] = useState("startInfo");
-  const [answers, setAnswers] = useState({});
-  const [securityScore, setSecurityScore] = useState(0);
-  const [priorityMeasures, setPriorityMeasures] = useState([]);
-  const [allMeasures, setAllMeasures] = useState([]);
-  const [companyInfo, setCompanyInfo] = useState(null);
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [measuresProgress, setMeasuresProgress] = useState({});
-  const [navOpen, setNavOpen] = useState(false);
-  const [skipOnboarding, setSkipOnboarding] = useState(false); // For quick dashboard access
+// Inkluderer all CSS som en streng; denne injiseres dynamisk i <head>
+const cssString = `
+.cyber-assessment-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.assessment-board {
+  position: relative;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+.assessment-board.flipped {
+  transform: rotateY(180deg);
+}
+.board-front, .board-back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.board-back {
+  transform: rotateY(180deg);
+}
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 20px;
+}
+.security-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.security-card.green { background-color: #d4edda; }
+.security-card.light-green { background-color: #e8f5e9; }
+.security-card.yellow { background-color: #fff3cd; }
+.security-card.orange { background-color: #ffe0b2; }
+.security-card.red { background-color: #f8d7da; }
+.score-display {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.score-circle {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+}
+.modal-content h3 {
+  margin-top: 0;
+}
+`;
 
-  // Sjekk om brukeren har lagret et tema-valg og bruk det ved oppstart
+// Liste over de 15 baseline cybersikkerhetstiltakene med tilhørende spørsmål og egenskaper
+const initialMeasures = [
+  {
+    id: 1,
+    title: "Sterke Passord",
+    description: "Bruk unike og komplekse passord for alle kontoer.",
+    questions: [
+      {
+        question: "Bruker dere passordbehandler?",
+        options: ["Ja", "Nei", "Delvis"]
+      },
+      {
+        question: "Er passordene minst 12 tegn med blanding av tall, bokstaver og symboler?",
+        options: ["Ja", "Nei", "Usikker"]
+      }
+    ],
+    importance: 10,
+    implemented: false,
+    answers: []
+  },
+  {
+    id: 2,
+    title: "To-faktor Autentisering",
+    description: "Aktiver to-faktor autentisering (2FA) der det er mulig.",
+    questions: [
+      {
+        question: "Er 2FA aktivert på viktige kontoer?",
+        options: ["Ja", "Nei", "Delvis"]
+      }
+    ],
+    importance: 10,
+    implemented: false,
+    answers: []
+  },
+  {
+    id: 3,
+    title: "Programvareoppdateringer",
+    description: "Hold all programvare og operativsystemer oppdatert.",
+    questions: [
+      {
+        question: "Oppdateres system og programvare regelmessig?",
+        options: ["Ja", "Nei", "Delvis"]
+      }
+    ],
+    importance: 10,
+    implemented: false,
+    answers: []
+  },
+  {
+    id: 4,
+    title: "Sikkerhetskopiering",
+    description: "Regelmessig backup av viktige data.",
+    questions: [
+      {
+        question: "Foretas sikkerhetskopiering av kritiske data?",
+        options: ["Ja", "Nei", "Delvis"]
+      },
+      {
+        question: "Er sikkerhetskopiene testet for gjenoppretting?",
+        options: ["Ja", "Nei", "Delvis"]
+      }
+    ],
+    importance: 10,
+    implemented: false,
+    answers: []
+  },
+  {
+    id: 5,
+    title: "Antivirus/Antimalware",
+    description: "Bruk oppdatert antivirus og antimalware.",
+    questions: [
+      {
+        question: "Er antivirusprogramvare installert og oppdatert?",
+        options: ["Ja", "Nei", "Delvis"]
+      }
+    ],
+    importance: 10,
+    implemented: false,
+    answers: []
+  },
+  {
+    id: 6,
+    title: "Sikker Wi-Fi",
+    description: "Sett opp og konfigurer et sikkert Wi-Fi nettverk.",
+    questions: [
+      {
+        question: "Er Wi-Fi satt opp med sterkt passord og kryptering?",
+        options: ["Ja", "Nei", "Delvis"]
+      }
+    ],
+    importance: 10,
+    implemented: false,
+    answers: []
+  },
+  {
+    id: 7,
+    title: "Brannmur",
+    description: "Aktiver og konfigurer brannmur på rutere og enheter.",
+    questions: [
+      {
+        question: "Er brannmur aktivert på nettverksutstyret?",
+        options: ["Ja", "Nei", "Delvis"]
+      }
+    ],
+    importance: 10,
+    implemented: false,
+    answers: []
+  },
+  {
+    id: 8,
+    title: "Ansattopplæring",
+    description: "Gi opplæring i cybersikkerhet til ansatte.",
+    questions: [
+      {
+        question: "Har ansatte fått grunnleggende cybersikkerhet opplæring?",
+        options: ["Ja", "Nei", "Delvis"]
+      }
+    ],
+    importance: 10,
+    implemented: false,
+    answers: []
+  },
+  {
+    id: 9,
+    title: "Mobilsikkerhet",
+    description: "Sørg for sikkerhet for mobile enheter.",
+    questions: [
+      {
+        question: "Brukes enhetsspesifikke sikkerhetstiltak for mobile enheter?",
+        options: ["Ja", "Nei", "Delvis"]
+      }
+    ],
+    importance: 10,
+    implemented: false,
+    answers: []
+  },
+  {
+    id: 10,
+    title: "Tilgangskontroll",
+    description: "Begrens tilgang til systemer basert på behov.",
+    questions: [
+      {
+        question: "Er tilgangsrettighetene regelmessig gjennomgått og justert?",
+        options: ["Ja", "Nei", "Delvis"]
+      }
+    ],
+    importance: 10,
+    implemented: false,
+    answers: []
+  },
+  {
+    id: 11,
+    title: "Sikker e-post",
+    description: "Implementer sikkerhetsprotokoller for e-post.",
+    questions: [
+      {
+        question: "Er e-postfiltrering og spam-beskyttelse aktivert?",
+        options: ["Ja", "Nei", "Delvis"]
+      }
+    ],
+    importance: 10,
+    implemented: false,
+    answers: []
+  },
+  {
+    id: 12,
+    title: "Kryptering",
+    description: "Bruk kryptering for sensitive data.",
+    questions: [
+      {
+        question: "Er sensitive data kryptert både i ro og under overføring?",
+        options: ["Ja", "Nei", "Delvis"]
+      }
+    ],
+    importance: 10,
+    implemented: false,
+    answers: []
+  },
+  {
+    id: 13,
+    title: "Hendelsesrespons",
+    description: "Ha en plan for sikkerhetshendelser og brudd.",
+    questions: [
+      {
+        question: "Finnes det en dokumentert hendelsesresponsplan?",
+        options: ["Ja", "Nei", "Delvis"]
+      }
+    ],
+    importance: 10,
+    implemented: false,
+    answers: []
+  },
+  {
+    id: 14,
+    title: "Fysisk Sikkerhet",
+    description: "Sørg for fysisk sikkerhet til enheter og systemer.",
+    questions: [
+      {
+        question: "Er det fysiske sikkerhetstiltak for å beskytte utstyr?",
+        options: ["Ja", "Nei", "Delvis"]
+      }
+    ],
+    importance: 10,
+    implemented: false,
+    answers: []
+  },
+  {
+    id: 15,
+    title: "Leverandørsikkerhet",
+    description: "Vurder sikkerhetstiltak hos dine leverandører.",
+    questions: [
+      {
+        question: "Er leverandører vurdert og godkjent etter sikkerhetskriterier?",
+        options: ["Ja", "Nei", "Delvis"]
+      }
+    ],
+    importance: 10,
+    implemented: false,
+    answers: []
+  }
+];
+
+const App = () => {
+  const [measures, setMeasures] = useState(initialMeasures);
+  const [selectedMeasure, setSelectedMeasure] = useState(null);
+  const [assessmentComplete, setAssessmentComplete] = useState(false);
+  const [score, setScore] = useState(0);
+
+  // Injiser CSSen når komponenten mountes
   useEffect(() => {
-    const savedTheme = localStorage.getItem("preferredTheme");
-    if (savedTheme === "dark") {
-      setIsDarkMode(true);
-      document.body.classList.add("dark-theme");
-    }
+    const style = document.createElement('style');
+    style.innerHTML = cssString;
+    document.head.appendChild(style);
+    return () => {
+      document.head.removeChild(style);
+    };
   }, []);
 
-  // Auto-fill company info and allow direct access to dashboard when skip flag is set
-  useEffect(() => {
-    if (skipOnboarding && !companyInfo) {
-      // Set default company info
-      const defaultCompanyInfo = {
-        companyName: "Test Company",
-        industry: "IT og Teknologi",
-        employeeCount: "5-10",
-        itCompetence: "grunnleggende",
-      };
-
-      setCompanyInfo(defaultCompanyInfo);
-
-      // Generate dummy answers (all "nei")
-      const dummyAnswers = {
-        q1: "nei",
-        q2: "nei",
-        q3: "nei",
-        q4: "nei",
-        q5: "nei",
-        q1_1_1: "nei",
-        q1_2_1: "nei",
-        q1_3_1: "nei",
-        q1_3_2: "nei",
-        q1_4_1: "nei",
-        q1_4_2: "nei",
-        q1_4_3: "nei",
-        q1_4_4: "nei",
-        q2_1_1: "nei",
-        q2_1_2: "nei",
-        q2_2_1: "nei",
-        q2_2_2: "nei",
-      };
-
-      setAnswers(dummyAnswers);
-      calculateResults(dummyAnswers);
-      setCurrentPage("dashboard");
+  // Starter spørsmålsfasen ved å sette valgt tiltak
+  const handleCardClick = (id) => {
+    if (!assessmentComplete) {
+      const measure = measures.find(m => m.id === id);
+      setSelectedMeasure(measure);
     }
-  }, [skipOnboarding, companyInfo]);
+  };
 
-  // Lukk navigasjonsmenyen når siden endres
-  useEffect(() => {
-    setNavOpen(false);
-  }, [currentPage]);
-
-  // Lukk menyen når det klikkes utenfor
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      const nav = document.querySelector("nav");
-      const hamburger = document.querySelector(".hamburger-menu");
-
-      if (
-        navOpen &&
-        nav &&
-        hamburger &&
-        !nav.contains(event.target) &&
-        !hamburger.contains(event.target)
-      ) {
-        setNavOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [navOpen]);
-
-  // Legg til i App.js, rett etter din eksisterende useEffect for å beregne sikkerhetsscore
-  useEffect(() => {
-    let totalEloPoints = 0;
-
-    allMeasures.forEach((measure) => {
-      if (measure.implementationSteps) {
-        // Sjekk om alle steg er fullført
-        const allStepsCompleted = measure.implementationSteps.every(
-          (step) => step.completed
-        );
-
-        if (allStepsCompleted) {
-          totalEloPoints += measure.eloPoints || 0;
-        }
-      }
+  // Oppdaterer svar for et spesifikt spørsmål i delt tiltak
+  const handleAnswer = (questionIndex, answer) => {
+    setSelectedMeasure(prev => {
+      const newAnswers = prev.answers ? [...prev.answers] : [];
+      newAnswers[questionIndex] = answer;
+      return { ...prev, answers: newAnswers };
     });
+  };
 
-    // Oppdater sikkerhetsscoren basert på ELO-poeng
-    // Dette kan kombineres med din eksisterende scoreberegning
-    setSecurityScore((prevScore) => prevScore + totalEloPoints);
-  }, [allMeasures]);
+  // Ved innsending av svar, lagres svaret og undersøkes om alle tiltak er besvart.
+  const handleSubmitMeasure = () => {
+    if (
+      !selectedMeasure.answers ||
+      selectedMeasure.answers.length !== selectedMeasure.questions.length ||
+      selectedMeasure.answers.some(a => !a)
+    ) {
+      alert("Vennligst svar på alle spørsmålene.");
+      return;
+    }
+    const updatedMeasures = measures.map(m =>
+      m.id === selectedMeasure.id ? selectedMeasure : m
+    );
+    setMeasures(updatedMeasures);
+    setSelectedMeasure(null);
 
-  // Bytte mellom lyst og mørkt tema
-  const toggleTheme = () => {
-    if (isDarkMode) {
-      document.body.classList.remove("dark-theme");
-      localStorage.setItem("preferredTheme", "light");
+    const allAnswered = updatedMeasures.every(
+      m => m.answers && m.answers.length === m.questions.length
+    );
+    if (allAnswered) {
+      setAssessmentComplete(true);
+      // Når alt er besvart (og før brukeren evt. markerer implementering),
+      // kalkuleres score – initialt vil trolig ingen være implementert.
+      calculateScore(updatedMeasures, true);
     } else {
-      document.body.classList.add("dark-theme");
-      localStorage.setItem("preferredTheme", "dark");
+      calculateScore(updatedMeasures, false);
     }
-    setIsDarkMode(!isDarkMode);
   };
 
-  // Noe med hamburgermeny
-  const toggleNav = () => {
-    setNavOpen(!navOpen);
-  };
-
-  // Function to skip onboarding and go straight to dashboard
-  const goDirectToDashboard = () => {
-    setSkipOnboarding(true);
-  };
-
-  // Funksjon for å beregne sikkerhetsscore og tiltak basert på svar
-  const calculateResults = (answers) => {
-    // Mer detaljert beregning av sikkerhetsscore
-    let score = 0;
-    let possiblePoints = 0;
-    let scoreBreakdown = {};
-
-    // Vekting av spørsmål (noen spørsmål er viktigere enn andre)
-    const questionWeights = {
-      q1: 1.2, // Totrinnsverifisering er svært viktig
-      q2: 1.0, // Sikkerhetsopplæring
-      q3: 1.5, // Sikkerhetskopiering er kritisk
-      q4: 1.3, // Programvareoppdateringer
-      q5: 1.1, // Brannmur
-    };
-
-    Object.keys(answers).forEach((key) => {
-      const value = answers[key];
-      const weight = questionWeights[key] || 1.0;
-      const maxPointsForQuestion = 10 * weight;
-      possiblePoints += maxPointsForQuestion;
-
-      let pointsEarned = 0;
-      if (value === "ja") {
-        pointsEarned = maxPointsForQuestion;
-      } else if (value === "delvis") {
-        pointsEarned = maxPointsForQuestion * 0.5;
-      }
-
-      score += pointsEarned;
-
-      // Lagre poengfordeling for hvert spørsmål (kan brukes for detaljert visualisering)
-      scoreBreakdown[key] = {
-        score: pointsEarned,
-        maxScore: maxPointsForQuestion,
-        percent: (pointsEarned / maxPointsForQuestion) * 100,
-      };
-    });
-
-    const calculatedScore = (score / possiblePoints) * 100;
-    setSecurityScore(calculatedScore);
-
-    // Generer tiltak basert på svar
-    const measures = [];
-
-    if (answers["q1"] !== "ja") {
-      measures.push({
-        id: 1,
-        title: "Implementer totrinnsverifisering",
-        description:
-          "Sett opp totrinnsverifisering for alle brukere for å styrke påloggingssikkerheten.",
-        priority: answers["q1"] === "nei" ? "Høy" : "Medium",
-        category: "Identitets- og tilgangsstyring",
-      });
-    }
-
-    if (answers["q2"] !== "ja") {
-      measures.push({
-        id: 2,
-        title: "Etabler sikkerhetsopplæring",
-        description:
-          "Gjennomfør regelmessig sikkerhetsopplæring for alle ansatte.",
-        priority: answers["q2"] === "nei" ? "Høy" : "Medium",
-        category: "Opplæring og bevisstgjøring",
-      });
-    }
-
-    if (answers["q3"] !== "ja") {
-      measures.push({
-        id: 3,
-        title: "Implementer sikkerhetskopiering",
-        description:
-          "Sett opp automatisk sikkerhetskopiering av alle kritiske systemer og data.",
-        priority: answers["q3"] === "nei" ? "Høy" : "Medium",
-        category: "Datahåndtering",
-      });
-    }
-
-    if (answers["q4"] !== "ja") {
-      measures.push({
-        id: 4,
-        title: "Oppdater programvare",
-        description:
-          "Etabler rutiner for regelmessig oppdatering av all programvare.",
-        priority: answers["q4"] === "nei" ? "Høy" : "Medium",
-        category: "Sårbarhetsadministrasjon",
-      });
-    }
-
-    if (answers["q5"] !== "ja") {
-      measures.push({
-        id: 5,
-        title: "Implementer brannmur",
-        description:
-          "Sett opp og konfigurer en brannmur for å beskytte nettverket.",
-        priority: answers["q5"] === "nei" ? "Høy" : "Medium",
-        category: "Nettverkssikkerhet",
-      });
-    }
-
-    // Sorter tiltak etter prioritet
-    const sortedMeasures = [...measures].sort((a, b) => {
-      if (a.priority === "Høy" && b.priority !== "Høy") return -1;
-      if (a.priority !== "Høy" && b.priority === "Høy") return 1;
-      return 0;
-    });
-
-    // Legger til ytterligere forklaringer for hvert tiltak
-    const measuresWithReasons = sortedMeasures.map((measure) => {
-      let reason = "";
-      let eloPoints = 0;
-      let implementationSteps = [];
-
-      switch (measure.id) {
-        case 1:
-          reason =
-            "Totrinnsverifisering kan forhindre 99% av automatiserte angrep og gjør det betydelig vanskeligere for hackere å få tilgang til kontoer.";
-          eloPoints = 40;
-          implementationSteps = [
-            {
-              title: "Last ned programvare for administrasjon",
-              description:
-                "Last ned og installer sentralisert programvare for å håndtere totrinnsbekreftelse for alle kontoer.",
-              completed: false,
-              details: [
-                "Gå til leverandørens nettsted, opprett en konto hvis nødvendig og last ned administrasjonsverktøyet.",
-                "Installer på en server eller PC som vil fungere som kontrollpunkt.",
-              ],
-            },
-            {
-              title: "Kartlegg viktige kontoer",
-              description:
-                "Lag en liste over alle viktige brukere og kontoer som skal ha totrinnsbekreftelse.",
-              completed: false,
-              details: [
-                "Inkluder e-postkontoer, tilganger til skytjenester, administrative kontoer og VPN-tilganger.",
-                "Prioriter basert på hvilke kontoer som har mest privilegier eller tilgang til sensitiv informasjon.",
-              ],
-            },
-            {
-              title: "Velg autentiseringsmetode",
-              description:
-                "Bestem hvilken form for totrinnsbekreftelse som passer best for din bedrift.",
-              completed: false,
-              details: [
-                "Du kan velge mellom SMS-koder, e-postkoder, dedikerte app-genererte koder (som Google Authenticator, Microsoft Authenticator) eller fysiske sikkerhetsøkler (som YubiKey).",
-              ],
-            },
-            {
-              title: "Konfigurer løsningen",
-              description:
-                "Sett opp totrinnsbekreftelse i sentralisert administrasjonssystem.",
-              completed: false,
-              details: [
-                "Følg leverandørens veiledning for konfigurasjon. Sørg for at du setter gode standardinnstillinger som balanserer sikkerhet og brukervennlighet.",
-              ],
-            },
-          ];
-          break;
-        case 2:
-          reason =
-            "Menneskelige feil står bak 95% av alle sikkerhetsbrudd. Regelmessig opplæring reduserer denne risikoen betydelig.";
-          eloPoints = 35;
-          implementationSteps = [
-            {
-              title: "Definer opplæringsbehov",
-              description:
-                "Identifiser hvilke sikkerhetsemner som er mest relevante for din organisasjon.",
-              completed: false,
-              details: [
-                "Vanlige emner inkluderer phishing-gjenkjenning, passordrutiner, sikker databehandling, og rapportering av hendelser.",
-                "Tilpass innholdet basert på bedriftens størrelse og risikoprofil.",
-              ],
-            },
-            {
-              title: "Velg opplæringsformat",
-              description: "Bestem hvordan opplæringen skal gjennomføres.",
-              completed: false,
-              details: [
-                "For små bedrifter kan månedlige sikkerhetsmøter være effektivt.",
-                "Vurder online kurs, webinarer, eller eksterne opplæringsressurser.",
-              ],
-            },
-            {
-              title: "Lag en opplæringsplan",
-              description: "Utvikle en årlig plan for sikkerhetsopplæring.",
-              completed: false,
-              details: [
-                "Sett opp en tidsplan for regelmessige opplæringsøkter.",
-                "Inkluder både grunnleggende og avanserte emner.",
-              ],
-            },
-            {
-              title: "Gjennomfør opplæring",
-              description:
-                "Start med grunnleggende sikkerhetsopplæring for alle ansatte.",
-              completed: false,
-              details: [
-                "Sørg for at all opplæring dokumenteres.",
-                "Vurder å teste kunnskapen etter opplæringen.",
-              ],
-            },
-          ];
-          break;
-        case 3:
-          reason =
-            "I tilfelle et ransomware-angrep eller datakorrupsjon er sikkerhetskopier avgjørende for å kunne gjenopprette virksomheten raskt.";
-          eloPoints = 45;
-          implementationSteps = [
-            {
-              title: "Kartlegg kritiske data",
-              description:
-                "Identifiser hvilke data som er kritiske for virksomheten og må sikres.",
-              completed: false,
-              details: [
-                "Fokuser på forretningskritiske systemer, kundedata, og økonomisk informasjon.",
-                "Vurder lovkrav for oppbevaring av data (f.eks. regnskap, personopplysninger).",
-              ],
-            },
-            {
-              title: "Velg sikkerhetskopieringsløsning",
-              description:
-                "Velg en løsning som passer virksomhetens behov og budsjett.",
-              completed: false,
-              details: [
-                "For små bedrifter kan skybaserte løsninger være kostnadseffektive.",
-                "Større bedrifter bør vurdere hybride løsninger med både lokal og skybasert backup.",
-              ],
-            },
-            {
-              title: "Definer backup-rutiner",
-              description:
-                "Bestem hvor ofte data skal sikkerhetskopieres og hvor lenge kopier skal oppbevares.",
-              completed: false,
-              details: [
-                "Implementer 3-2-1-regelen: 3 kopier, 2 forskjellige lagringsmedier, 1 offsite.",
-                "Definer RTO (Recovery Time Objective) og RPO (Recovery Point Objective).",
-              ],
-            },
-            {
-              title: "Test gjenoppretting",
-              description:
-                "Verifiser at sikkerhetskopiene fungerer ved å teste gjenoppretting regelmessig.",
-              completed: false,
-              details: [
-                "Test fullstendig gjenoppretting minst én gang i året.",
-                "Dokumenter gjenopprettingsprosedyren.",
-              ],
-            },
-          ];
-          break;
-        case 4:
-          reason =
-            "Utdatert programvare inneholder ofte kjente sårbarheter som angripere kan utnytte. Oppdaterte systemer beskytter mot disse.";
-          eloPoints = 30;
-          implementationSteps = [
-            {
-              title: "Lag oversikt over programvare",
-              description:
-                "Kartlegg all programvare som brukes i virksomheten.",
-              completed: false,
-              details: [
-                "Inkluder operativsystemer, applikasjoner, og firmware.",
-                "Noter versjoner og når siste oppdatering ble gjort.",
-              ],
-            },
-            {
-              title: "Etabler oppdateringsrutiner",
-              description:
-                "Definer faste rutiner for når og hvordan oppdateringer skal gjennomføres.",
-              completed: false,
-              details: [
-                "For kritiske sikkerhetsoppdateringer: Implementer innen 48 timer.",
-                "For andre oppdateringer: Implementer månedlig etter testing.",
-              ],
-            },
-            {
-              title: "Konfigurer automatiske oppdateringer",
-              description:
-                "Aktiver automatiske oppdateringer der det er mulig.",
-              completed: false,
-              details: [
-                "Prioriter sikkerhetskritiske systemer.",
-                "Vurder å teste oppdateringer i et testmiljø før produksjon for kritiske systemer.",
-              ],
-            },
-            {
-              title: "Følg opp utdatert programvare",
-              description:
-                "Identifiser og erstatt programvare som ikke lenger støttes av leverandøren.",
-              completed: false,
-              details: [
-                "Programmer som ikke lenger mottar sikkerhetsoppdateringer utgjør en betydelig risiko.",
-                "Planlegg for utfasing og migrasjon til støttede alternativer.",
-              ],
-            },
-          ];
-          break;
-        case 5:
-          reason =
-            "En brannmur er den første forsvarslinjen mot uautorisert tilgang til nettverket ditt og kan blokkere mange automatiserte angrep.";
-          eloPoints = 35;
-          implementationSteps = [
-            {
-              title: "Velg brannmurløsning",
-              description:
-                "Velg en brannmurløsning som passer virksomhetens størrelse og behov.",
-              completed: false,
-              details: [
-                "For små bedrifter: Start med en god nettverksruter med brannmurfunksjonalitet.",
-                "For større bedrifter: Vurder dedikerte brannmurenheter eller UTM-løsninger (Unified Threat Management).",
-              ],
-            },
-            {
-              title: "Implementer grunnleggende konfigurasjon",
-              description:
-                "Sett opp grunnleggende brannmurregler basert på minste privilegiums prinsipp.",
-              completed: false,
-              details: [
-                "Blokker all innkommende trafikk som standard, og åpne kun for nødvendige tjenester.",
-                "Konfigurer logging for å fange opp blokkerte forsøk.",
-              ],
-            },
-            {
-              title: "Definer avanserte regler",
-              description:
-                "Implementer mer detaljerte regler basert på virksomhetens behov.",
-              completed: false,
-              details: [
-                "Vurder å segmentere nettverket for å isolere sensitive systemer.",
-                "Implementer applikasjonsfiltrering for mer presis kontroll.",
-              ],
-            },
-            {
-              title: "Overvåk og vedlikehold",
-              description:
-                "Etabler rutiner for regelmessig gjennomgang og oppdatering av brannmurregler.",
-              completed: false,
-              details: [
-                "Gjennomgå logger og blokkerte forsøk månedlig.",
-                "Oppdater reglene når nye tjenester implementeres eller eksisterende fjernes.",
-              ],
-            },
-          ];
-          break;
-        default:
-          reason =
-            "Dette tiltaket vil betydelig forbedre din sikkerhetsstilling.";
-          eloPoints = 20;
-          implementationSteps = [];
-      }
-
-      return { ...measure, reason, eloPoints, implementationSteps };
-    });
-
-    setAllMeasures(measuresWithReasons);
-    setPriorityMeasures(measuresWithReasons.slice(0, 3)); // Top 3 prioriterte tiltak
-  };
-
-  const handleStartInfoComplete = () => {
-    setCurrentPage("start");
-  };
-
-  const handleCompanyInfoSubmit = (info) => {
-    setCompanyInfo(info);
-    setCurrentPage("questionnaire");
-  };
-
-  const handleAnswersSubmit = (answers) => {
-    setAnswers(answers);
-    calculateResults(answers);
-    setCurrentPage("dashboard");
-  };
-
-  const handleNavigate = (page) => {
-    setCurrentPage(page);
-  };
-
-  const handleRestartAssessment = () => {
-    // Beholder bedriftsinformasjonen, men nullstiller resten
-    setAnswers({});
-    setSecurityScore(0);
-    setPriorityMeasures([]);
-    setAllMeasures([]);
-    setCurrentPage("questionnaire");
-  };
-
-  const updateMeasureProgress = (measureId, stepIndex, isComplete) => {
-    // Oppdater allMeasures med den nye statusen
-    setAllMeasures((prevMeasures) =>
-      prevMeasures.map((measure) => {
-        if (measure.id === measureId && measure.implementationSteps) {
-          const updatedSteps = [...measure.implementationSteps];
-          updatedSteps[stepIndex] = {
-            ...updatedSteps[stepIndex],
-            completed: isComplete,
-          };
-
-          return {
-            ...measure,
-            implementationSteps: updatedSteps,
-          };
+  // Kalkulerer sikkerhetsscore basert på svar (under vurderingsfasen)
+  // eller basert på implementeringsstatus (når vurderingen er fullført)
+  const calculateScore = (measuresArray, isFinal) => {
+    let totalPoints = 0;
+    let maxPoints = 0;
+    measuresArray.forEach(measure => {
+      maxPoints += measure.importance;
+      if (isFinal) {
+        if (measure.implemented) totalPoints += measure.importance;
+      } else {
+        if (measure.answers) {
+          let measureScore = 0;
+          measure.answers.forEach(ans => {
+            if (ans === "Ja") measureScore += measure.importance;
+            else if (ans === "Delvis") measureScore += measure.importance * 0.5;
+          });
+          totalPoints += measureScore;
         }
-        return measure;
-      })
-    );
+      }
+    });
+    if (maxPoints > 0) {
+      setScore(Math.round((totalPoints / maxPoints) * 100));
+    }
+  };
 
-    // Lagre fremgang (kan brukes for persistent lagring senere)
-    setMeasuresProgress((prev) => ({
-      ...prev,
-      [measureId]: {
-        ...prev[measureId],
-        [stepIndex]: isComplete,
-      },
-    }));
-
-    console.log(
-      `Steg ${stepIndex + 1} for tiltak ${measureId} er nå ${
-        isComplete ? "fullført" : "ikke fullført"
-      }`
+  // Når brukeren klikker på et tiltak i sluttfasen, toggles "implementert"
+  const toggleImplementation = (id) => {
+    const updatedMeasures = measures.map(m =>
+      m.id === id ? { ...m, implemented: !m.implemented } : m
     );
+    setMeasures(updatedMeasures);
+    let totalPoints = updatedMeasures.reduce(
+      (acc, m) => acc + (m.implemented ? m.importance : 0),
+      0
+    );
+    let maxPoints = updatedMeasures.reduce((acc, m) => acc + m.importance, 0);
+    setScore(Math.round((totalPoints / maxPoints) * 100));
+  };
+
+  // Fargevalg for hvert kort basert på svarskvaliteten,
+  // med implementerte tiltak som alltid blir grønt.
+  const getCardColor = (measure) => {
+    if (measure.implemented) return "green";
+    if (measure.answers && measure.answers.length > 0) {
+      let scoreCount = measure.answers.reduce((acc, ans) => {
+        if (ans === "Ja") return acc + 1;
+        else if (ans === "Delvis") return acc + 0.5;
+        return acc;
+      }, 0);
+      let ratio = scoreCount / measure.questions.length;
+      if (ratio === 1) return "green";
+      if (ratio >= 0.75) return "light-green";
+      if (ratio >= 0.5) return "yellow";
+      if (ratio >= 0.25) return "orange";
+      return "red";
+    }
+    return "";
   };
 
   return (
-    <div className="app-container">
-      <header className="app-header">
-        <div className="left-section-header">
-          <h1>LIGHTWEIGHT CYBERSECURITY</h1>
-
-          {currentPage !== "startInfo" && currentPage !== "start" && (
-            <nav className={navOpen ? "open" : ""}>
-              <button
-                className={currentPage === "dashboard" ? "active" : ""}
-                onClick={() => handleNavigate("dashboard")}
-                disabled={Object.keys(answers).length === 0}
+    <div className="cyber-assessment-container">
+      <div className={`assessment-board ${assessmentComplete ? 'flipped' : ''}`}>
+        {/* Forside: Vurderingsfasen */}
+        <div className="board-front">
+          <h2>Cybersikkerhetsvurdering for Mikrobedrifter</h2>
+          <div className="card-grid">
+            {measures.map(measure => (
+              <div
+                key={measure.id}
+                className="security-card"
+                onClick={() => handleCardClick(measure.id)}
               >
-                Hjem
-              </button>
-              <button>Data</button>
-              {Object.keys(answers).length > 0 && (
-                <button
-                  className="restart-button"
-                  onClick={handleRestartAssessment}
-                >
-                  Ny vurdering
-                </button>
-              )}
-
-              {/* ThemeToggle i mobil-visning */}
-              <div className="mobile-theme-toggle">
-                <ThemeToggle
-                  isDarkMode={isDarkMode}
-                  toggleTheme={toggleTheme}
-                />
+                <h3>{measure.title}</h3>
+                <p>{measure.description}</p>
+                {measure.answers && measure.answers.length > 0 && (
+                  <div className="answer-indicator">
+                    {measure.answers.filter(a => a).length}/{measure.questions.length} besvart
+                  </div>
+                )}
               </div>
-            </nav>
-          )}
-        </div>
-
-        <div className="right-section-header">
-          {/* Hamburger-meny for mobil */}
-          {currentPage !== "startInfo" && currentPage !== "start" && (
-            <div className="hamburger-menu" onClick={toggleNav}>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          )}
-
-          {/* ThemeToggle i desktop-visning */}
-          <div className="desktop-theme-toggle">
-            <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+            ))}
           </div>
-
-          {/* Quick dashboard access button */}
-          {(currentPage === "startInfo" || currentPage === "start") && (
-            <button
-              onClick={goDirectToDashboard}
-              style={{
-                padding: "8px 15px",
-                backgroundColor: "var(--main-color)",
-                color: "white",
-                border: "none",
-                borderRadius: "4px",
-                cursor: "pointer",
-                fontWeight: "bold",
-                marginLeft: "10px",
-              }}
-            >
-              Gå til dashboard
-            </button>
-          )}
         </div>
-      </header>
-
-      <main>
-        {currentPage === "startInfo" && (
-          <StartInfo onComplete={handleStartInfoComplete} />
-        )}
-
-        {currentPage === "start" && (
-          <StartPage
-            onComplete={handleCompanyInfoSubmit}
-            savedCompanyInfo={companyInfo}
-          />
-        )}
-
-        {currentPage === "questionnaire" && (
-          <Questionnaire onSubmit={handleAnswersSubmit} />
-        )}
-
-        {currentPage === "dashboard" && (
-          <Dashboard
-            securityScore={securityScore}
-            priorityMeasures={priorityMeasures}
-            allMeasures={allMeasures}
-            companyInfo={companyInfo}
-            updateMeasureProgress={updateMeasureProgress}
-          />
-        )}
-      </main>
-
-      <footer>
-        <p></p>
-      </footer>
+        {/* Bakside: Implementeringsfase og samlet score */}
+        <div className="board-back">
+          <h2>Din Cybersikkerhetsprofil</h2>
+          <div className="score-display">
+            <div className="score-circle">{score}</div>
+            <p>Sikkerhetsscore</p>
+          </div>
+          <div className="card-grid">
+            {measures.map(measure => (
+              <div key={measure.id} className={`security-card ${getCardColor(measure)}`}>
+                <h3>{measure.title}</h3>
+                <p>{measure.description}</p>
+                <div className="implementation-status">
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={measure.implemented}
+                      onChange={() => toggleImplementation(measure.id)}
+                    />
+                    Implementert
+                  </label>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      {/* Modal for spørsmål og svar */}
+      {selectedMeasure && (
+        <div className="modal">
+          <div className="modal-content">
+            <h3>{selectedMeasure.title}</h3>
+            {selectedMeasure.questions.map((question, index) => (
+              <div key={index}>
+                <p>{question.question}</p>
+                <div>
+                  {question.options.map((option, i) => (
+                    <label key={i} style={{ marginRight: "10px" }}>
+                      <input
+                        type="radio"
+                        name={`measure-${selectedMeasure.id}-q${index}`}
+                        value={option}
+                        checked={selectedMeasure.answers && selectedMeasure.answers[index] === option}
+                        onChange={() => handleAnswer(index, option)}
+                      />
+                      {option}
+                    </label>
+                  ))}
+                </div>
+              </div>
+            ))}
+            <button onClick={handleSubmitMeasure}>Lagre svar</button>
+            <button onClick={() => setSelectedMeasure(null)}>Avbryt</button>
+          </div>
+        </div>
+      )}
     </div>
   );
-}
+};
 
-export default App;
+// Starter React‑applikasjonen
+const rootElement = document.getElementById('root');
+const root = createRoot(rootElement);
+root.render(<App />);
